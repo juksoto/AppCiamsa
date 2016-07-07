@@ -37,8 +37,8 @@ colorMint2 = #37BC9B
 colorPink1 = #EC87C0
 colorPink2 = #D770AD
 
-colorAsisMotor1 = #0067B5
-colorAsisMotor2 = #024A82
+colorCiamsa = #70A53B
+colorCiamsa2 = #B5C52C
 
 colorSunFlower1 = #FFCE54
 colorSunFlower2 = #F6BB42
@@ -91,7 +91,7 @@ h1, h2, h3, h4, h5, h6
 	ptSansNarrow()
 
 h1
-	color colorAsisMotor1
+	color colorCiamsa
 
 html, body
 	/*background white*/
@@ -186,22 +186,14 @@ table
 .btn-padding
 	padding-bottom 8px
 	padding-top 8px
-.btn-header
-	margin-top 3rem	
-	margin-bottom 1.06rem
+.btn-margin
+	margin 1rem	
+
 	
 /****
 * Class Content Custom
 */
-.title_main
-	span
-		color colorAsisMotor2
-		display block
-		font-size 0.6em
-.filter-section
-	margin-bottom 1rem
-	label
-		font-weight 400
+
 	
 .admin 
 	table.show-data 
@@ -243,7 +235,20 @@ table
 
 	#collaborators_template_0
 		display none
-		
+
+.btn
+	font-size 1.5rem
+	
+.filter-section
+	margin-bottom 1rem
+	label
+		font-weight 400
+.title_main
+	span
+		color colorDarkGray2
+		display block
+		font-size 0.4em
+	
 
 	
 /***
@@ -420,3 +425,26 @@ table
 		text-align center 
 	.text-lg-justify  
 		text-align justify 
+
+/* centered columns styles */
+.row-centered
+	text-align center
+.col-centered
+	display inline-block
+	float none
+	/* reset the text-align */
+	text-align left
+	/* inline-block space fix */
+	margin-right -4px
+    
+.col-fixed
+	/* custom width */
+	width:320px
+
+.col-min
+	/* custom min width */
+	min-width:320px
+
+.col-max
+	/* custom max width */
+	max-width:320px

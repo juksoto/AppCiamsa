@@ -15,11 +15,6 @@
 </head>
 <body class="admin @yield('body-css')">
     <section class="container">
-        <section class="row">
-
-        </section>
-    </section>
-    <section class="container">
         @yield('content')
     </section>
 

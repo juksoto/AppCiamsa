@@ -18,7 +18,6 @@ class CreateCiamProductsTable extends Migration
             $table -> string("components");
             $table -> string("image");
 
-
             // id Categories
             $table -> integer('category_id') -> unsigned();
             $table -> foreign('category_id') -> references('id') -> on('ciam_categories') -> onDelete('cascade');
