@@ -15,7 +15,7 @@ class CropTypeController extends Controller
      */
     public function index()
     {
-        return "some 2";
+        return view( 'admin.crops.type.index' );
     }
 
     /**

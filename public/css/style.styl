@@ -1,0 +1,423 @@
+@import "nib"
+@import "fonts.styl"
+
+/**
+* Color Swatches 
+* http://bootflat.github.io/documentation.html
+*/
+colorAqua1 = #4FC1E9
+colorAqua2 = #3BAFDA
+
+colorBitterSweet1 = #FC6E51
+colorBitterSweet2 = #E9573F
+
+colorBlueJeans1 = #5D9CEC
+colorBlueJeans2 = #4A89DC
+
+colorDarkGray1 = #656D78
+colorDarkGray2 = #434A54
+
+colorGrapeFruit1 = #ED5565
+colorGrapeFruit2 = #DA4453
+
+colorGrass1 = #A0D468
+colorGrass2 = #8CC152
+
+colorLavender1 = #AC92EC
+colorLavender2 = #967ADC
+
+colorLigthGray1 = #F5F7FA
+colorLigthGray2 = #E6E9ED
+
+colorMediumGray1 = #CCD1D9
+colorMediumGray2 = #AAB2BD
+
+colorMint1 = #48CFAD
+colorMint2 = #37BC9B
+
+colorPink1 = #EC87C0
+colorPink2 = #D770AD
+
+colorAsisMotor1 = #0067B5
+colorAsisMotor2 = #024A82
+
+colorSunFlower1 = #FFCE54
+colorSunFlower2 = #F6BB42
+colorSunFlower3 = #8a6d3b
+
+/****
+* Functions
+*/
+
+/** Functions fonts */
+
+robotoSlab()
+	font-family: 'Roboto Slab', serif !important
+
+	
+/** Create styles for the buttons **/
+createBtnColor(bgColor1, bgColor2, colorFont1, colorFont2)
+	background-color bgColor1
+	color colorFont1 
+	&:hover
+		background-color bgColor2
+		color colorFont2 
+
+/** Create styles for the alerts **/
+createAlerts(bgColor, borderColor, colorFont, colorLink)
+	background-color bgColor
+	border borderColor
+	color colorFont
+	a
+		color colorLink
+		&:hover
+			color colorFont
+			text-decoration underline
+
+createIconColor(colorIcon)
+	color colorIcon
+
+/****
+* Tags
+*/	
+
+body
+	background rgb(241, 242, 246) !important
+	font-size 16px
+	font-weight 500
+	robotoSlab()
+
+h1, h2, h3, h4, h5, h6
+	font-weight 400
+	robotoSlab()
+
+h1
+	color colorAsisMotor1
+
+html, body
+	/*background white*/
+	height 100%
+
+input[type="file"], input[type="checkbox"], input[type="radio"]
+	margin 0 0 1rem 0
+
+ul
+	margin 0 !important
+	padding 0 !important
+	list-style none
+
+table
+	thead
+		th
+			background colorMediumGray1
+			padding .3em
+			text-align left
+			a
+				text-decoration underline
+		td
+			background white
+			padding 0.4em
+			font-weight 500
+	tbody
+		tr
+			&:nth-child(even)
+				background colorLigthGray1
+			&:hover
+				background colorBlueJeans1 !important
+				color white
+				a
+					color white
+					text-decoration underline
+				small
+					opacity 1
+				.glyphicon
+					color white
+		td
+			padding .3em
+			small
+				opacity 0
+				margin-left 1em
+	
+/****
+ * Alerts
+ */
+ 
+.successful
+ 	createAlerts(colorGrass1, colorGrass2, colorGrass2, white)
+	
+.notice
+	createAlerts(colorSunFlower1, colorSunFlower2, colorSunFlower3, white )
+
+.danger
+	createAlerts(colorGrapeFruit1, colorGrapeFruit2, colorGrapeFruit2, white )
+
+.info
+	createAlerts(colorAqua1, colorAqua2, colorAqua2, white )
+	
+.alert-floating
+	display none
+	left 50%
+	margin-left -10em
+	position absolute
+	right 0
+	text-align center
+	top 3em
+	width 20em
+	z-index 9999
+		
+/****
+ * Buttons
+ */
+.btn-aqua
+	createBtnColor(colorAqua1,colorAqua2, white, white )
+.btn-blue
+	createBtnColor(colorBlueJeans1,colorBlueJeans2, white, white )
+.btn-light-gray
+	createBtnColor(colorLigthGray1,colorLigthGray2, black, black )
+.btn-green
+	createBtnColor(colorGrass1,colorGrass2, white, white )
+.btn-medium-gray
+	createBtnColor(colorMediumGray1,colorMediumGray2, white, white )
+.btn-red
+	createBtnColor(colorGrapeFruit1,colorGrapeFruit2, white, white )
+.btn-yellow
+	createBtnColor(colorSunFlower1,colorSunFlower2, white, white )
+.btn-mint
+	createBtnColor(colorMint1,colorMint2, white, white )
+.btn-padding
+	padding-bottom 8px
+	padding-top 8px
+.btn-header
+	margin-top 3rem	
+	margin-bottom 1.06rem
+	
+/****
+* Class Content Custom
+*/
+.title_main
+	span
+		color colorAsisMotor2
+		display block
+		font-size 0.6em
+.filter-section
+	margin-bottom 1rem
+	label
+		font-weight 400
+	
+.admin 
+	table.show-data 
+		thead
+			th
+				background white
+				border-bottom 1px solid colorMediumGray1
+				padding 1em
+		tr.row-data
+			height 5.8em
+			&:hover
+				.row-actions
+					display block
+		td
+			border 0
+			padding 1em
+			&:first-child
+				width 10em
+		.row-actions
+			font-size 0.8em
+			display none
+				
+	#headquarter_template_0 #remove_current_headquarter
+	#headquarter_template_0 #phonewrapper_0_headquarter_0 #remove_current
+	#email_template_0 #remove_current_email
+		display none
+	#remove_current_headquarter
+	#remove_current_collaborators
+		cursor pointer
+		span 
+			margin-top 25px
+	#remove_current
+	#remove_current_email
+		cursor pointer
+		span 
+			margin-top 10px
+	.collaborators
+		margin-bottom 10rem
+
+	#collaborators_template_0
+		display none
+		
+
+	
+/***
+* Icon Color
+*/
+.color-danger
+	createIconColor(colorGrapeFruit2)
+
+.color-notice, .color-warning
+	createIconColor(colorSunFlower2)
+
+.color-sucessful
+	createIconColor(colorGrass2)
+
+
+/****
+* Layout
+*/
+
+/** Check Active e Inactive */
+.check-active
+	color colorGrass2
+.check-inactive
+	color colorDarkGray1
+
+/**
+ * Add Styles to Bootstrap
+*/
+
+
+/**
+* Margin responsive
+*/
+
+@media (min-width:0px)
+	.margin-xs-top
+		margin-top 15px !important
+	.margin-xs-right
+		margin-right 15px
+	.margin-xs-bottom
+		margin-bottom 15px
+	.margin-xs-left
+		margin-left 15px
+
+@media (min-width: 768px) 
+	.margin-sm-top
+		margin-top 15px !important
+	.margin-sm-right
+		margin-right 15px
+	.margin-sm-bottom
+		margin-bottom 15px
+	.margin-sm-left
+		margin-left 15px
+
+@media (min-width: 992px) 
+	.margin-md-top
+		margin-top 15px
+	.margin-md-right
+		margin-right 15px
+	.margin-md-bottom
+		margin-bottom 15px
+	.margin-md-left
+		margin-left 15px
+
+@media (min-width: 1200px) 
+	.margin-lg-top
+		margin-top 15px
+	.margin-lg-right
+		margin-right 15px
+	.margin-lg-bottom
+		margin-bottom 15px
+	.margin-lg-left
+		margin-left 15px
+
+/**
+	* No margin
+**/
+
+.no-margin
+	margin 0 !important
+
+@media (min-width: 0px)
+	.no-margin-xs-top
+		margin-top 0px
+	.no-margin-xs-right
+		margin-right 0px
+	.no-margin-xs-bottom
+		margin-bottom 0px
+	.no-margin-xs-left
+		margin-left 0px
+
+@media (min-width: 768px) 
+	.no-margin-sm-top
+		margin-top 0px !important
+	.no-margin-sm-right
+		margin-right 0px
+	.no-margin-sm-bottom
+		margin-bottom 0px
+	.no-margin-sm-left
+		margin-left 0px
+
+@media (min-width: 992px) 
+	.no-margin-md-top
+		margin-top 0px
+	.no-margin-md-right
+		margin-right 0px
+	.no-margin-md-bottom
+		margin-bottom 0px
+	.no-margin-md-left
+		margin-left 0px
+
+@media (min-width: 1200px) 
+	.no-margin-lg-top
+		margin-top 0px
+	.no-margin-lg-right
+		margin-right 0px
+	.no-margin-lg-bottom
+		margin-bottom 0px
+	.no-margin-lg-left
+		margin-left 0px
+
+/**
+* No padding en grid de bootstrap
+*/
+
+.no-padding
+	@media screen and (min-width 768px)	
+		padding 0 !important
+
+
+
+/**
+* Align tipography responsive
+*/
+
+@media (min-width: 0px)
+	.text-xs-left  
+		text-align left 
+	.text-xs-right  
+		text-align right 
+	.text-xs-center  
+		text-align center 
+	.text-xs-justify  
+		text-align justify 
+
+@media (min-width: 768px) 
+	.text-sm-left  
+		text-align left 
+	.text-sm-right  
+		text-align right 
+	.text-sm-center  
+		text-align center 
+	.text-sm-justify  
+		text-align justify 
+
+
+@media (min-width: 992px) 
+	.text-md-left  
+		text-align left 
+	.text-md-right  
+		text-align right 
+	.text-md-center  
+		text-align center 
+	.text-md-justify  
+		text-align justify 
+
+
+@media (min-width: 1200px) 
+	.text-lg-left  
+		text-align left 
+	.text-lg-right  
+		text-align right 
+	.text-lg-center  
+		text-align center 
+	.text-lg-justify  
+		text-align justify 
