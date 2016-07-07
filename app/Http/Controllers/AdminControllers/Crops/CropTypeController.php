@@ -15,7 +15,7 @@ class CropTypeController extends Controller
      */
     public function index()
     {
-        return "some message";
+        return "some 2";
     }
 
     /**

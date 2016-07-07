@@ -15,19 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('user', function () {
-    return "hola";
-});
 
-Route::resource('type', 'AdminControllers\Crops\CropTypeController');
 
 /**
  * Groups AdminControllers Controllers
  */
-
 Route::group(['prefix' => 'admin'], function()
 {
-
     Route::group(['prefix' => 'crops'], function()
     {
         Route::resource('type', 'AdminControllers\Crops\CropTypeController');
