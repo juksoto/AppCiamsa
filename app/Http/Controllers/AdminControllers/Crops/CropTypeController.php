@@ -7,9 +7,22 @@ use App\Http\Requests;
 use Ciamsa\Core\Helpers;
 use Illuminate\Http\Request;
 use Ciamsa\Core\Entities\Crops\CiamCropsType;
+use Illuminate\Support\Facades\Session;
+use App\Http\Requests\Crops\CreateTypeCropsRequest;
+use App\Http\Requests\Crops\EditTypeCropsRequest;
 
 class CropTypeController extends Controller
 {
+    /**
+     * @var Array
+     */
+    private $data;
+
+    /**
+     * @var Helpers
+     */
+    private $helper;
+
     /**
      * @var Request
      */
@@ -18,10 +31,7 @@ class CropTypeController extends Controller
      * @var array
      */
     private $typeCrop;
-    /**
-     * @var Helpers
-     */
-    private $helper;
+
 
     /**
      * @param Request $request
@@ -44,7 +54,7 @@ class CropTypeController extends Controller
      */
     public function findUser($id)
     {
-        $this -> country = CiamCropsType::findOrFail( $id );
+        $this -> typeCrop = CiamCropsType::findOrFail( $id );
     }
 
     /**
@@ -55,6 +65,7 @@ class CropTypeController extends Controller
     public function index()
     {
         $collection = CiamCropsType::typecropsname( $this -> request -> get('search') )
+            -> sortable()
             -> active( $this -> request -> get('active') )
             -> orderBy( 'crops', 'ASC' )
             -> paginate();
@@ -83,9 +94,17 @@ class CropTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateTypeCropsRequest $request)
     {
-        //
+        $typeCrop = CiamCropsType::create( $request -> all() );
+
+        $message_floating = trans('admin.message.alert_field_create');
+        $message_alert ="alert-success";
+
+        Session::flash('message_floating', $message_floating);
+        Session::flash('message_alert', $message_alert);
+
+        return redirect() -> route('admin.crops.type.index');
     }
 
     /**
@@ -107,7 +126,11 @@ class CropTypeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $this -> findUser($id);
+        $this -> data -> collection = $this -> typeCrop;
+        $data = $this -> data;
+
+        return view('admin.crops.type.edit', compact('data'));
     }
 
     /**
@@ -117,9 +140,20 @@ class CropTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditTypeCropsRequest $request, $id)
     {
-        //
+        $this -> findUser($id);
+
+        $this -> typeCrop -> fill( $request -> all() );
+        $this -> typeCrop -> save();
+
+        $message_floating = $this -> typeCrop -> crops . " " . trans('admin.message.alert_field_update');
+        $message_alert ="alert-success";
+
+        Session::flash('message_floating', $message_floating);
+        Session::flash('message_alert', $message_alert);
+
+        return redirect() -> route( 'admin.crops.type.index' );
     }
 
     /**
@@ -130,6 +164,23 @@ class CropTypeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this -> findUser($id);
+        $active = $this -> helper -> valueActive( $this -> typeCrop -> active );
+        $this -> typeCrop -> active = $active['active'];
+        $message = $this -> typeCrop -> crops . " " .$active['message'];
+        $this -> typeCrop -> save();
+
+        if ($this -> request -> ajax() )
+        {
+            return response() -> json([
+                'message'       =>  $message,
+                'class'         =>  $active['message_alert'],
+            ]);
+        }
+
+        Session::flash('message_floating', $message);
+        Session::flash('message_alert', $active['message_alert']);
+
+        return redirect() -> route( 'admin.crops.type.index' );
     }
 }

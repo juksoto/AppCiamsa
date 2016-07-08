@@ -23,22 +23,22 @@ return [
     /*
     defines icon set to use when sorted data is none above (alpha nor amount nor numeric)
     */
-    'default_icon_set' => 'fa fa-sort',
+    'default_icon_set' => 'glyphicon glyphicon-sort',
 
     /*
     icon that shows when generating sortable link while column is not sorted
     */
-    'sortable_icon'    => 'fa fa-sort',
+    'sortable_icon'    => 'glyphicon glyphicon-sort-alt',
 
     /*
     suffix class that is appended when ascending order is applied
     */
-    'asc_suffix'        => '-asc',
+    'asc_suffix'        => 'glyphicon glyphicon-sort-by-attributes',
 
     /*
     suffix class that is appended when descending order is applied
     */
-    'desc_suffix'       => '-desc',
+    'desc_suffix'       => 'glyphicon glyphicon-sort-by-attributes-alt',
 
     /*
     default anchor class, if value is null none is added

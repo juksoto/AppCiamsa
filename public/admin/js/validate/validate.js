@@ -1,3 +1,5 @@
+$.validator.messages.required = 'Es un campo obligatorio';
+
 $( "#send-form" ).click(function() {
    $('#form').validate({
    	highlight: function(element) {

@@ -3,9 +3,12 @@
 namespace Ciamsa\Core\Entities\Crops;
 
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class CiamCropsType extends Model
 {
+    use Sortable;
+
     protected $table = 'ciam_crops_type';
 
     protected $fillable = [
@@ -15,7 +18,6 @@ class CiamCropsType extends Model
     ];
 
     protected $sortable = [
-        'id',
         'crops'
     ];
 
@@ -43,7 +45,6 @@ class CiamCropsType extends Model
      */
     public function scopeActive($query, $value)
     {
-
         if ($value == "")
         {
             $value = true;

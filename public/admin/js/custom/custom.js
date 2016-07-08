@@ -5,6 +5,7 @@ function showAlertFloating() {
 }
 
 $('.btn-active').click(function () {
+    console.log('entre');
     var row = $(this).parents('tr');
     var id = row.data('id');
     var form = $('#form-active');

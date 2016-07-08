@@ -25,7 +25,7 @@
         <section class="form-group">
             <article class="col-sm-offset-2 col-sm-10">
                 {!! Form::submit(trans('admin.submit.add'), ['class' => 'btn btn-primary' , 'id' => 'send-form']) !!}
-                <a class="btn btn-danger" href="{{ route('admin.crops.type.index  ') }}">{{ trans('admin.submit.back') }}</a>
+                <a class="btn btn-danger" href="{{ route('admin.crops.type.index') }}">{{ trans('admin.submit.back') }}</a>
             </article>
         </section>
    {!! Form::close()!!}
@@ -33,6 +33,5 @@
 @endsection
 
 @section('scripts')
-    <script type="text/javascript" src="{{URL::asset('js/validate/jquery.validate.min.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('js/validate/validate.js')}}"></script>
+    @include('admin.crops.type.partials.scripts')
 @endsection

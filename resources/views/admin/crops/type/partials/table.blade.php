@@ -5,10 +5,10 @@
             Nº
         </th>
         <th class="text-capitalize">
-            @sortablelink('crops', trans("admin.crops.type_crops"))
+            @sortablelink('crops')
         </th>
 
-        <th class="text-center text-capitalize">
+        <th class="text-left text-capitalize">
             {{ trans('admin.status.status') }}
         </th>
     </tr>
@@ -17,10 +17,10 @@
 
     @forelse($data -> collections as $key => $collection)
         <tr data-id="{{ $collection -> id  }}">
-            <td>
+            <td class="text-left">
                 {!! ($key + 1) !!}
             </td>
-            <td>
+            <td class="text-left">
                 <a href="{{ route('admin.crops.type.edit', $collection) }}">
                     {!! $collection -> crops !!}
                 </a>
@@ -31,7 +31,7 @@
                     </a>
                 </small>
             </td>
-            <td class="text-center">
+            <td class="text-left">
                 <a href="#" class="btn-active">
                     @if ($collection -> active == true)
                         <span class="glyphicon glyphicon-ok-sign color-sucessful"></span>
