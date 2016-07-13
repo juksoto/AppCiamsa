@@ -6,12 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Ciamsa\Core\Helpers;
 use Illuminate\Http\Request;
-use Ciamsa\Core\Entities\Crops\CiamCropsStage;
+use Ciamsa\Core\Entities\Crops\CiamCropsType;
 use Illuminate\Support\Facades\Session;
-use App\Http\Requests\Crops\CreateStageCropsRequest;
-use App\Http\Requests\Crops\EditStageCropsRequest;
-use Ciamsa\Core\Repositories\Crops\CropsStageRepo;
-class CropStageController extends Controller
+use App\Http\Requests\Crops\CreateTypeCropsRequest;
+use App\Http\Requests\Crops\EditTypeCropsRequest;
+
+class CropTypeStageController extends Controller
 {
     /**
      * @var Array
@@ -30,25 +30,18 @@ class CropStageController extends Controller
     /**
      * @var array
      */
-    private $stageCrop;
-
-    /**
-     * @var CropsStageRepo
-     */
-    private $stageRepo;
+    private $tsCrop;
 
 
     /**
      * @param Request $request
      * beforeFilter Este filtro sirve para llamar el metodo findUser con las siguientes opciones
      */
-    public function __construct(Request $request, Helpers $helper, CropsStageRepo $stageRepo)
+    public function __construct(Request $request, Helpers $helper)
     {
         $this -> request = $request;
 
         $this -> helper = $helper;
-
-        $this -> stageRepo = $stageRepo;
 
         $this -> data = new \stdClass();
 
@@ -57,11 +50,11 @@ class CropStageController extends Controller
     }
 
     /**
-     * @param $id id del Stage Crops
+     * @param $id id del Type Crops
      */
     public function findUser($id)
     {
-        $this -> stageCrop = CiamCropsStage::findOrFail( $id );
+        $this -> typeCrop = CiamCropsType::findOrFail( $id );
     }
 
     /**
@@ -71,16 +64,16 @@ class CropStageController extends Controller
      */
     public function index()
     {
-        $collection = CiamCropsStage::stagecropsname( $this -> request -> get('search') )
+        $collection = CiamCropsType::typecropsname( $this -> request -> get('search') )
             -> sortable()
             -> active( $this -> request -> get('active') )
-            -> orderBy( 'stage', 'ASC' )
+            -> orderBy( 'crops', 'ASC' )
             -> paginate();
 
         $this -> data -> collections = $collection;
         $data = $this -> data;
 
-        return view( 'admin.crops.stage.index', compact( 'data' ));
+        return view( 'admin.crops.type.index', compact( 'data' ));
     }
 
     /**
@@ -92,7 +85,7 @@ class CropStageController extends Controller
     {
         $data = $this -> data;
 
-        return view('admin.crops.stage.create',  compact('data')); //
+        return view('admin.crops.type.create',  compact('data')); //
     }
 
     /**
@@ -101,27 +94,17 @@ class CropStageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateStageCropsRequest $request)
+    public function store(CreateTypeCropsRequest $request)
     {
-        $Stage = new CiamCropsStage();
-        $Stage  -> fill( $request -> all() );
+        $tsCrop = CiamCropsType::create( $request -> all() );
 
-        if ($request -> hasFile('image')) {
-            if ($request -> file('image') -> isValid()) {
-                $fileLoaded = $this -> stageRepo -> uploadFile($request);
-                $Stage  -> image = $fileLoaded;
-            }
-        }
-
-        $Stage ->  save();
-
-        $message_floating = $Stage -> stage . " " . trans('admin.message.alert_field_update');
+        $message_floating = trans('admin.message.alert_field_create');
         $message_alert ="alert-success";
 
         Session::flash('message_floating', $message_floating);
         Session::flash('message_alert', $message_alert);
-        
-        return redirect() -> route('admin.crops.stage.index');
+
+        return redirect() -> route('admin.crops.type.index');
     }
 
     /**
@@ -144,10 +127,10 @@ class CropStageController extends Controller
     public function edit($id)
     {
         $this -> findUser($id);
-        $this -> data -> collection = $this -> stageCrop;
+        $this -> data -> collection = $this -> typeCrop;
         $data = $this -> data;
 
-        return view('admin.crops.stage.edit', compact('data'));
+        return view('admin.crops.type.edit', compact('data'));
     }
 
     /**
@@ -156,38 +139,21 @@ class CropStageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     *
      */
-    public function update(EditStageCropsRequest $request, $id)
+    public function update(EditTypeCropsRequest $request, $id)
     {
-
         $this -> findUser($id);
-        $this -> stageCrop -> fill( $request -> all() );
 
-        // Verifica si cargo un archivo. Envia a su respectiva posicion y guarda el nombre.
+        $this -> typeCrop -> fill( $request -> all() );
+        $this -> typeCrop -> save();
 
-        if ($request -> hasFile('image')) {
-            if ($request -> file('image') -> isValid()) {
-                $fileLoaded = $this -> stageRepo -> uploadFile($request);
-                $this -> stageCrop -> image = $fileLoaded;
-            }
-        }
-        else
-        {
-            // Si no cargo, busque el archivo viejo y renombrelo.
-           $fileName = $this -> stageRepo -> renameFile($request, $this -> stageCrop -> image);
-           $this -> stageCrop -> image = $fileName;
-        }
-
-        $this -> stageCrop -> save();
-
-        $message_floating = $this -> stageCrop -> stage . " " . trans('admin.message.alert_field_update');
+        $message_floating = $this -> typeCrop -> crops . " " . trans('admin.message.alert_field_update');
         $message_alert ="alert-success";
 
         Session::flash('message_floating', $message_floating);
         Session::flash('message_alert', $message_alert);
 
-        return redirect() -> route( 'admin.crops.stage.index' );
+        return redirect() -> route( 'admin.crops.type.index' );
     }
 
     /**
@@ -199,10 +165,10 @@ class CropStageController extends Controller
     public function destroy($id)
     {
         $this -> findUser($id);
-        $active = $this -> helper -> valueActive( $this -> stageCrop -> active );
-        $this -> stageCrop -> active = $active['active'];
-        $message = $this -> stageCrop -> stage . " " .$active['message'];
-        $this -> stageCrop -> save();
+        $active = $this -> helper -> valueActive( $this -> typeCrop -> active );
+        $this -> typeCrop -> active = $active['active'];
+        $message = $this -> typeCrop -> crops . " " .$active['message'];
+        $this -> typeCrop -> save();
 
         if ($this -> request -> ajax() )
         {
@@ -215,6 +181,6 @@ class CropStageController extends Controller
         Session::flash('message_floating', $message);
         Session::flash('message_alert', $active['message_alert']);
 
-        return redirect() -> route( 'admin.crops.stage.index' );
+        return redirect() -> route( 'admin.crops.type.index' );
     }
 }

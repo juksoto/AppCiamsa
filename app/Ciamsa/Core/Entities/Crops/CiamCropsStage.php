@@ -21,6 +21,8 @@ class CiamCropsStage extends Model
     protected $sortable = [
         'stage'
     ];
+    
+    
 
     /**
      * Retorna las  similitudes conforme a la cadena que se recibe como parametro.

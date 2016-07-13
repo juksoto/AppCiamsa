@@ -34,6 +34,7 @@ class CropsStageRepo extends Model
      * @return bool|string
      * @param [description] Metodo que funciona en el momento de actuzlair una imagen. Renombra y mueve el
      * archivo a su nueva ubicacion.
+     * Si no existe el archivo viejo, fue borrado o esta corrupto, copia una imagen por defecto.
      */
     public function renameFile($request, $nameOldFile)
     {
@@ -52,7 +53,6 @@ class CropsStageRepo extends Model
         else
         {
             copy('media/no-file.png', $urlPath . $fileName );
-           // rename($urlPath . 'no-file.png', $urlPath . $fileName );
         }
 
         return $fileName;
