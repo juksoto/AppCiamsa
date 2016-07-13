@@ -25,6 +25,7 @@ Route::group(['prefix' => 'admin'], function()
     Route::group(['prefix' => 'crops'], function()
     {
         Route::resource('type', 'AdminControllers\Crops\CropTypeController');
+        Route::resource('stage', 'AdminControllers\Crops\CropStageController');
 
     });
 });
