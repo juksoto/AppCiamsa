@@ -4,12 +4,14 @@ namespace App\Http\Controllers\AdminControllers\Crops;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use App\Http\Requests\Relations\CreateTypeHasStageCropRequest;
+use App\Http\Requests\Relations\EditTypeHasStageCropRequest;
+use Ciamsa\Core\Entities\Crops\CiamCropsStage;
+use Ciamsa\Core\Entities\Crops\CiamCropsType;
+use Ciamsa\Core\Entities\Relations\CiamTypehasStageCrops;
 use Ciamsa\Core\Helpers;
 use Illuminate\Http\Request;
-use Ciamsa\Core\Entities\Crops\CiamCropsType;
 use Illuminate\Support\Facades\Session;
-use App\Http\Requests\Crops\CreateTypeCropsRequest;
-use App\Http\Requests\Crops\EditTypeCropsRequest;
 
 class CropTypeStageController extends Controller
 {
@@ -54,7 +56,7 @@ class CropTypeStageController extends Controller
      */
     public function findUser($id)
     {
-        $this -> typeCrop = CiamCropsType::findOrFail( $id );
+        $this -> tsCropCrop = CiamCropsType::findOrFail( $id );
     }
 
     /**
@@ -64,8 +66,7 @@ class CropTypeStageController extends Controller
      */
     public function index()
     {
-        $collection = CiamCropsType::typecropsname( $this -> request -> get('search') )
-            -> sortable()
+        $collection = CiamCropsType::typeCropsName( $this -> request -> get('search') )
             -> active( $this -> request -> get('active') )
             -> orderBy( 'crops', 'ASC' )
             -> paginate();
@@ -73,7 +74,7 @@ class CropTypeStageController extends Controller
         $this -> data -> collections = $collection;
         $data = $this -> data;
 
-        return view( 'admin.crops.type.index', compact( 'data' ));
+        return view( 'admin.crops.tsCrop.index', compact( 'data' ));
     }
 
     /**
@@ -83,9 +84,22 @@ class CropTypeStageController extends Controller
      */
     public function create()
     {
+        if (\Request::has('type'))
+        {
+            $idType = $this -> request -> get('type');
+            $this -> findUser($idType);
+            $this -> data -> typeCrop = $data = $this -> tsCropCrop;
+        }
+
+        $typeAllCrops = CiamCropsType::all();
+        $stageAllCrops = CiamCropsStage::all();
+
+        $this -> data -> typeAllCrops =  $typeAllCrops;
+        $this -> data -> stageAllCrops =  $stageAllCrops;
+
         $data = $this -> data;
 
-        return view('admin.crops.type.create',  compact('data')); //
+        return view('admin.crops.tsCrop.create',  compact('data')); //
     }
 
     /**
@@ -94,9 +108,14 @@ class CropTypeStageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateTypeCropsRequest $request)
+    public function store(CreateTypeHasStageCropRequest $request)
     {
-        $tsCrop = CiamCropsType::create( $request -> all() );
+        // Encuentre en la tabla tipo, el id que el usuario ingreso en el formulario
+        $tsCrop = CiamCropsType::find( $request -> crops_type_id );
+        $tsCrop
+            -> stage()
+            // Agregue a la tabla de pivote ese id de crops con el id de la etapa.
+            -> attach( $request ->crops_stage_id );
 
         $message_floating = trans('admin.message.alert_field_create');
         $message_alert ="alert-success";
@@ -104,7 +123,7 @@ class CropTypeStageController extends Controller
         Session::flash('message_floating', $message_floating);
         Session::flash('message_alert', $message_alert);
 
-        return redirect() -> route('admin.crops.type.index');
+        return redirect() -> route('admin.crops.tsCrop.index');
     }
 
     /**
@@ -115,7 +134,17 @@ class CropTypeStageController extends Controller
      */
     public function show($id)
     {
-        //
+        $this -> findUser($id);
+
+        $collection = CiamCropsType::find($id) -> stage;
+
+        $this -> data -> stages = $collection;
+        $this -> data -> collections = $this -> tsCropCrop ;
+        $data = $this -> data;
+
+        return view('admin.crops.tsCrop.show',  compact('data')); //
+
+
     }
 
     /**
@@ -126,11 +155,32 @@ class CropTypeStageController extends Controller
      */
     public function edit($id)
     {
-        $this -> findUser($id);
-        $this -> data -> collection = $this -> typeCrop;
+        if (\Request::has('type'))
+        {
+            $idType = $this -> request -> get('type');
+            $typeCrop = CiamCropsType::find( $idType );
+            $this -> data -> typeCrop = $typeCrop;
+        }
+
+        $stageCrop =CiamCropsStage::find( $id );
+        $this -> data -> stageCrop = $stageCrop;
+
+        $typeAllCrops = CiamCropsType::all();
+        $stageAllCrops = CiamCropsStage::all();
+
+        $this -> data -> typeAllCrops =  $typeAllCrops;
+        $this -> data -> stageAllCrops =  $stageAllCrops;
+
+        $stageHasTypeCrop = CiamTypehasStageCrops::All()
+            -> where('crops_type_id',$typeCrop -> id)
+            -> where('crops_stage_id',$stageCrop -> id)
+            -> first();
+
+        $this -> data -> stageHasTypeCrop =  $stageHasTypeCrop -> id;
+
         $data = $this -> data;
 
-        return view('admin.crops.type.edit', compact('data'));
+        return view('admin.crops.tsCrop.edit', compact('data'));
     }
 
     /**
@@ -140,20 +190,25 @@ class CropTypeStageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EditTypeCropsRequest $request, $id)
+    public function update(EditTypeHasStageCropRequest $request, $id)
     {
-        $this -> findUser($id);
 
-        $this -> typeCrop -> fill( $request -> all() );
-        $this -> typeCrop -> save();
+        // Encuentre en la tabla tipo, el id que el usuario ingreso en el formulario
+        $this -> tsCrop = CiamTypehasStageCrops::find( $request -> stageHasTypeCrop );
 
-        $message_floating = $this -> typeCrop -> crops . " " . trans('admin.message.alert_field_update');
+        $this -> tsCrop -> 	crops_type_id = $request -> crops_type_id;
+        $this -> tsCrop -> 	crops_stage_id = $request -> crops_stage_id;
+        $this -> tsCrop -> save();
+
+
+        $message_floating = trans('admin.message.alert_field_create');
         $message_alert ="alert-success";
 
         Session::flash('message_floating', $message_floating);
         Session::flash('message_alert', $message_alert);
 
-        return redirect() -> route( 'admin.crops.type.index' );
+        return redirect() -> route('admin.crops.tsCrop.show' , $request -> crops_type_id);
+
     }
 
     /**
@@ -165,10 +220,10 @@ class CropTypeStageController extends Controller
     public function destroy($id)
     {
         $this -> findUser($id);
-        $active = $this -> helper -> valueActive( $this -> typeCrop -> active );
-        $this -> typeCrop -> active = $active['active'];
-        $message = $this -> typeCrop -> crops . " " .$active['message'];
-        $this -> typeCrop -> save();
+        $active = $this -> helper -> valueActive( $this -> tsCropCrop -> active );
+        $this -> tsCropCrop -> active = $active['active'];
+        $message = $this -> tsCropCrop -> crops . " " .$active['message'];
+        $this -> tsCropCrop -> save();
 
         if ($this -> request -> ajax() )
         {
@@ -181,6 +236,6 @@ class CropTypeStageController extends Controller
         Session::flash('message_floating', $message);
         Session::flash('message_alert', $active['message_alert']);
 
-        return redirect() -> route( 'admin.crops.type.index' );
+        return redirect() -> route( 'admin.crops.tsCrop.index' );
     }
 }

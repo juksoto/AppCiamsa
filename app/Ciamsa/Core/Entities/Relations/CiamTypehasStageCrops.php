@@ -1,25 +1,20 @@
 <?php
 
-namespace Ciamsa\Core\Entities\Crops;
+namespace Ciamsa\Core\Entities\Relations;
 
 use Illuminate\Database\Eloquent\Model;
-use Kyslik\ColumnSortable\Sortable;
 
-class CiamCropsType extends Model
+class CiamTypehasStageCrops extends Model
 {
-    use Sortable;
 
-    protected $table = 'ciam_crops_type';
+    protected $table = 'ciam_type_has_stage_crops';
 
     protected $fillable = [
-        'crops',
-        'icon',
+        'crops_type_id',
+        'crops_stage_id',
         'active',
     ];
 
-    protected $sortable = [
-        'crops'
-    ];
 
     /**
      * Retorna las  similitudes conforme a la cadena que se recibe como parametro.
@@ -51,18 +46,5 @@ class CiamCropsType extends Model
         }
         return $query -> where('active', $value);
     }
-
-    /**
-     * Relation Many to Many
-     * Las etapas que pertenecen a tipo de cultivos
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-
-    public function stage()
-    {
-        return $this
-            -> belongsToMany( 'Ciamsa\Core\Entities\Crops\CiamCropsStage',  'ciam_type_has_stage_crops' ,  'crops_type_id' ,'crops_stage_id' )
-            -> withPivot('active')
-            -> withTimestamps();
-    }
+    
 }
