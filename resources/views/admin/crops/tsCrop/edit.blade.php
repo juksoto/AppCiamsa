@@ -27,7 +27,7 @@
     <!-- End Section Fields -->
 
     <!-- ID Tipo y Etapa del Cultivo -->
-    {!! Form::hidden('stageHasTypeCrop' ,$data -> stageHasTypeCrop ) !!}
+    {!! Form::hidden('stageHasTypeCrop' ,$data -> stageHasTypeCrop -> id ) !!}
     <!-- End ID Tipos de Cultivo -->
 
 
