@@ -60,6 +60,19 @@ class CropTypeStageController extends Controller
     }
 
     /**
+     * @param $id id del Type Crops
+     */
+    public function findIDRelation($idType, $idStage)
+    {
+        $stageHasTypeCrop = CiamTypehasStageCrops::All()
+            -> where('crops_type_id',$idType)
+            -> where('crops_stage_id',$idStage)
+            -> first();
+
+        $this -> stageHasTypeCrop = $stageHasTypeCrop;
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -136,10 +149,13 @@ class CropTypeStageController extends Controller
     {
         $this -> findUser($id);
 
-        $collection = CiamCropsType::find($id) -> stage;
+        $activeStatus = $this -> request -> get('active');
+        $valueActive = $this -> helper -> valueActiveRelations($activeStatus);
+        $collection = CiamCropsType::find($id) -> stage() -> wherePivot('active' , $valueActive) -> get();
 
         $this -> data -> stages = $collection;
         $this -> data -> collections = $this -> tsCropCrop ;
+
         $data = $this -> data;
 
         return view('admin.crops.tsCrop.show',  compact('data')); //
@@ -160,27 +176,38 @@ class CropTypeStageController extends Controller
             $idType = $this -> request -> get('type');
             $typeCrop = CiamCropsType::find( $idType );
             $this -> data -> typeCrop = $typeCrop;
+
+            $stageCrop =CiamCropsStage::find( $id );
+            $this -> data -> stageCrop = $stageCrop;
+
+            $typeAllCrops = CiamCropsType::all();
+            $stageAllCrops = CiamCropsStage::all();
+
+            $this -> data -> typeAllCrops =  $typeAllCrops;
+            $this -> data -> stageAllCrops =  $stageAllCrops;
+
+            $this -> findIDRelation($typeCrop -> id, $stageCrop -> id );
+
+            $this -> data -> stageHasTypeCrop =  $this -> stageHasTypeCrop;
+
+            $data = $this -> data;
+
+            return view('admin.crops.tsCrop.edit', compact('data'));
+
+        }
+        else
+        {
+            $collection = CiamCropsType::typeCropsName( $this -> request -> get('search') )
+                -> active( $this -> request -> get('active') )
+                -> orderBy( 'crops', 'ASC' )
+                -> paginate();
+
+            $this -> data -> collections = $collection;
+            $data = $this -> data;
+
+            return view( 'admin.crops.tsCrop.index', compact( 'data' ));
         }
 
-        $stageCrop =CiamCropsStage::find( $id );
-        $this -> data -> stageCrop = $stageCrop;
-
-        $typeAllCrops = CiamCropsType::all();
-        $stageAllCrops = CiamCropsStage::all();
-
-        $this -> data -> typeAllCrops =  $typeAllCrops;
-        $this -> data -> stageAllCrops =  $stageAllCrops;
-
-        $stageHasTypeCrop = CiamTypehasStageCrops::All()
-            -> where('crops_type_id',$typeCrop -> id)
-            -> where('crops_stage_id',$stageCrop -> id)
-            -> first();
-
-        $this -> data -> stageHasTypeCrop =  $stageHasTypeCrop -> id;
-
-        $data = $this -> data;
-
-        return view('admin.crops.tsCrop.edit', compact('data'));
     }
 
     /**
@@ -219,11 +246,12 @@ class CropTypeStageController extends Controller
      */
     public function destroy($id)
     {
-        $this -> findUser($id);
-        $active = $this -> helper -> valueActive( $this -> tsCropCrop -> active );
-        $this -> tsCropCrop -> active = $active['active'];
-        $message = $this -> tsCropCrop -> crops . " " .$active['message'];
-        $this -> tsCropCrop -> save();
+        $this -> stageType = CiamTypehasStageCrops::findOrFail( $id );
+
+        $active = $this -> helper -> valueActive( $this -> stageType -> active );
+        $this -> stageType -> active = $active['active'];
+        $message = trans('admin.message.relations_status') . " " . $active['message'];
+        $this -> stageType -> save();
 
         if ($this -> request -> ajax() )
         {

@@ -52,6 +52,9 @@ class CiamCropsType extends Model
         return $query -> where('active', $value);
     }
 
+
+    
+
     /**
      * Relation Many to Many
      * Las etapas que pertenecen a tipo de cultivos
@@ -62,7 +65,7 @@ class CiamCropsType extends Model
     {
         return $this
             -> belongsToMany( 'Ciamsa\Core\Entities\Crops\CiamCropsStage',  'ciam_type_has_stage_crops' ,  'crops_type_id' ,'crops_stage_id' )
-            -> withPivot('active')
+            -> withPivot('active', 'id')
             -> withTimestamps();
     }
 }

@@ -27,7 +27,11 @@ return [
         // Relacion Tipos y Etapas  de cultivos
         'title_tsCrop_crops'                => 'Relacion Tipo y Etapas de Cultivos',
         'title_tsCrop_crops_stage'          => 'Nueva Relación',
+        'edit_tsCrop_title'                 => 'Editar Relación',
         'content_header_tsCrop_crops'       => 'Cree una nueva relación entre tipo y etapas de cultivos',
+        'content_header_tsCrop_crops_edit'  => 'Edite la relación entre tipo y etapas de cultivos',
+
+        
 
 
         // Tipos  de cultivos
@@ -80,11 +84,7 @@ return [
         'already_exists'            => 'ya existe.',       
         'is_required'               => 'es requerido',       
         'no_records_found'          => 'No hay registros',
-
-
-
-        
-            
+        "relations_status"          => "El estado de esta relación cambio."           
 
     ),
 

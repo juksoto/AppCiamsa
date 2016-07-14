@@ -43,17 +43,16 @@
         {!! Form::close()!!}
         <!-- Button Destroy -->
         <article class="col-md-offset-4 col-md-2 col-sm-6 col-xs-12 col-sm-offset-0 text-sm-right text-xs-center margin-xs-top no-margin-sm-top">
-<?php /*
-            {!! Form::open(['route' => ['admin.crops.tsCrop.destroy', array($collection, 'type' => $data -> collections-> id ), 'method' => 'DELETE', 'class' => '' ])!!}
+            {!! Form::open(['route' => ['admin.crops.tsCrop.destroy', $data -> stageHasTypeCrop ], 'method' => 'DELETE', 'class' => '' ])!!}
 
-            @if ($data -> collection -> active == true)
+            @if ($data -> stageHasTypeCrop -> active == true)
                 {!! Form::submit(trans('admin.submit.unpublish'), ['class' => 'btn btn-warning']) !!}
                 @else
                 {!! Form::submit(trans('admin.submit.publish'), ['class' => 'btn btn-success']) !!}
             @endif
 
             {!! Form::close()!!}
--->*/ ?>
+
         </article>
         <!-- End Button Destroy -->
     </section>

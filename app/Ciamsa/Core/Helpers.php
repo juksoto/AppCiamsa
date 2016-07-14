@@ -31,6 +31,25 @@ class Helpers extends Model
     }
 
     /**
+     * Valida el campo active de un registro
+     * @param $active
+     * @return array
+     */
+    public function valueActiveRelations($activeStatus)
+    {
+        if (( $activeStatus == true ) or ( $activeStatus == ""))
+        {
+          return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
+
+    /**
      * Funcion que valida los campos que ingresa el usuario en los formularios. Valida si no son null o estan vacios.
      * @param $field string Campo del formuilario a validar
      * @return bool

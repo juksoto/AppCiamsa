@@ -15,8 +15,7 @@
     </thead>
     <tbody>
     @forelse($data -> stages  as $key => $collection)
-
-        <tr data-id="{{ $collection -> id  }}">
+        <tr data-id="{!! $collection -> pivot -> id !!}">
             <td class="text-left">
                 {!! ($key + 1) !!}
             </td>
@@ -33,7 +32,7 @@
             </td>
             <td class="text-left">
                 <a href="#" class="btn-active">
-                    @if ($collection -> active == true)
+                    @if ($collection -> pivot -> active == true)
                         <span class="glyphicon glyphicon-ok-sign color-sucessful"></span>
                     @else
                         <span class="glyphicon glyphicon-remove-sign color-danger"></span>
