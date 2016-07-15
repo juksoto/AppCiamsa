@@ -29,4 +29,10 @@ Route::group(['prefix' => 'admin'], function()
         Route::resource('tsCrop', 'AdminControllers\Crops\CropTypeStageController');
 
     });
+
+    Route::group(['prefix' => 'products'], function()
+    {
+        Route::resource('categories', 'AdminControllers\Products\ProductCategoriesController');
+
+    });
 });

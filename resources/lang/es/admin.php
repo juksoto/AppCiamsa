@@ -31,9 +31,6 @@ return [
         'content_header_tsCrop_crops'       => 'Cree una nueva relación entre tipo y etapas de cultivos',
         'content_header_tsCrop_crops_edit'  => 'Edite la relación entre tipo y etapas de cultivos',
 
-        
-
-
         // Tipos  de cultivos
         'content_header_type_crops'         => 'Agregar nuevo tipo de cultivo', 
         'content_header_type_crops_edit'    => 'Editar un tipo de cultivo', 
@@ -87,6 +84,52 @@ return [
         "relations_status"          => "El estado de esta relación cambio."           
 
     ),
+
+     'products'  => array(
+            
+            // Categorias
+            'title_categories'                  => 'Categorías', 
+            'description_categories'            => 'Crear, editar y eliminar las categorias para sus productos', 
+            'categories'                        => 'Categorías',
+
+            'edit_categories'                   => 'Editar Categorías',
+            'create_categories'                 => 'Crear Categorías',
+            'content_create_categories'         => 'Crea sus categorías para sus productos',
+            'content_edit_categories'           => 'Edite sus categorías para sus productos',
+
+            'category_is_required'              => 'La categoria es un campo obligatorio',
+            'category_already_exists'           => 'Ya existe una categoria con el mismo nombre',
+
+
+            'enter_a_category'                  => 'Escriba una cateogría',        
+            'enter_a_subline_stage_crops'       => 'Escriba información adicional.',        
+            'image_stage_crops'                 => 'Imagen de la Etapa',
+            'new_stage_crops'                   => 'Crear nueva etapa de cultivo',        
+            'subline_stage_crops'               => 'Linea secundaria',
+            'title_stage_crops'                 => 'Etapa del Cultivo',
+
+            // Relacion Tipos y Etapas  de cultivos
+            'title_tsCrop_crops'                => 'Relacion Tipo y Etapas de Cultivos',
+            'title_tsCrop_crops_stage'          => 'Nueva Relación',
+            'edit_tsCrop_title'                 => 'Editar Relación',
+            'content_header_tsCrop_crops'       => 'Cree una nueva relación entre tipo y etapas de cultivos',
+            'content_header_tsCrop_crops_edit'  => 'Edite la relación entre tipo y etapas de cultivos',
+
+            // Tipos  de cultivos
+            'content_header_type_crops'         => 'Agregar nuevo tipo de cultivo', 
+            'content_header_type_crops_edit'    => 'Editar un tipo de cultivo', 
+            'description_type_crops'            => 'Crear, Editar y Eliminar los etapas de cultivos',
+            'edit_type_crops'                   => 'Editar Tipo de Cultivos',        
+            'enter_a_type_crops'                => 'Escriba un tipo de cultivo',        
+            'new_type_crops'                    => 'Nuevo Tipo de Cultivos',        
+            'title_type_crops'                  => 'Tipo de Cultivos',
+            'type_crops'                        => 'Tipo de Cultivos',
+            
+            // Generales
+            'id'                                => 'ID',
+            'image'                             => 'imagen',
+            'subline'                           => 'Sublinea', 
+        ),
 
     'status' => array(
         'status'                    => 'Estado',

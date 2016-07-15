@@ -4,12 +4,13 @@ namespace App\Http\Controllers\AdminControllers\Products;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use Ciamsa\Core\Entities\Products\CiamProductCategories;
 use Ciamsa\Core\Helpers;
 use Illuminate\Http\Request;
 use Ciamsa\Core\Entities\Crops\CiamCropsType;
 use Illuminate\Support\Facades\Session;
-use App\Http\Requests\Crops\CreateTypeCropsRequest;
-use App\Http\Requests\Crops\EditTypeCropsRequest;
+use App\Http\Requests\Products\CreateCategoriesRequest;
+use App\Http\Requests\Products\EditCategoriesRequest;
 
 class ProductCategoriesController extends Controller
 {
@@ -30,7 +31,7 @@ class ProductCategoriesController extends Controller
     /**
      * @var array
      */
-    private $typeCrop;
+    private $category;
 
 
     /**
@@ -54,7 +55,7 @@ class ProductCategoriesController extends Controller
      */
     public function findUser($id)
     {
-        $this -> typeCrop = CiamCropsType::findOrFail( $id );
+        $this -> category = CiamProductCategories::findOrFail( $id );
     }
 
     /**
@@ -64,16 +65,16 @@ class ProductCategoriesController extends Controller
      */
     public function index()
     {
-        $collection = CiamCropsType::typecropsname( $this -> request -> get('search') )
+        $collection = CiamProductCategories::categoryName( $this -> request -> get('search') )
             -> sortable()
             -> active( $this -> request -> get('active') )
-            -> orderBy( 'crops', 'ASC' )
+            -> orderBy( 'category', 'ASC' )
             -> paginate();
 
         $this -> data -> collections = $collection;
         $data = $this -> data;
 
-        return view( 'admin.crops.type.index', compact( 'data' ));
+        return view( 'admin.products.categories.index', compact( 'data' ));
     }
 
     /**
@@ -85,7 +86,7 @@ class ProductCategoriesController extends Controller
     {
         $data = $this -> data;
 
-        return view('admin.crops.type.create',  compact('data')); //
+        return view('admin.products.categories.create',  compact('data')); //
     }
 
     /**
@@ -94,9 +95,9 @@ class ProductCategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateTypeCropsRequest $request)
+    public function store(CreateCategoriesRequest $request)
     {
-        $typeCrop = CiamCropsType::create( $request -> all() );
+        $category = CiamProductCategories::create( $request -> all() );
 
         $message_floating = trans('admin.message.alert_field_create');
         $message_alert ="alert-success";
@@ -104,7 +105,7 @@ class ProductCategoriesController extends Controller
         Session::flash('message_floating', $message_floating);
         Session::flash('message_alert', $message_alert);
 
-        return redirect() -> route('admin.crops.type.index');
+        return redirect() -> route('admin.products.categories.index');
     }
 
     /**
@@ -127,10 +128,10 @@ class ProductCategoriesController extends Controller
     public function edit($id)
     {
         $this -> findUser($id);
-        $this -> data -> collection = $this -> typeCrop;
+        $this -> data -> collection = $this -> category;
         $data = $this -> data;
 
-        return view('admin.crops.type.edit', compact('data'));
+        return view('admin.products.categories.edit', compact('data'));
     }
 
     /**
@@ -140,20 +141,20 @@ class ProductCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EditTypeCropsRequest $request, $id)
+    public function update(EditCategoriesRequest $request, $id)
     {
         $this -> findUser($id);
 
-        $this -> typeCrop -> fill( $request -> all() );
-        $this -> typeCrop -> save();
+        $this -> category -> fill( $request -> all() );
+        $this -> category -> save();
 
-        $message_floating = $this -> typeCrop -> crops . " " . trans('admin.message.alert_field_update');
+        $message_floating = $this -> category -> crops . " " . trans('admin.message.alert_field_update');
         $message_alert ="alert-success";
 
         Session::flash('message_floating', $message_floating);
         Session::flash('message_alert', $message_alert);
 
-        return redirect() -> route( 'admin.crops.type.index' );
+        return redirect() -> route( 'admin.products.categories.index' );
     }
 
     /**
@@ -165,10 +166,10 @@ class ProductCategoriesController extends Controller
     public function destroy($id)
     {
         $this -> findUser($id);
-        $active = $this -> helper -> valueActive( $this -> typeCrop -> active );
-        $this -> typeCrop -> active = $active['active'];
-        $message = $this -> typeCrop -> crops . " " .$active['message'];
-        $this -> typeCrop -> save();
+        $active = $this -> helper -> valueActive( $this -> category -> active );
+        $this -> category -> active = $active['active'];
+        $message = $this -> category -> crops . " " .$active['message'];
+        $this -> category -> save();
 
         if ($this -> request -> ajax() )
         {
@@ -181,6 +182,6 @@ class ProductCategoriesController extends Controller
         Session::flash('message_floating', $message);
         Session::flash('message_alert', $active['message_alert']);
 
-        return redirect() -> route( 'admin.crops.type.index' );
+        return redirect() -> route( 'admin.products.categories.index' );
     }
 }

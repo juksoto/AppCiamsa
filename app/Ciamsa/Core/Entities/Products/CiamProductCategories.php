@@ -27,7 +27,7 @@ class CiamProductCategories extends Model
      * @param $name string Nombre del tipo de cultivo que escribieron en el campo search
      * @return mixed
      */
-    public function scopeTypeCropsName($query, $name)
+    public function scopeCategoryName($query, $name)
     {
         $name = ucwords(strtolower($name));
 
