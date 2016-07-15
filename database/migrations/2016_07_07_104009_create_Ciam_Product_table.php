@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCiamProductComplementTable extends Migration
+class CreateCiamProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -26,10 +26,6 @@ class CreateCiamProductComplementTable extends Migration
             // id products
             $table -> integer('product_id') -> unsigned() -> nullable();
             $table -> foreign('product_id') -> references('id') -> on('ciam_products') -> onDelete('cascade');
-
-            // id complements
-            $table -> integer('complement_id') -> unsigned() -> nullable();
-            $table -> foreign('complement_id') -> references('id') -> on('ciam_complements') -> onDelete('cascade');
 
             $table -> boolean('active') ->default(true);
 
