@@ -79,6 +79,8 @@ return [
 
         //Products
         'error_products_no_category' => 'No existe una categoria o no esta activa. Primero debe crear categorias.',  
+        'product_is_already'         => 'Este nombre de producto ya existe en esta categoria',  
+        
 
         //Categories
         'category_already_exists'   => 'El nombre para esta categoria ya existe. Por favor, revisar en categorias inactivas.', 
@@ -127,6 +129,9 @@ return [
             'enter_a_product'                 => 'Escriba un producto',        
             'image_product'                   => 'Imagen del producto',        
             'image_components'                => 'Imagen de los componentes',        
+
+            'edit_products'                   => 'Editar Productos',  
+            'content_edit_products'           => 'Edite los productos de la aplicación',
             
             
             // Generales

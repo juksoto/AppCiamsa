@@ -39,11 +39,10 @@ class ProductsController extends Controller
      * @param MenuAdminRepo $menuAdmin
      * beforeFilter Este filtro sirve para llamar el metodo findUser con las siguientes opciones
      */
-    public function __construct( Request $request, ProductsRepo $productsRepo, CategoriesRepo $categoryRepo, Helpers $helper )
+    public function __construct( Request $request, ProductsRepo $productsRepo,  Helpers $helper )
     {
         $this -> request   = $request;
         $this -> productsRepo  = $productsRepo;
-        $this -> category   = $categoryRepo -> get();
         $this -> helper   =  $helper;
         $this -> data      = new \stdClass();
     }
@@ -70,7 +69,7 @@ class ProductsController extends Controller
 
         $this -> data -> collections = $collection;
         $data = $this -> data;
-        
+
         return view('admin.products.products.index', compact('data'));
     }
 
@@ -136,9 +135,7 @@ class ProductsController extends Controller
     public function show($id)
     {
 
-        $collection = MaestCountry::find($id) -> city;
-
-        return response() -> json($collection -> lists('city', 'id'));
+       //
 
     }
 
@@ -150,12 +147,17 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
+        $this -> findUser($id);
 
-        $this -> data -> collection  = $this -> city;
-        $this -> data -> category     = $this -> category;
+        $categoryProducts = CiamProductCategories::find( $this -> products -> category_id);
+
+        $this -> data -> collection  = $this -> products;
+        $this -> data -> category = CiamProductCategories::where('active',true) -> get();
+        $this -> data -> categoryName = str_slug($categoryProducts -> category);
+        $this -> data -> blockField = true;
         $data = $this -> data;
 
-        return view('admin.settings.city.edit', compact('data'));
+        return view('admin.products.products.edit', compact('data'));
     }
 
     /**
@@ -165,17 +167,51 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(EditCityRequest $request, $id)
+    public function update(EditProductsRequest $request, $id)
     {
-        $this -> city -> fill( $request->all() );
+        $this -> findUser($id);
 
-        $this -> city -> save();
+        $categoryProducts = CiamProductCategories::find($this -> products -> category_id);
 
-        $message = $this -> city -> city ." actualizada";
+        $this -> products -> fill( $request -> all() );
 
-        Session::flash('message',$message);
+        // Verifica si cargo un archivo. Envia a su respectiva posicion y guarda el nombre.
+        if ($request -> hasFile('image')) {
+            if ($request -> file('image') -> isValid()) {
+                $fileLoaded = $this -> productsRepo -> uploadFile($request , $categoryProducts -> category);
+                $this -> products  -> image = $fileLoaded;
+            }
+        }
+        else
+        {
+            // Si no cargo, busque el archivo viejo y renombrelo.
+            $fileName = $this -> productsRepo -> renameFile($request, $this -> products-> image,$categoryProducts -> category );
+            $this -> products -> image = $fileName;
+        }
 
-        return redirect()->route('admin.settings.city.index');
+        if ($request -> hasFile('components')) {
+            if ($request -> file('components') -> isValid()) {
+                $fileLoaded = $this -> productsRepo -> uploadFileComponents($request , $categoryProducts -> category);
+                $this -> products -> components = $fileLoaded;
+            }
+        }
+        else
+        {
+            // Si no cargo, busque el archivo viejo y renombrelo.
+            $fileName = $this -> productsRepo -> renameFileComponents($request, $this -> products-> components, $categoryProducts -> category);
+            $this -> products -> components = $fileName;
+        }
+        $this -> products -> category_id = $categoryProducts -> id;
+
+        $this -> products -> save();
+
+        $message_floating = trans('admin.message.alert_field_update');
+        $message_alert ="alert-success";
+
+        Session::flash('message_floating', $message_floating);
+        Session::flash('message_alert', $message_alert);
+
+        return redirect()->route('admin.products.products.index');
     }
 
     /**
@@ -184,24 +220,28 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy()
+    public function destroy($id)
     {
-        $active = $this -> helper -> valueActive( $this -> city -> active );
-        $this -> city -> active = $active['active'];
-        $message = $this -> city -> city . " " .$active['message'];
-        $this -> city -> save();
+        $this -> findUser($id);
+        $active = $this -> helper -> valueActive( $this -> products -> active );
+        $this -> products -> active = $active['active'];
+        $message = $this -> products -> product. " " .$active['message'];
+        $this -> products -> save();
 
         if ($this -> request -> ajax() )
         {
             return response() -> json([
                 'message'       =>  $message,
-                'class'         =>  "successful",
+                'class'         =>  $active['message_alert'],
             ]);
         }
 
-        Session::flash('message',$message);
 
-        return redirect()->route('admin.settings.city.index');
+        Session::flash('message_floating', $message);
+        Session::flash('message_alert', $active['message_alert']);
+
+
+        return redirect()->route('admin.products.products.index');
     }
 
 }

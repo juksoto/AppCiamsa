@@ -26,11 +26,11 @@
                 {!! ($key + 1) !!}
             </td>
             <td class="text-left">
-                <a href="{{ route('admin.products.categories.edit', $collection) }}">
+                <a href="{{ route('admin.products.products.edit', $collection) }}">
                     {!! $collection -> product !!}
                 </a>
                 <small>
-                    <a href="{{ route('admin.products.categories.edit', $collection) }}">
+                    <a href="{{ route('admin.products.products.edit', $collection) }}">
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                         Editar
                     </a>
