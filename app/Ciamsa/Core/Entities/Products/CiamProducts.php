@@ -14,6 +14,7 @@ class CiamProducts extends Model
     protected $fillable = [
         'product',
         'components',
+        'category_id',
         'image',
         'active',
     ];
@@ -28,7 +29,7 @@ class CiamProducts extends Model
      * @param $name string Nombre del tipo de cultivo que escribieron en el campo search
      * @return mixed
      */
-    public function scopeTypeCropsName($query, $name)
+    public function scopeProductsName($query, $name)
     {
         $name = ucwords(strtolower($name));
 
@@ -62,8 +63,8 @@ class CiamProducts extends Model
     public function category()
     {
         return $this
-            -> belongsTo( 'Ciamsa\Core\Entities\Products\CiamProductCategories',  'ciam_categories' ,  'category_id' ,'id' )
-            -> withTimestamps();
+            -> belongsTo('Ciamsa\Core\Entities\Products\CiamProductCategories');
+
     }
 
 }

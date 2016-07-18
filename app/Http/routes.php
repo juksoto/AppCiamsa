@@ -33,6 +33,7 @@ Route::group(['prefix' => 'admin'], function()
     Route::group(['prefix' => 'products'], function()
     {
         Route::resource('categories', 'AdminControllers\Products\ProductCategoriesController');
+        Route::resource('products', 'AdminControllers\Products\ProductsController');
 
     });
 });

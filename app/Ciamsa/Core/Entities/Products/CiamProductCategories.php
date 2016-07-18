@@ -61,8 +61,7 @@ class CiamProductCategories extends Model
     public function products()
     {
         return $this
-            -> hasMany( 'Ciamsa\Core\Entities\Products\CiamProducts',  'ciam_products' ,  'id' ,'category_id' )
-            -> withTimestamps();
+            -> hasMany( 'Ciamsa\Core\Entities\Products\CiamProducts', 'category_id' );
     }
     
 }

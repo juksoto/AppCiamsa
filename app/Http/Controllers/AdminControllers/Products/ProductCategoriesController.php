@@ -7,7 +7,7 @@ use App\Http\Requests;
 use Ciamsa\Core\Entities\Products\CiamProductCategories;
 use Ciamsa\Core\Helpers;
 use Illuminate\Http\Request;
-use Ciamsa\Core\Entities\Crops\CiamCropsType;
+use Ciamsa\Core\Repositories\Products\CategoriesRepo;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\Products\CreateCategoriesRequest;
 use App\Http\Requests\Products\EditCategoriesRequest;
@@ -99,6 +99,9 @@ class ProductCategoriesController extends Controller
     {
         $category = CiamProductCategories::create( $request -> all() );
 
+        $directory = 'media/products/' . str_slug($category -> category);
+        \File::makeDirectory($directory);
+
         $message_floating = trans('admin.message.alert_field_create');
         $message_alert ="alert-success";
 
@@ -144,6 +147,9 @@ class ProductCategoriesController extends Controller
     public function update(EditCategoriesRequest $request, $id)
     {
         $this -> findUser($id);
+
+        $renameDirectory = new CategoriesRepo();
+        $renameDirectory-> renameDirectory($request,$this -> category -> category );
 
         $this -> category -> fill( $request -> all() );
         $this -> category -> save();

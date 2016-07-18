@@ -15,5 +15,21 @@ class CategoriesRepo extends Model
 
     }
 
+    public function renameDirectory($request, $nameOldDirectory)
+    {
+        $slugOldDirectory = str_slug($nameOldDirectory);
+        $directory   =  str_slug($request -> category) ;
+        $urlPath    = 'media/products/';
+
+        if (file_exists ( $urlPath . $slugOldDirectory ))
+        {
+            rename($urlPath . $slugOldDirectory, $urlPath . $directory);
+        }
+        else
+        {
+            $directoryNew = $urlPath . $directory;
+            \File::makeDirectory($directoryNew);
+        }
+    }
 }
 

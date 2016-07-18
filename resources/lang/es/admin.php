@@ -77,6 +77,13 @@ return [
         'type_crops_already_exists' => 'Este tipo de cultivo ya existe.',        
         'create_new_type_crops'     => 'Se ha creado un nuevo tipo de cultivo',    
 
+        //Products
+        'error_products_no_category' => 'No existe una categoria o no esta activa. Primero debe crear categorias.',  
+
+        //Categories
+        'category_already_exists' => 'El nombre para esta categoria ya existe. Por favor, revisar en categorias inactivas.',          
+
+
          // Validaciones
         'already_exists'            => 'ya existe.',       
         'is_required'               => 'es requerido',       
@@ -102,28 +109,18 @@ return [
 
 
             'enter_a_category'                  => 'Escriba una cateogría',        
-            'enter_a_subline_stage_crops'       => 'Escriba información adicional.',        
-            'image_stage_crops'                 => 'Imagen de la Etapa',
-            'new_stage_crops'                   => 'Crear nueva etapa de cultivo',        
-            'subline_stage_crops'               => 'Linea secundaria',
-            'title_stage_crops'                 => 'Etapa del Cultivo',
 
-            // Relacion Tipos y Etapas  de cultivos
-            'title_tsCrop_crops'                => 'Relacion Tipo y Etapas de Cultivos',
-            'title_tsCrop_crops_stage'          => 'Nueva Relación',
-            'edit_tsCrop_title'                 => 'Editar Relación',
-            'content_header_tsCrop_crops'       => 'Cree una nueva relación entre tipo y etapas de cultivos',
-            'content_header_tsCrop_crops_edit'  => 'Edite la relación entre tipo y etapas de cultivos',
-
-            // Tipos  de cultivos
-            'content_header_type_crops'         => 'Agregar nuevo tipo de cultivo', 
-            'content_header_type_crops_edit'    => 'Editar un tipo de cultivo', 
-            'description_type_crops'            => 'Crear, Editar y Eliminar los etapas de cultivos',
-            'edit_type_crops'                   => 'Editar Tipo de Cultivos',        
-            'enter_a_type_crops'                => 'Escriba un tipo de cultivo',        
-            'new_type_crops'                    => 'Nuevo Tipo de Cultivos',        
-            'title_type_crops'                  => 'Tipo de Cultivos',
-            'type_crops'                        => 'Tipo de Cultivos',
+            // Products
+            'title_products'                  => 'Productos', 
+            'description_products'            => 'Crear, editar y eliminar los productos',
+            'products'                        => 'Productos',
+            'create_products'                 => 'Crear productos',
+            'content_create_products'         => 'Escriba el nombre del nuevo producto o complemento y escoja la categoria.',
+            'content_create_products'         => 'Escriba el nombre del nuevo producto o complemento y escoja la categoria.',
+            'enter_a_product'                 => 'Escriba un producto',        
+            'image_product'                   => 'Imagen del producto',        
+            'image_components'                => 'Imagen de los componentes',        
+            
             
             // Generales
             'id'                                => 'ID',

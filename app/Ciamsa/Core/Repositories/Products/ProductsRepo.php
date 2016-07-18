@@ -16,5 +16,26 @@ class ProductsRepo extends Model
 
     }
 
+    /**
+     * Valida si existe alguna categoria creada o activa.
+     * @param array $countCountry
+     * @return $this|\Illuminate\View\View
+     */
+    public function validateExistCategory($countCategory, $data)
+    {
+        if ( $countCategory > 0 )
+        {
+            return view('admin.products.products.create', compact('data'));
+        }
+        else
+        {
+            $message = trans('admin.message.error_products_no_category');
+
+            return redirect()
+                -> route('admin.products.products.index')
+                -> withErrors($message);
+        }
+    }
+
 }
 
