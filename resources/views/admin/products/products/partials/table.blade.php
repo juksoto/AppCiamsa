@@ -20,6 +20,7 @@
     <tbody>
 
     @forelse($data -> collections as $key => $collection)
+
         <tr data-id="{{ $collection -> id  }}">
             <td class="text-left">
                 {!! ($key + 1) !!}
@@ -36,8 +37,8 @@
                 </small>
             </td>
             <td class="text-left">
-                <a href="{{ route('admin.products.categories.edit', $collection) }}">
-                    {!! $collection -> category !!}
+                <a href="{{ route('admin.products.categories.edit', $collection -> category -> id) }}">
+                    {!! $collection -> category -> category !!}
                 </a>
 
             </td>

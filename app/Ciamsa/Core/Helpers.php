@@ -66,4 +66,31 @@ class Helpers extends Model
         }
     }
 
+    /**Mueve el archivo que cargo a una carpeta especifica
+     *
+     * @param $nameField string nombre del campo del formulario
+     * @param $fileName string nombre nuevo del archivo
+     * @param $urlPath string  url de la carpeta
+     * @param $request collection request de todo el formulario
+     * @return bool|string retorna $nameFile que es el nombre del archoivo o falso, si el archivo no existe o
+     * no fue cargado,  o es invalido.
+     */
+    public function resolveFile ($nameField, $fileName,$urlPath, $request)
+    {
+        if ($request -> hasFile($nameField) && ( $request -> file($nameField) -> isValid() ) )
+        {
+            $extension = str_slug($request -> file($nameField) -> getClientOriginalExtension());
+            
+            $nameFile = $fileName . "." . $extension;
+
+            $request -> file( $nameField ) -> move( base_path() . "/public/" . $urlPath , $nameFile);
+
+            return $nameFile;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }

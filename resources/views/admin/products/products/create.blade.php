@@ -13,7 +13,7 @@
         </article>
     </section>
 
-    {!! Form::open(['route' => 'admin.products.products.store', 'method' => 'POST', 'class' => 'form-horizontal' , 'id' => 'form'])!!}
+    {!! Form::open(['route' => 'admin.products.products.store', 'method' => 'POST', 'class' => 'form-horizontal' , 'id' => 'form', 'files' => true])!!}
         <section class="form-group">
             <section class="col-md-12">
                 @include('admin.partials.message')

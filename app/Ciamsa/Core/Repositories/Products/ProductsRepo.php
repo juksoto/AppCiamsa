@@ -2,14 +2,20 @@
 
 namespace Ciamsa\Core\Repositories\Products;
 
-use Ciamsa\Core\Entities\Crops\CiamCropsType;
-use Ciamsa\Core\Entities\Products\CiamProductCategories;
 use Ciamsa\Core\Entities\Products\CiamProducts;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
+use Ciamsa\Core\Helpers;
 
 class ProductsRepo extends Model
 {
+
+    public function __construct( Helpers $helper )
+    {
+        $this -> helper   =  $helper;
+    }
+
+
     public function get()
     {
         return CiamProducts::All() -> where ( 'active' , true );
@@ -35,6 +41,40 @@ class ProductsRepo extends Model
                 -> route('admin.products.products.index')
                 -> withErrors($message);
         }
+    }
+
+    /**
+     * Permite cargar los arhicovs
+     * @param $request
+     */
+    public function uploadFile($request, $directoryName)
+    {
+        $nameField  = "image";
+        $fileName   =  str_slug($request -> product) ;
+        $directory  =  str_slug($directoryName) ;
+        $urlPath    = 'media/products/'. $directory .'/';
+
+
+        $fileLoaded = $this -> helper -> resolveFile($nameField, $fileName, $urlPath, $request);
+
+        return $fileLoaded;
+    }
+
+    /**
+     * Permite cargar los componentes
+     * @param $request
+     */
+    public function uploadFileComponents($request, $directoryName)
+    {
+        $nameField  = "components";
+        $fileName   =  'components-'.str_slug($request -> product) ;
+        $directory  =  str_slug($directoryName) ;
+        $urlPath    = 'media/products/'. $directory .'/';
+
+
+        $fileLoaded = $this -> helper -> resolveFile($nameField, $fileName, $urlPath, $request);
+
+        return $fileLoaded;
     }
 
 }

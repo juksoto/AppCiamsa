@@ -6,6 +6,7 @@ use App\Http\Requests\Request;
 
 class CreateProductsRequest extends Request
 {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -23,8 +24,14 @@ class CreateProductsRequest extends Request
      */
     public function rules()
     {
+        $categoryId = $this -> input('category_id');
+
         return [
-            'product' => 'required|unique:ciam_products,product',
+            'category_id'   => 'required',
+            'components'    => 'required|image|mimes:gif,png,jpeg|max:1024',
+            'image'         => 'required|image|mimes:gif,png|max:1024',
+            'product'       => 'required|unique:ciam_products,product,NULL,id,category_id,' . $categoryId,
+
 
         ];
     }
@@ -32,10 +39,16 @@ class CreateProductsRequest extends Request
         public function messages()
         {
         return [
-            'category.required'   => trans('admin.message.category_is_required'),
-            'category.unique'     => trans('admin.message.category_already_exists'),
-            'required'            => trans('admin.message.is_required'),
-            'unique'              => trans('admin.message.already_exists'),
+            'category.required'      => trans('admin.message.category_is_required'),
+            'components.max'         => trans('admin.message.max_products'),
+            'components.mimes'       => trans('admin.message.mimes_components_products'),
+            'components.required'    => trans('admin.message.category_is_required'),
+            'image.max'              => trans('admin.message.max_products'),
+            'image.required'         => trans('admin.message.category_is_required'),
+            'images.mimes'           => trans('admin.message.mimes_image_products'),
+            'product.required'       => trans('admin.message.category_is_required'),
+            'required'               => trans('admin.message.is_required'),
+            'unique'                 => trans('admin.message.already_exists'),
         ];
     }
 
@@ -48,7 +61,7 @@ class CreateProductsRequest extends Request
     public function all()
     {
         $input = parent::all();
-        $input['category'] = ucwords(mb_strtolower ($input['category']));
+        $input['product'] = ucwords(mb_strtolower ($input['product']));
         $this -> replace($input);
         return $input;
     }

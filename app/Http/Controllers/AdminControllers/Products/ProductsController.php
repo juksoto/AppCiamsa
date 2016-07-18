@@ -62,14 +62,6 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        /*$collection = CiamProducts::productsName($this -> request->get('search'))
-            -> category()
-            -> active ($this -> request -> get('active'))
-            -> orderBy ('product', 'DESC')
-            /*->with('category')*/
-            /*-> paginate();*/
-
-        //$collection = CiamProductCategories::with('products') -> get();
         $collection = CiamProducts::with('category')
             -> productsName ($this -> request->get('search'))
             -> active ($this -> request -> get('active'))
@@ -78,7 +70,7 @@ class ProductsController extends Controller
 
         $this -> data -> collections = $collection;
         $data = $this -> data;
-
+        
         return view('admin.products.products.index', compact('data'));
     }
 
@@ -105,7 +97,24 @@ class ProductsController extends Controller
      */
     public function store(CreateProductsRequest $request)
     {
-        CiamProducts::create( $request -> all() ) ;
+        $Products = new CiamProducts();
+        $Products  -> fill( $request -> all() );
+
+        if ($request -> hasFile('image')) {
+            if ($request -> file('image') -> isValid()) {
+                $categoryProducts = CiamProductCategories::find($request -> category_id);
+                $fileLoaded = $this -> productsRepo -> uploadFile($request , $categoryProducts -> category);
+                $Products  -> image = $fileLoaded;
+            }
+        }
+        if ($request -> hasFile('components')) {
+            if ($request -> file('components') -> isValid()) {
+                $categoryProducts = CiamProductCategories::find($request -> category_id);
+                $fileLoaded = $this -> productsRepo -> uploadFileComponents($request , $categoryProducts -> category);
+                $Products  -> components = $fileLoaded;
+            }
+        }
+        $Products ->  save();
 
         $message_floating = trans('admin.message.alert_field_create');
         $message_alert ="alert-success";

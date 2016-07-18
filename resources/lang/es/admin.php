@@ -81,7 +81,14 @@ return [
         'error_products_no_category' => 'No existe una categoria o no esta activa. Primero debe crear categorias.',  
 
         //Categories
-        'category_already_exists' => 'El nombre para esta categoria ya existe. Por favor, revisar en categorias inactivas.',          
+        'category_already_exists'   => 'El nombre para esta categoria ya existe. Por favor, revisar en categorias inactivas.', 
+        'products_is_required'      => 'El nombre del producto es requerido.', 
+        'components_is_required'    => 'Los componentes del producto es requerido.', 
+        'image_is_required'         => 'La imagen del producto es requerida.', 
+        'max_products'              => 'El peso máximo para la imagene es de 1MB',  
+        'mimes_image_products'      => 'La imagen es un campo requerido, debe ser formato PNG o GIF y no pesar más de 1MB', 
+        'mimes_components_products' => 'Los componentes es un campo requerido, debe ser formato PNG, GIF o JPG y no pesar más de 1MB', 
+
 
 
          // Validaciones

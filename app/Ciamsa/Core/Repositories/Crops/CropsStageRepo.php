@@ -5,9 +5,15 @@ namespace Ciamsa\Core\Repositories\Crops;
 use Ciamsa\Core\Entities\Crops\CiamCropsStage;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
+use Ciamsa\Core\Helpers;
 
 class CropsStageRepo extends Model
 {
+    public function __construct( Helpers $helper )
+    {
+        $this -> helper   =  $helper;
+    }
+
     public function get()
     {
         return CiamCropsStage::All() -> where ( 'active' , true );
@@ -23,7 +29,7 @@ class CropsStageRepo extends Model
         $fileName   =  "stage-crops-". str_slug($request -> stage) ;
         $urlPath    = 'media/stage-crops/';
 
-        $fileLoaded = $this -> resolveFile($nameField, $fileName, $urlPath, $request);
+        $fileLoaded = $this -> helper -> resolveFile($nameField, $fileName, $urlPath, $request);
 
         return $fileLoaded;
     }
@@ -60,31 +66,7 @@ class CropsStageRepo extends Model
     }
 
 
-    /**Mueve el archivo que cargo a una carpeta especifica
-     *
-     * @param $nameField string nombre del campo del formulario
-     * @param $fileName string nombre nuevo del archivo
-     * @param $urlPath string  url de la carpeta
-     * @param $request collection request de todo el formulario
-     * @return bool|string retorna $nameFile que es el nombre del archoivo o falso, si el archivo no existe o
-     * no fue cargado,  o es invalido.
-     */
-    public function resolveFile ($nameField, $fileName,$urlPath, $request)
-    {
 
-        if ($request -> hasFile($nameField) && ( $request -> file($nameField) -> isValid() ) )
-        {
-            $nameFile = $fileName . "." . $request->file($nameField) -> getClientOriginalExtension();
-
-            $request -> file( $nameField ) -> move( base_path() . "/public/" . $urlPath , $nameFile);
-
-            return $nameFile;
-        }
-        else
-        {
-            return false;
-        }
-    }
 
 }
 
