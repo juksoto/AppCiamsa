@@ -27,10 +27,6 @@ class CreateCiamRelationRegisterTable extends Migration
             $table -> integer('product_id') -> unsigned() -> nullable();
             $table -> foreign('product_id') -> references('id') -> on('ciam_products') -> onDelete('cascade');
 
-            // id complements
-            $table -> integer('complement_id') -> unsigned() -> nullable();
-            $table -> foreign('complement_id') -> references('id') -> on('ciam_complements') -> onDelete('cascade');
-
             // id registers
             $table -> integer('register_id') -> unsigned();
             $table -> foreign('register_id') -> references('id') -> on('ciam_registers') -> onDelete('cascade');
