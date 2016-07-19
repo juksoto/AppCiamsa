@@ -190,6 +190,8 @@ class CropTypeStageController extends Controller
 
             $this -> data -> stageHasTypeCrop =  $this -> stageHasTypeCrop;
 
+            $this -> data -> blockField = true;
+
             $data = $this -> data;
 
             return view('admin.crops.tsCrop.edit', compact('data'));
