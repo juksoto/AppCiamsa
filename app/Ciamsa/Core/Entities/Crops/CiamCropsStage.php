@@ -2,6 +2,7 @@
 
 namespace Ciamsa\Core\Entities\Crops;
 
+use Ciamsa\Core\Entities\Relations\CiamTypeStageProducts;
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
 
@@ -55,12 +56,12 @@ class CiamCropsStage extends Model
         return $query -> where('active', $value);
     }
 
+
     /**
      * Relation Many to Many
      * Las etapas que pertenecen a tipo de cultivos
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-
     public function type()
     {
         return $this
@@ -69,5 +70,4 @@ class CiamCropsStage extends Model
             -> withTimestamps();
     }
 
-  
 }

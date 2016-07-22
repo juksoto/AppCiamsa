@@ -81,6 +81,7 @@ return [
         //Products
         'error_products_no_category' => 'No existe una categoria o no esta activa. Primero debe crear categorias.',  
         'product_is_already'         => 'Este nombre de producto ya existe en esta categoria',  
+        'product_stage_is_already'   => 'Este producto ya existe en este tipo y etapa de cultivo',  
         
 
         //Categories
@@ -133,7 +134,23 @@ return [
 
             'edit_products'                   => 'Editar Productos',  
             'content_edit_products'           => 'Edite los productos de la aplicación',
+
+            // Relacion Products Type Stage
+            'title_tsProducts'                  => 'Relación Productos, Tipo y Etapas de Cultivos', 
+            'description_tsProducts'            => 'Crear, editar y eliminar los tipos, etapas de cultivos con los productos',
+            'create_tsProducts'                 => 'Crear relacion',
+            'create_content_header_tsProducts'  => 'Cree  una relacion entre productos, tipo y etapas de cultivo.',
             
+
+            
+            'content_create_products'         => 'Escriba el nombre del nuevo producto o complemento y escoja la categoria.',
+            'content_create_products'         => 'Escriba el nombre del nuevo producto o complemento y escoja la categoria.',
+            'enter_a_product'                 => 'Escriba un producto',        
+            'image_product'                   => 'Imagen del producto',        
+            'image_components'                => 'Imagen de los componentes',        
+
+            'edit_products'                   => 'Editar Productos',  
+            'content_edit_products'           => 'Edite los productos de la aplicación',
             
             // Generales
             'id'                                => 'ID',
@@ -166,4 +183,5 @@ return [
         'update'            => 'Actualizar',
     ),
 ];
+
 

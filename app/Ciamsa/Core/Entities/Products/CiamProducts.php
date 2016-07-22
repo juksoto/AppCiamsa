@@ -2,6 +2,8 @@
 
 namespace Ciamsa\Core\Entities\Products;
 
+use Ciamsa\Core\Entities\Crops\CiamCropsType;
+use Ciamsa\Core\Entities\Relations\CiamTypeStageProducts;
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
 
@@ -66,5 +68,15 @@ class CiamProducts extends Model
             -> belongsTo('Ciamsa\Core\Entities\Products\CiamProductCategories');
 
     }
+
+
+    public function products()
+    {
+        return $this -> morphMany( 'Ciamsa\Core\Entities\Relations\CiamTypeStageProducts',  'relationProducts' , 'ciam_product_type_stage' , 'product_id', 'id');
+        //return $this -> morphMany('Ciamsa\Core\Entities\Relations\CiamTypeStageProducts', 'relationProducts', 'crops_stage_id', 'crops_stage_id');
+    }
+
+
+
 
 }

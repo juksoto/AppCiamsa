@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCiamProductTable extends Migration
+class CreateCiamProductTypeStageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateCiamProductTable extends Migration
      */
     public function up()
     {
-        Schema::create('ciam_product_complement', function (Blueprint $table) {
+        Schema::create('ciam_product_type_stage', function (Blueprint $table) {
             $table -> increments('id');
 
             // id crops type
@@ -40,6 +40,6 @@ class CreateCiamProductTable extends Migration
      */
     public function down()
     {
-        Schema::drop('ciam_product_complement');
+        Schema::drop('ciam_product_type_stage');
     }
 }

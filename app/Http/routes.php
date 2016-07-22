@@ -34,6 +34,8 @@ Route::group(['prefix' => 'admin'], function()
     {
         Route::resource('categories', 'AdminControllers\Products\ProductCategoriesController');
         Route::resource('products', 'AdminControllers\Products\ProductsController');
-
     });
+
+    Route::resource('tsProducts', 'AdminControllers\Relations\TypeStageProductsController');
+
 });
