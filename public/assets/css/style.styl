@@ -1,0 +1,575 @@
+@import "nib"
+@import "fonts.styl"
+
+//Google Fonts PT Sans Narrow
+sansNarrow()
+	font-family: 'PT Sans Narrow', sans-serif !important
+	
+/**
+* Color Swatches 
+* http://bootflat.github.io/documentation.html
+*/
+colorAqua1 = #4FC1E9
+colorAqua2 = #3BAFDA
+
+colorBitterSweet1 = #FC6E51
+colorBitterSweet2 = #E9573F
+
+colorBlueJeans1 = #5D9CEC
+colorBlueJeans2 = #4A89DC
+
+colorDarkGray1 = #656D78
+colorDarkGray2 = #434A54
+
+colorGrapeFruit1 = #ED5565
+colorGrapeFruit2 = #DA4453
+
+colorGrass1 = #A0D468
+colorGrass2 = #8CC152
+
+colorBellFlower1 = #5D3F6A
+colorBellFlower2 = #41274C
+
+colorLigthGray1 = #F5F7FA
+colorLigthGray2 = #E6E9ED
+
+colorMediumGray1 = #CCD1D9
+colorMediumGray2 = #AAB2BD
+
+colorMint1 = #48CFAD
+colorMint2 = #37BC9B
+
+colorPink1 = #EC87C0
+colorPink2 = #D770AD
+
+colorCiamsa = #007736
+colorCiamsa2 = #70A53B
+colorCiamsa3 = #B0C600
+
+colorGrayCiamsa = #3D3D3D
+
+colorSunFlower1 = #FFCE54
+colorSunFlower2 = #F6BB42
+colorSunFlower3 = #8a6d3b
+
+/** 
+*Functions 
+*/
+	
+
+/** Create styles for the buttons **/
+createBtnColor(bgColor1, bgColor2, colorFont1, colorFont2)
+	background-color bgColor1
+	color colorFont1 
+	&:hover
+		background-color bgColor2
+		color colorFont2 
+
+/** Create styles for the alerts **/
+createAlerts(bgColor, borderColor, colorFont, colorLink)
+	background-color bgColor
+	border borderColor
+	color colorFont
+	padding 0.5em 
+	a
+		color colorLink
+		&:hover
+			color colorFont
+			text-decoration underline
+
+createIconColor(colorIcon)
+	color colorIcon
+	
+/**
+* Tags 
+*/
+
+body
+	sansNarrow()
+	font-size 16px
+	color colorGrayCiamsa
+footer 
+	background colorCiamsa
+	bottom 0
+	color white
+	padding-top 0.6em
+
+h1
+	font-weight 500
+	font-size 2.2em
+	line-height 0.9
+	margin-top -0.5em
+	span 
+		display block
+		font-size 1.4em
+		font-weight 600
+	.small
+		color colorGrayCiamsa
+		font-size 0.8em
+		font-weight 500
+		margin-top 0.1em
+h3
+	sansNarrow()		
+
+label
+	font-size 1.2em
+nav 
+	padding-top 1em
+
+select, textarea
+	margin 0 0 0.6rem
+
+
+/****
+ * Alerts
+ */
+ 
+.successful
+ 	createAlerts(colorGrass1, colorGrass2, colorGrass2, wfile:/C:/xampp/htdocs/ciamsa/layout/animate/animate_index.phphite)
+	
+.notice
+	createAlerts(colorSunFlower1, colorSunFlower2, colorSunFlower3, white )
+
+.danger
+	createAlerts(colorGrapeFruit1, colorGrapeFruit2, white, white )
+
+.info
+	createAlerts(colorAqua1, colorAqua2, colorAqua2, white )
+	
+.alert-floating
+	display none
+	left 50%
+	margin-left -10em
+	position absolute
+	right 0
+	text-align center
+	top 3em
+	width 20em
+	z-index 9999
+
+/**
+* Animate APP
+**/
+.wrapper-step
+	.list-logo	
+		display none
+	.header-image
+		h1
+			opacity 0
+			margin-top -10px
+		img
+			opacity 0
+			
+		.button
+			opacity 0
+			margin-top -5px
+
+.wrapper-step-one
+	.list-icon-cultivo
+		li
+			opacity 0
+.wrapper-step-two
+	.list-image-cultivo
+		li
+			opacity 0
+		.animate-1
+			margin-top 0
+			animation animated 4s ease inifinite alternate
+			-webkit-animation animated 4s linear infinite;
+			
+		.animate-2
+			margin-top 0
+			animation animated 3s ease inifinite alternate
+			-webkit-animation animated 3s linear infinite;
+		.animate-3
+			margin-top 0
+			animation animated 2s ease inifinite alternate
+			-webkit-animation animated 2s linear infinite;
+		
+		.animate-4
+			margin-top 0
+			animation animated 3.5s ease inifinite alternate
+			-webkit-animation animated 3.5s linear infinite;	
+
+.wrapper-step-three
+	.list-fertilizantes
+		li
+			opacity 0
+			
+@keyframes animated {
+    0%{margin-top: 0px}
+    50% {margin-top: 4px}
+    100% {margin-top: 0px}
+    
+}
+/****
+ * Buttons
+ */
+.button
+	font-size 1em
+	font-weight bold
+	border-radius 1em
+	padding 0.4em 1em
+	
+.btn-ciamsa
+	createBtnColor(colorCiamsa2,colorCiamsa1, white, white )
+
+.btn-grapefruit
+	createBtnColor(colorGrapeFruit1,colorGrapeFruit2, white, white )
+
+.btn-sunflower
+	createBtnColor(colorSunFlower2,colorSunFlower3, white, white )
+
+.btn-aqua
+	createBtnColor(colorAqua1,colorAqua2, white, white )
+	
+/**
+* Colors 
+*/
+.color-ciamsa
+	color colorCiamsa
+.color-ciamsa2
+	color colorCiamsa2
+
+
+/**
+* Custom 
+*/
+ul
+	list-style none
+	&.list-logo
+		img
+			width 10em
+	&.list-icon-cultivo
+		a
+			color colorCiamsa
+			&:hover
+				img
+					filter: brightness(30%)
+					-webkit-filter: brightness(130%)
+					transform scale(1.1,1.1)
+		h3
+			font-size 1.4em
+			margin-top 0.5em
+			margin-bottom 1em  
+.logo
+	width 105px
+	
+.modal-product
+	padding 0em
+	border 1px solid colorBitterSweet1
+	border-radius 1em
+.modal-content
+	padding 1.5em 1em 0.2em 1em
+	h3
+		color white
+		font-size 1.2em
+		border-radius 1em
+		padding 0.5em
+		margin-top 0em
+		margin-bottom 0.5em
+		&.etapa-1
+			background	colorBitterSweet2
+		&.etapa-2
+			background colorBellFlower1
+		&.etapa-3
+			background colorCiamsa2
+		&.etapa-4
+			background colorAqua2
+		
+.reveal
+	border-radius 1em
+	
+.wrapper-app
+	.btn-header
+		a
+			margin 0.5em 0.2em
+	.header-title
+			margin-top 2em
+			h2
+				color colorCiamsa2
+				line-height 1
+				text-shadow -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white
+			span
+				display block
+				text-shadow none
+				&.step
+					color colorCiamsa3
+					font-size 0.6em
+					font-weight bold
+					text-shadow -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white
+				&.textline
+					color colorGrayCiamsa
+					display block
+					font-size 0.6em
+					
+.wrapper-step
+	background url('../img/bg_sky.jpg') no-repeat white top center fixed
+	background-size cover
+	.bottom
+		margin-top 4em
+	.content
+		margin-top 4em
+	.header-image
+		margin-top 3em
+	.list-logo-small
+		margin-top 2em
+		img
+			width 12em
+	.logo
+		display none
+.wrapper-step-one
+	background url('../img/bg_sky.jpg') no-repeat white top center fixed
+	background-size cover
+	.bottom
+		margin-top 2em
+		margin-bottom 2em
+	.content
+		margin-top 4em	
+.wrapper-step-two
+	background url('../img/bg_sky.jpg') no-repeat white top center fixed
+	background-size cover
+	.bottom
+		margin-top 2em
+		margin-bottom 2em
+	.content
+		margin-top 2em
+		
+		.list-image-cultivo
+			h3
+				border-radius 1em
+				color white
+				font-size 1em
+				font-weight bold
+				padding 0.4em 0.3em	
+				text-transform uppercase
+			p.subline			
+				font-size 1.2em
+				font-weight bold
+				margin-top -1em
+			a:hover
+				img
+					margin-top -5px
+					transform scale(1.1 , 1.1)
+
+			
+		.cultivo-1
+			h3
+				background	colorBitterSweet2
+			p.subline
+				color colorBitterSweet2	
+			a:hover
+				h3
+					background colorBitterSweet1
+				p
+					color colorBitterSweet1
+		.cultivo-2
+			h3
+				background colorBellFlower1
+			p.subline
+				color colorBellFlower1
+			a:hover
+				h3
+					background colorBellFlower2
+				p
+					color colorBellFlower2
+		.cultivo-3
+			h3
+				background colorCiamsa2
+			p.subline
+				color colorCiamsa2
+			a:hover
+				h3
+					background colorCiamsa3
+				p
+					color colorCiamsa3
+		.cultivo-4
+			h3
+				background colorAqua2
+			p.subline
+				color colorAqua2
+			a:hover
+				h3
+					background colorAqua1
+				p
+					color colorAqua1
+.wrapper-step-three
+	background url('../img/bg_madera.jpg') repeat
+	
+	.bg-paper
+		background url('../img/bg_paper.png') no-repeat center top
+		height 47.5em
+		margin-top -1em
+
+	.bottom
+		margin-top 2em
+		margin-bottom 2em
+		
+	.content
+		padding-top 0.1em
+
+	.list-filter
+		border-top 2px dashed colorCiamsa2
+		.list-logo-products
+			margin-top 1em
+			a.button
+				margin-top 1em
+	.list-fertilizantes
+		img
+			width 60%
+		h4
+			border-radius 1em
+			color white
+			font-size 1em
+			font-weight bold
+			padding 0.4em 0.3em	
+			text-transform uppercase
+			
+		li
+			a:hover
+				img, h4
+					transform scale(1.2 ,1.2)
+			&.etapa-1
+				h4
+					background	colorBitterSweet2
+				a:hover
+					h4
+						background colorBitterSweet1
+			&.etapa-2
+				h4
+					background colorBellFlower1
+				a:hover
+					h4
+						background colorBellFlower2
+			&.etapa-3
+				h4
+					background colorCiamsa2
+				a:hover
+					h4
+						background colorCiamsa3
+			&.etapa-4
+				h4
+					background colorAqua2
+				a:hover
+					h4
+						background colorAqua1
+.wrapper-cotizar
+	background url('../img/bg_madera.jpg') repeat
+
+	input[type='text'], input[type='email']
+		height 2rem !important
+	
+	input[type="checkbox"]
+		height 1.1rem
+		width 1.1em !important
+		margin-top -0.4em
+		
+	.bg-paper
+		background url('../img/bg_paper.png') no-repeat center top
+		height 47.5em
+		margin-top -1em
+
+	.bottom
+		margin-top 2em
+		margin-bottom 2em
+		
+	.content
+		padding-top 0.1em
+	
+	.input-one
+		display none
+
+/** 
+* Custom Queries 
+**/
+
+/* Small Only */
+@media screen and (max-width: 39.9375em)
+	.wrapper-step
+		.logo
+			display block
+			margin 0 auto
+	.wrapper-step-one
+		.content
+			margin-top 2em
+	.logo
+		width 7em
+	.wrapper-app
+		h2
+			font-size 2em
+		span
+			&.step
+				font-size 0.5em !important
+			&.textline
+				font-size 0.5em
+	.wrapper-step-two
+		.content
+			margin-top 0em
+			
+
+
+/**
+* Align tipography responsive
+*/
+
+/* Small only */
+@media screen and (max-width: 39.9375em)
+	.text-small-only-left  
+		text-align left 
+	.text-small-only-right  
+		text-align right 
+	.text-small-only-center  
+		text-align center 
+	.text-small-only-justify  
+		text-align justify 
+
+/* Medium and up */
+@media screen and (min-width: 40em)
+	.text-medium-left  
+		text-align left 
+	.text-medium-right  
+		text-align right 
+	.text-medium-center  
+		text-align center 
+	.text-medium-justify  
+		text-align justify 
+
+/* Medium only */
+@media screen and (min-width: 40em) and (max-width: 63.9375em) 
+	.text-medium-only-left  
+		text-align left 
+	.text-medium-only-right  
+		text-align right 
+	.text-medium-only-center  
+		text-align center 
+	.text-medium-only-justify  
+		text-align justify 
+
+/* Large and up */
+@media screen and (min-width: 64em)
+	.text-large-left  
+		text-align left 
+	.text-large-right  
+		text-align right 
+	.text-large-center  
+		text-align center 
+	.text-large-justify  
+		text-align justify 
+
+/* Large only */
+@media screen and (min-width: 64em) and (max-width: 74.9375em)
+	.text-large-only-left  
+		text-align left 
+	.text-large-only-right  
+		text-align right 
+	.text-large-only-center  
+		text-align center 
+	.text-large-only-justify  
+		text-align justify 
+
+/**
+* Fonts
+*/
+.font-sansNarrow
+	sansNarrow()
+	

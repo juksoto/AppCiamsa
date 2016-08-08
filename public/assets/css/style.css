@@ -1,0 +1,748 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url("fonts/icomoon.eot?ipqbnl");
+  src: url("fonts/icomoon.eot?ipqbnl#iefix") format('embedded-opentype'), url("fonts/icomoon.ttf?ipqbnl") format('truetype'), url("fonts/icomoon.woff?ipqbnl") format('woff'), url("fonts/icomoon.svg?ipqbnl#icomoon") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="icon-"],
+[class*=" icon-"] {
+/* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+/* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-information:before {
+  content: "\e905";
+}
+.icon-back:before {
+  content: "\e904";
+}
+.icon-user:before {
+  content: "\e900";
+}
+.icon-chevron-left:before {
+  content: "\f0a4";
+}
+.icon-chevron-right:before {
+  content: "\f078";
+}
+.icon-home:before {
+  content: "\e901";
+}
+.icon-cancel-circle:before {
+  content: "\e902";
+}
+.icon-filter:before {
+  content: "\e903";
+}
+/**
+* Color Swatches 
+* http://bootflat.github.io/documentation.html
+*/
+/** 
+*Functions 
+*/
+/** Create styles for the buttons **/
+/** Create styles for the alerts **/
+/**
+* Tags 
+*/
+body {
+  font-family: 'PT Sans Narrow', sans-serif !important;
+  font-size: 16px;
+  color: #3d3d3d;
+}
+footer {
+  background: #007736;
+  bottom: 0;
+  color: #fff;
+  padding-top: 0.6em;
+}
+h1 {
+  font-weight: 500;
+  font-size: 2.2em;
+  line-height: 0.9;
+  margin-top: -0.5em;
+}
+h1 span {
+  display: block;
+  font-size: 1.4em;
+  font-weight: 600;
+}
+h1 .small {
+  color: #3d3d3d;
+  font-size: 0.8em;
+  font-weight: 500;
+  margin-top: 0.1em;
+}
+h3 {
+  font-family: 'PT Sans Narrow', sans-serif !important;
+}
+label {
+  font-size: 1.2em;
+}
+nav {
+  padding-top: 1em;
+}
+select,
+textarea {
+  margin: 0 0 0.6rem;
+}
+/****
+ * Alerts
+ */
+.successful,
+createAlerts(colorGrass1,
+colorGrass2,
+wfile:/C:/xampp/htdocs/ciamsa/layout/animate/animate_index.phphite),
+.notice {
+  background-color: #ffce54;
+  border: 1px solid #f6bb42;
+  color: #8a6d3b;
+  padding: 0.5em;
+}
+.successful a,
+createAlerts(colorGrass1 a,
+colorGrass2 a,
+wfile:/C:/xampp/htdocs/ciamsa/layout/animate/animate_index.phphite) a,
+.notice a {
+  color: #fff;
+}
+.successful a:hover,
+createAlerts(colorGrass1 a:hover,
+colorGrass2 a:hover,
+wfile:/C:/xampp/htdocs/ciamsa/layout/animate/animate_index.phphite) a:hover,
+.notice a:hover {
+  color: #8a6d3b;
+  text-decoration: underline;
+}
+.danger {
+  background-color: #ed5565;
+  border: 1px solid #da4453;
+  color: #fff;
+  padding: 0.5em;
+}
+.danger a {
+  color: #fff;
+}
+.danger a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+.info {
+  background-color: #4fc1e9;
+  border: 1px solid #3bafda;
+  color: #3bafda;
+  padding: 0.5em;
+}
+.info a {
+  color: #fff;
+}
+.info a:hover {
+  color: #3bafda;
+  text-decoration: underline;
+}
+.alert-floating {
+  display: none;
+  left: 50%;
+  margin-left: -10em;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 3em;
+  width: 20em;
+  z-index: 9999;
+}
+/**
+* Animate APP
+**/
+.wrapper-step .list-logo {
+  display: none;
+}
+.wrapper-step .header-image h1 {
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  margin-top: -10px;
+}
+.wrapper-step .header-image img {
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+}
+.wrapper-step .header-image .button {
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  margin-top: -5px;
+}
+.wrapper-step-one .list-icon-cultivo li {
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+}
+.wrapper-step-two .list-image-cultivo li {
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+}
+.wrapper-step-two .list-image-cultivo .animate-1 {
+  margin-top: 0;
+  -webkit-animation: animated 4s ease inifinite alternate;
+  -moz-animation: animated 4s ease inifinite alternate;
+  -o-animation: animated 4s ease inifinite alternate;
+  -ms-animation: animated 4s ease inifinite alternate;
+  animation: animated 4s ease inifinite alternate;
+  -webkit-animation: animated 4s linear infinite;
+}
+.wrapper-step-two .list-image-cultivo .animate-2 {
+  margin-top: 0;
+  -webkit-animation: animated 3s ease inifinite alternate;
+  -moz-animation: animated 3s ease inifinite alternate;
+  -o-animation: animated 3s ease inifinite alternate;
+  -ms-animation: animated 3s ease inifinite alternate;
+  animation: animated 3s ease inifinite alternate;
+  -webkit-animation: animated 3s linear infinite;
+}
+.wrapper-step-two .list-image-cultivo .animate-3 {
+  margin-top: 0;
+  -webkit-animation: animated 2s ease inifinite alternate;
+  -moz-animation: animated 2s ease inifinite alternate;
+  -o-animation: animated 2s ease inifinite alternate;
+  -ms-animation: animated 2s ease inifinite alternate;
+  animation: animated 2s ease inifinite alternate;
+  -webkit-animation: animated 2s linear infinite;
+}
+.wrapper-step-two .list-image-cultivo .animate-4 {
+  margin-top: 0;
+  -webkit-animation: animated 3.5s ease inifinite alternate;
+  -moz-animation: animated 3.5s ease inifinite alternate;
+  -o-animation: animated 3.5s ease inifinite alternate;
+  -ms-animation: animated 3.5s ease inifinite alternate;
+  animation: animated 3.5s ease inifinite alternate;
+  -webkit-animation: animated 3.5s linear infinite;
+}
+.wrapper-step-three .list-fertilizantes li {
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+}
+/****
+ * Buttons
+ */
+.button {
+  font-size: 1em;
+  font-weight: bold;
+  -webkit-border-radius: 1em;
+  border-radius: 1em;
+  padding: 0.4em 1em;
+}
+.btn-ciamsa {
+  background-color: #70a53b;
+  color: #fff;
+}
+.btn-ciamsa:hover {
+  background-color: colorCiamsa1;
+  color: #fff;
+}
+.btn-grapefruit {
+  background-color: #ed5565;
+  color: #fff;
+}
+.btn-grapefruit:hover {
+  background-color: #da4453;
+  color: #fff;
+}
+.btn-sunflower {
+  background-color: #f6bb42;
+  color: #fff;
+}
+.btn-sunflower:hover {
+  background-color: #8a6d3b;
+  color: #fff;
+}
+.btn-aqua {
+  background-color: #4fc1e9;
+  color: #fff;
+}
+.btn-aqua:hover {
+  background-color: #3bafda;
+  color: #fff;
+}
+/**
+* Colors 
+*/
+.color-ciamsa {
+  color: #007736;
+}
+.color-ciamsa2 {
+  color: #70a53b;
+}
+/**
+* Custom 
+*/
+ul {
+  list-style: none;
+}
+ul.list-logo img {
+  width: 10em;
+}
+ul.list-icon-cultivo a {
+  color: #007736;
+}
+ul.list-icon-cultivo a:hover img {
+  filter: brightness(30%);
+  -webkit-filter: brightness(130%);
+  -webkit-transform: scale(1.1, 1.1);
+  -moz-transform: scale(1.1, 1.1);
+  -o-transform: scale(1.1, 1.1);
+  -ms-transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1);
+}
+ul.list-icon-cultivo h3 {
+  font-size: 1.4em;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+}
+.logo {
+  width: 105px;
+}
+.modal-product {
+  padding: 0em;
+  border: 1px solid #fc6e51;
+  -webkit-border-radius: 1em;
+  border-radius: 1em;
+}
+.modal-content {
+  padding: 1.5em 1em 0.2em 1em;
+}
+.modal-content h3 {
+  color: #fff;
+  font-size: 1.2em;
+  -webkit-border-radius: 1em;
+  border-radius: 1em;
+  padding: 0.5em;
+  margin-top: 0em;
+  margin-bottom: 0.5em;
+}
+.modal-content h3.etapa-1 {
+  background: #e9573f;
+}
+.modal-content h3.etapa-2 {
+  background: #5d3f6a;
+}
+.modal-content h3.etapa-3 {
+  background: #70a53b;
+}
+.modal-content h3.etapa-4 {
+  background: #3bafda;
+}
+.reveal {
+  -webkit-border-radius: 1em;
+  border-radius: 1em;
+}
+.wrapper-app .btn-header a {
+  margin: 0.5em 0.2em;
+}
+.wrapper-app .header-title {
+  margin-top: 2em;
+}
+.wrapper-app .header-title h2 {
+  color: #70a53b;
+  line-height: 1;
+  text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
+}
+.wrapper-app .header-title span {
+  display: block;
+  text-shadow: none;
+}
+.wrapper-app .header-title span.step {
+  color: #b0c600;
+  font-size: 0.6em;
+  font-weight: bold;
+  text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
+}
+.wrapper-app .header-title span.textline {
+  color: #3d3d3d;
+  display: block;
+  font-size: 0.6em;
+}
+.wrapper-step {
+  background: url("../img/bg_sky.jpg") no-repeat #fff top center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+}
+.wrapper-step .bottom {
+  margin-top: 4em;
+}
+.wrapper-step .content {
+  margin-top: 4em;
+}
+.wrapper-step .header-image {
+  margin-top: 3em;
+}
+.wrapper-step .list-logo-small {
+  margin-top: 2em;
+}
+.wrapper-step .list-logo-small img {
+  width: 12em;
+}
+.wrapper-step .logo {
+  display: none;
+}
+.wrapper-step-one {
+  background: url("../img/bg_sky.jpg") no-repeat #fff top center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+}
+.wrapper-step-one .bottom {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+.wrapper-step-one .content {
+  margin-top: 4em;
+}
+.wrapper-step-two {
+  background: url("../img/bg_sky.jpg") no-repeat #fff top center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+}
+.wrapper-step-two .bottom {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+.wrapper-step-two .content {
+  margin-top: 2em;
+}
+.wrapper-step-two .content .list-image-cultivo h3 {
+  -webkit-border-radius: 1em;
+  border-radius: 1em;
+  color: #fff;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 0.4em 0.3em;
+  text-transform: uppercase;
+}
+.wrapper-step-two .content .list-image-cultivo p.subline {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: -1em;
+}
+.wrapper-step-two .content .list-image-cultivo a:hover img {
+  margin-top: -5px;
+  -webkit-transform: scale(1.1, 1.1);
+  -moz-transform: scale(1.1, 1.1);
+  -o-transform: scale(1.1, 1.1);
+  -ms-transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1);
+}
+.wrapper-step-two .content .cultivo-1 h3 {
+  background: #e9573f;
+}
+.wrapper-step-two .content .cultivo-1 p.subline {
+  color: #e9573f;
+}
+.wrapper-step-two .content .cultivo-1 a:hover h3 {
+  background: #fc6e51;
+}
+.wrapper-step-two .content .cultivo-1 a:hover p {
+  color: #fc6e51;
+}
+.wrapper-step-two .content .cultivo-2 h3 {
+  background: #5d3f6a;
+}
+.wrapper-step-two .content .cultivo-2 p.subline {
+  color: #5d3f6a;
+}
+.wrapper-step-two .content .cultivo-2 a:hover h3 {
+  background: #41274c;
+}
+.wrapper-step-two .content .cultivo-2 a:hover p {
+  color: #41274c;
+}
+.wrapper-step-two .content .cultivo-3 h3 {
+  background: #70a53b;
+}
+.wrapper-step-two .content .cultivo-3 p.subline {
+  color: #70a53b;
+}
+.wrapper-step-two .content .cultivo-3 a:hover h3 {
+  background: #b0c600;
+}
+.wrapper-step-two .content .cultivo-3 a:hover p {
+  color: #b0c600;
+}
+.wrapper-step-two .content .cultivo-4 h3 {
+  background: #3bafda;
+}
+.wrapper-step-two .content .cultivo-4 p.subline {
+  color: #3bafda;
+}
+.wrapper-step-two .content .cultivo-4 a:hover h3 {
+  background: #4fc1e9;
+}
+.wrapper-step-two .content .cultivo-4 a:hover p {
+  color: #4fc1e9;
+}
+.wrapper-step-three {
+  background: url("../img/bg_madera.jpg") repeat;
+}
+.wrapper-step-three .bg-paper {
+  background: url("../img/bg_paper.png") no-repeat center top;
+  height: 47.5em;
+  margin-top: -1em;
+}
+.wrapper-step-three .bottom {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+.wrapper-step-three .content {
+  padding-top: 0.1em;
+}
+.wrapper-step-three .list-filter {
+  border-top: 2px dashed #70a53b;
+}
+.wrapper-step-three .list-filter .list-logo-products {
+  margin-top: 1em;
+}
+.wrapper-step-three .list-filter .list-logo-products a.button {
+  margin-top: 1em;
+}
+.wrapper-step-three .list-fertilizantes img {
+  width: 60%;
+}
+.wrapper-step-three .list-fertilizantes h4 {
+  -webkit-border-radius: 1em;
+  border-radius: 1em;
+  color: #fff;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 0.4em 0.3em;
+  text-transform: uppercase;
+}
+.wrapper-step-three .list-fertilizantes li a:hover img,
+.wrapper-step-three .list-fertilizantes li a:hover h4 {
+  -webkit-transform: scale(1.2, 1.2);
+  -moz-transform: scale(1.2, 1.2);
+  -o-transform: scale(1.2, 1.2);
+  -ms-transform: scale(1.2, 1.2);
+  transform: scale(1.2, 1.2);
+}
+.wrapper-step-three .list-fertilizantes li.etapa-1 h4 {
+  background: #e9573f;
+}
+.wrapper-step-three .list-fertilizantes li.etapa-1 a:hover h4 {
+  background: #fc6e51;
+}
+.wrapper-step-three .list-fertilizantes li.etapa-2 h4 {
+  background: #5d3f6a;
+}
+.wrapper-step-three .list-fertilizantes li.etapa-2 a:hover h4 {
+  background: #41274c;
+}
+.wrapper-step-three .list-fertilizantes li.etapa-3 h4 {
+  background: #70a53b;
+}
+.wrapper-step-three .list-fertilizantes li.etapa-3 a:hover h4 {
+  background: #b0c600;
+}
+.wrapper-step-three .list-fertilizantes li.etapa-4 h4 {
+  background: #3bafda;
+}
+.wrapper-step-three .list-fertilizantes li.etapa-4 a:hover h4 {
+  background: #4fc1e9;
+}
+.wrapper-cotizar {
+  background: url("../img/bg_madera.jpg") repeat;
+}
+.wrapper-cotizar input[type='text'],
+.wrapper-cotizar input[type='email'] {
+  height: 2rem !important;
+}
+.wrapper-cotizar input[type="checkbox"] {
+  height: 1.1rem;
+  width: 1.1em !important;
+  margin-top: -0.4em;
+}
+.wrapper-cotizar .bg-paper {
+  background: url("../img/bg_paper.png") no-repeat center top;
+  height: 47.5em;
+  margin-top: -1em;
+}
+.wrapper-cotizar .bottom {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+.wrapper-cotizar .content {
+  padding-top: 0.1em;
+}
+.wrapper-cotizar .input-one {
+  display: none;
+}
+/** 
+* Custom Queries 
+**/
+/* Small Only */
+@media screen and (max-width: 39.9375em) {
+  .wrapper-step .logo {
+    display: block;
+    margin: 0 auto;
+  }
+  .wrapper-step-one .content {
+    margin-top: 2em;
+  }
+  .logo {
+    width: 7em;
+  }
+  .wrapper-app h2 {
+    font-size: 2em;
+  }
+  .wrapper-app span.step {
+    font-size: 0.5em !important;
+  }
+  .wrapper-app span.textline {
+    font-size: 0.5em;
+  }
+  .wrapper-step-two .content {
+    margin-top: 0em;
+  }
+}
+/**
+* Align tipography responsive
+*/
+/* Small only */
+@media screen and (max-width: 39.9375em) {
+  .text-small-only-left {
+    text-align: left;
+  }
+  .text-small-only-right {
+    text-align: right;
+  }
+  .text-small-only-center {
+    text-align: center;
+  }
+  .text-small-only-justify {
+    text-align: justify;
+  }
+}
+/* Medium and up */
+@media screen and (min-width: 40em) {
+  .text-medium-left {
+    text-align: left;
+  }
+  .text-medium-right {
+    text-align: right;
+  }
+  .text-medium-center {
+    text-align: center;
+  }
+  .text-medium-justify {
+    text-align: justify;
+  }
+}
+/* Medium only */
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+  .text-medium-only-left {
+    text-align: left;
+  }
+  .text-medium-only-right {
+    text-align: right;
+  }
+  .text-medium-only-center {
+    text-align: center;
+  }
+  .text-medium-only-justify {
+    text-align: justify;
+  }
+}
+/* Large and up */
+@media screen and (min-width: 64em) {
+  .text-large-left {
+    text-align: left;
+  }
+  .text-large-right {
+    text-align: right;
+  }
+  .text-large-center {
+    text-align: center;
+  }
+  .text-large-justify {
+    text-align: justify;
+  }
+}
+/* Large only */
+@media screen and (min-width: 64em) and (max-width: 74.9375em) {
+  .text-large-only-left {
+    text-align: left;
+  }
+  .text-large-only-right {
+    text-align: right;
+  }
+  .text-large-only-center {
+    text-align: center;
+  }
+  .text-large-only-justify {
+    text-align: justify;
+  }
+}
+/**
+* Fonts
+*/
+.font-sansNarrow {
+  font-family: 'PT Sans Narrow', sans-serif !important;
+}
+@-moz-keyframes animated {
+  0% {
+    margin-top: 0px;
+  }
+  50% {
+    margin-top: 4px;
+  }
+  100% {
+    margin-top: 0px;
+  }
+}
+@-webkit-keyframes animated {
+  0% {
+    margin-top: 0px;
+  }
+  50% {
+    margin-top: 4px;
+  }
+  100% {
+    margin-top: 0px;
+  }
+}
+@-o-keyframes animated {
+  0% {
+    margin-top: 0px;
+  }
+  50% {
+    margin-top: 4px;
+  }
+  100% {
+    margin-top: 0px;
+  }
+}
+@keyframes animated {
+  0% {
+    margin-top: 0px;
+  }
+  50% {
+    margin-top: 4px;
+  }
+  100% {
+    margin-top: 0px;
+  }
+}

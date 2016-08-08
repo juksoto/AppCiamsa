@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 
 
 /**
@@ -39,3 +35,25 @@ Route::group(['prefix' => 'admin'], function()
     Route::resource('tsProducts', 'AdminControllers\Relations\TypeStageProductsController');
 
 });
+// ROUTE INDEXS
+Route::get('/',
+    [
+        'uses' => 'CoreControllers\CoreController@index',
+        'as'   => 'index',
+    ]
+);
+
+Route::get('/{url}',
+    [
+        'uses' => 'CoreControllers\CoreController@index',
+        'as'   => 'index',
+    ]
+)-> where('url', 'index|home'); ;
+
+// MODAL ROUTE
+Route::post('modal',
+    [
+        'uses' => 'CoreControllers\CoreController@getModal',
+        'as'   => 'modal'
+    ]
+);
