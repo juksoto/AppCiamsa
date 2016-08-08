@@ -4,8 +4,3 @@
 <script>
     $(document).foundation();
 </script>
-<script>
-    $(document).ready(function(){
-        animateIndex();
-    });
-</script>

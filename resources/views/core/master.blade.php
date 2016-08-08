@@ -9,7 +9,7 @@
 <section class="wrapper-app @yield('class-section')">
     <!-- NAV -->
     <nav>
-        @include('core.partials.nav')
+        @yield('nav')
     </nav>
     <!-- end NAV -->
     <!-- content -->

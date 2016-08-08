@@ -11,8 +11,6 @@
 |
 */
 
-
-
 /**
  * Groups AdminControllers Controllers
  */
@@ -43,17 +41,25 @@ Route::get('/',
     ]
 );
 
-Route::get('/{url}',
+Route::get('index',
     [
         'uses' => 'CoreControllers\CoreController@index',
         'as'   => 'index',
     ]
-)-> where('url', 'index|home'); ;
+);
 
 // MODAL ROUTE
 Route::post('modal',
     [
         'uses' => 'CoreControllers\CoreController@getModal',
         'as'   => 'modal'
+    ]
+);
+
+//Step One
+Route::get('tipo-cultivo',
+    [
+        'uses' => 'CoreControllers\CoreController@stepOne',
+        'as'   => 'stepOne',
     ]
 );

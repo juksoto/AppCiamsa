@@ -1,9 +1,24 @@
 @extends('core.master')
+
 @section('title')
     CIAMSA - Conozca el producto para nutrir su cultivo
 @endsection
+
 @section('class-section')
     wrapper-step
+@endsection
+
+@section('nav')
+    <section class="row text-small-only-center">
+        <article class="small-12 medium-3 column text-center">
+            <a href="">
+                <img src="{{ asset( 'images/logo-ciamsa.png' )}}" alt="" width="180px" class ="logo">
+            </a>
+        </article>
+        <section class="small-12 medium-9 column text-medium-right btn-header hide-for-small-only">
+            <a href="cotizar.php" class="button btn-ciamsa"> <span class="icon-user" aria-hidden="true"></span> Solicitar cotización</a>
+        </section>
+    </section>
 @endsection
 
 @section('content')
@@ -38,7 +53,7 @@
     <!-- header image -->
     <section class="row header-image">
         <section class="small-12 column text-center">
-            <a href="step-one.php?home">
+            <a href="{{route('stepOne')}}">
                 <img src="{{ asset( 'images/producto_nutrir_su_cultivo.png')}}" alt="Conozca el producto para nutrir su cultivo" width="490">
             </a>
             <h1>Conozca
@@ -51,7 +66,7 @@
             </h1>
             <section class="row">
                 <article class="small-7 medium-3 column text-center small-centered medium-centered">
-                    <a href="step-one.php?home" class="button btn-grapefruit expanded ">
+                    <a href="{{ route('stepOne') }}" class="button btn-grapefruit expanded ">
                         Iniciar aquí
                     </a>
                 </article>
@@ -133,6 +148,11 @@
             $('#img_producto').attr("src",$url);
 
         });
+
+        $(document).ready(function(){
+            animateIndex();
+        });
+
     </script>
 
 @endsection
