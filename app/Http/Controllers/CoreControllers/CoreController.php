@@ -16,8 +16,7 @@ class CoreController extends Controller
     }
     public function stepOne()
     {
-        $collection = CiamCropsType::where('active' , 1) -> get();
-        dd($collection);
-        return view( 'core.stepOne' );
+        $data = CiamCropsType::where('active' , 1) -> get();
+        return view( 'core.stepOne' , compact('data') );
     }
 }

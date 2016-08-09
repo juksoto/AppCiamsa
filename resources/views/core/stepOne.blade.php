@@ -45,7 +45,21 @@
     <section class="row content">
         <section class="small-10 medium-9 small-centered column text-center">
             <ul class="row small-up-4 medium-up-5 list-icon-cultivo" id="list-cultivo">
-
+            @forelse($data as $key => $value)
+                    <li class ="column icon-cultivo text-center" >
+                        <a href="step-two.php?tipo={!! $value -> id !!} ?>">
+                            <img src="{!! asset( 'media/type-crops/'. $value -> icon )!!}" alt="{!! $value -> crops !!}">
+                            <h3>
+                                {!! $value -> crops !!}
+                            </h3>
+                        </a>
+                    </li>
+            @empty
+                <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                    <button stage="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    {{ trans('admin.message.no_records_found') }}
+                </div>
+            @endforelse
             </ul>
         </section>
     </section>
