@@ -12,7 +12,7 @@
         </th>
 
         <th class="text-capitalize">
-            {{ trans('admin.crops.reference') }}
+            {{ trans('admin.crops.type_crops') }}
         </th>
 
         <th class="text-capitalize">
@@ -46,7 +46,7 @@
                 {!! $collection -> subline !!}
             </td>
             <td class="text-left">
-                {!! $collection -> reference !!}
+                {!! $collection -> type -> crops !!}
             </td>
             <td class="text-left">
                 <img src="{!! URL::asset('media/stage-crops') . '/' . $collection -> image !!} " alt="" width="100">

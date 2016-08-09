@@ -25,7 +25,7 @@ class CreateStageCropsRequest extends Request
     {
         return [
             'stage'     => 'required',
-            'reference' => 'required',
+            'type_id'   => 'required',
             'image'     => 'required|image|mimes:gif,png|max:1024',
         ];
     }
@@ -38,8 +38,9 @@ class CreateStageCropsRequest extends Request
             'required'         => ':attribute ' . trans('admin.message.is_required'),
             'unique'           => ':attribute ' . trans('admin.message.already_exists'),
             'image.mimes'      => trans('admin.message.mimes_stage_crops'),
-            'image.required'      => trans('admin.message.image_stage_crops'),
+            'image.required'   => trans('admin.message.image_stage_crops'),
             'image.max'        => trans('admin.message.max_stage_crops'),
+            'type_id.required' => trans('admin.message.type_crops_is_required'),
         ];
     }
 

@@ -39,7 +39,7 @@ class EditStageCropsRequest extends Request
     {
         return [
             'stage'         => 'required',
-            'reference'     => 'required',
+            'type_id'       => 'required',
             'image'         => 'image|mimes:gif,png|max:1024|unique:ciam_crops_stage,image,' . $this -> route-> getParameter('image'),
         ];
     }
@@ -53,6 +53,7 @@ class EditStageCropsRequest extends Request
             'image.mimes'      => trans('admin.message.mimes_stage_crops'),
             'image.required'   => trans('admin.message.image_stage_crops'),
             'image.max'        => trans('admin.message.max_stage_crops'),
+            'type_id.required' => trans('admin.message.type_crops_is_required'),
         ];
     }
     /**

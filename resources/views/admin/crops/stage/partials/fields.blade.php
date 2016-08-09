@@ -16,11 +16,15 @@
         </div>
     </div>
     <div class="form-group has-feedback ">
-        {!! Form::label('reference',trans('admin.crops.reference_stage_crops'), ['class' => 'col-sm-2 control-label'] ) !!}
+        {!! Form::label('type_id',trans('admin.crops.type_crops'), ['class' => 'col-sm-2 control-label'] ) !!}
 
         <div class="col-sm-10">
-            {!! Form::text('reference', null, ['class' => 'form-control', 'placeholder' => trans('admin.crops.enter_a_reference_stage_crops')])  !!}
-            <span class="glyphicon form-control-feedback" id="stage1"></span>
+            <select name="type_id" id="type_id" class = "form-control" required >
+                <option value="">{{ trans('admin.submit.select') }}</option>
+                @foreach($data -> type as $key => $value)
+                    <option name="{!! $value -> crops !!}" value="{!!$value -> id !!}" @if ( (isset($data -> collection -> type_id) ) and ($data -> collection -> type_id == $value -> id  )) selected @endif >{!! $value -> crops!!}</option>
+                @endforeach
+            </select>
         </div>
     </div>
 

@@ -23,10 +23,10 @@ class CropsStageRepo extends Model
     /**
      * @param $request
      */
-    public function uploadFile($request)
+    public function uploadFile($request , $typeName)
     {
         $nameField  = "image";
-        $fileName   =  "stage-crops-". str_slug( $request -> stage). '-'. str_slug( $request -> reference)  ;
+        $fileName   =  "stage-crops-". str_slug( $request -> stage). '-'. str_slug( $typeName)  ;
         $urlPath    = 'media/stage-crops/';
 
         $fileLoaded = $this -> helper -> resolveFile($nameField, $fileName, $urlPath, $request);
@@ -63,6 +63,28 @@ class CropsStageRepo extends Model
 
         return $fileName;
 
+    }
+
+    /**
+     * Valida si existe alguna categoria creada o activa.
+     * @param array $countCountry
+     * @return $this|\Illuminate\View\View
+     */
+    public function validateExistType($countType, $data)
+    {
+
+        if ( $countType > 0 )
+        {
+            return view('admin.crops.stage.create', compact('data'));
+        }
+        else
+        {
+            $message = trans('admin.message.error_stage_no_type');
+
+            return redirect()
+                -> route('admin.crops.stage.index')
+                -> withErrors($message);
+        }
     }
 
 }

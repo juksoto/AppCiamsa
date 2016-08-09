@@ -75,12 +75,14 @@ return [
         'mimes_stage_crops'          => 'Sólo se permite imágenes png y gif',  
         'max_stage_crops'            => 'El peso máximo para la imagene es de 1MB',  
         'image_stage_crops'          => 'La imagen es un campo requerido, debe ser formato PNG o GIF y no pesar más de 1MB',  
+        'error_stage_no_type'        => 'No existe un tipo de cultivo o no esta activo. Primero debe crear tipos de cultivos.',  
 
         // Tipos de cultivos
         'type_crops_is_required'            => 'El tipo de cultivo es requerido',        
         'type_crops_already_exists'         => 'Este tipo de cultivo ya existe.',        
         'type_stage_crops_already_exists'   => 'Este tipo de cultivo ya existe en esta etapa.',        
         'create_new_type_crops'             => 'Se ha creado un nuevo tipo de cultivo',
+
 
         //Products
         'error_products_no_category' => 'No existe una categoria o no esta activa. Primero debe crear categorias.',  

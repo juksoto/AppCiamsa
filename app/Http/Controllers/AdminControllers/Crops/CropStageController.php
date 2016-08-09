@@ -4,6 +4,7 @@ namespace App\Http\Controllers\AdminControllers\Crops;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use Ciamsa\Core\Entities\Crops\CiamCropsType;
 use Ciamsa\Core\Helpers;
 use Illuminate\Http\Request;
 use Ciamsa\Core\Entities\Crops\CiamCropsStage;
@@ -91,9 +92,13 @@ class CropStageController extends Controller
      */
     public function create()
     {
+        $this -> data -> type = CiamCropsType::where('active', 1) -> get();
         $data = $this -> data;
 
-        return view('admin.crops.stage.create',  compact('data')); //
+        $countType = $this -> data -> type -> count();
+
+        return $this -> stageRepo -> validateExistType( $countType, $data );
+
     }
 
     /**
@@ -107,9 +112,11 @@ class CropStageController extends Controller
         $Stage = new CiamCropsStage();
         $Stage  -> fill( $request -> all() );
 
+        $typeName = CiamCropsType::find($request -> type_id);
+
         if ($request -> hasFile('image')) {
             if ($request -> file('image') -> isValid()) {
-                $fileLoaded = $this -> stageRepo -> uploadFile($request);
+                $fileLoaded = $this -> stageRepo -> uploadFile($request, $typeName -> crops);
                 $Stage  -> image = $fileLoaded;
             }
         }
@@ -146,6 +153,8 @@ class CropStageController extends Controller
     {
         $this -> findUser($id);
         $this -> data -> collection = $this -> stageCrop;
+        $this -> data -> type = CiamCropsType::where('active', 1) -> get();
+        $this -> data -> blockField = true;
         $data = $this -> data;
 
         return view('admin.crops.stage.edit', compact('data'));
