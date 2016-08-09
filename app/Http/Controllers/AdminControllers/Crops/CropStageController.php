@@ -174,18 +174,20 @@ class CropStageController extends Controller
         $this -> findUser($id);
         $this -> stageCrop -> fill( $request -> all() );
 
+        $typeName = CiamCropsType::find($request -> type_id);
+
         // Verifica si cargo un archivo. Envia a su respectiva posicion y guarda el nombre.
 
         if ($request -> hasFile('image')) {
             if ($request -> file('image') -> isValid()) {
-                $fileLoaded = $this -> stageRepo -> uploadFile($request);
+                $fileLoaded = $this -> stageRepo -> uploadFile($request, $typeName -> crops);
                 $this -> stageCrop -> image = $fileLoaded;
             }
         }
         else
         {
             // Si no cargo, busque el archivo viejo y renombrelo.
-           $fileName = $this -> stageRepo -> renameFile($request, $this -> stageCrop -> image);
+           $fileName = $this -> stageRepo -> renameFile($request, $this -> stageCrop -> image , $typeName -> crops);
            $this -> stageCrop -> image = $fileName;
         }
 

@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b980effd-929f-402a-8f6e-def11e47b5b0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/media/stage-crops/stage-crops-siembra-arroz.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/media/stage-crops/stage-crops-siembra-platano.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/media/stage-crops/stage-crops-siembra-.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Ciamsa/Core/Repositories/Crops/CropsStageRepo.php" afterPath="$PROJECT_DIR$/app/Ciamsa/Core/Repositories/Crops/CropsStageRepo.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminControllers/Crops/CropStageController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminControllers/Crops/CropStageController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Requests/Crops/CreateStageCropsRequest.php" afterPath="$PROJECT_DIR$/app/Http/Requests/Crops/CreateStageCropsRequest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Requests/Crops/EditStageCropsRequest.php" afterPath="$PROJECT_DIR$/app/Http/Requests/Crops/EditStageCropsRequest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/es/admin.php" afterPath="$PROJECT_DIR$/resources/lang/es/admin.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/crops/stage/partials/fields.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/crops/stage/partials/fields.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/crops/stage/partials/table.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/crops/stage/partials/table.blade.php" />
     </list>
     <ignored path="ciamsaapp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CropStageController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CropStageController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminControllers/Crops/CropStageController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="160" column="5" selection-start-line="160" selection-start-column="5" selection-end-line="160" selection-end-column="5" />
+            <state relative-caret-position="629">
+              <caret line="193" column="37" selection-start-line="193" selection-start-column="37" selection-end-line="193" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -76,8 +69,8 @@
       <file leaf-file-name="CropsStageRepo.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Ciamsa/Core/Repositories/Crops/CropsStageRepo.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state relative-caret-position="510">
+              <caret line="48" column="94" selection-start-line="48" selection-start-column="94" selection-end-line="48" selection-end-column="94" />
               <folding />
             </state>
           </provider>
@@ -105,11 +98,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EditStageCropsRequest.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EditStageCropsRequest.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Requests/Crops/EditStageCropsRequest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="58" column="7" selection-start-line="58" selection-start-column="7" selection-end-line="58" selection-end-column="7" />
+            <state relative-caret-position="631">
+              <caret line="64" column="25" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -189,11 +182,11 @@
         <option value="$PROJECT_DIR$/app/Ciamsa/Core/Entities/Crops/CiamCropsStage.php" />
         <option value="$PROJECT_DIR$/app/Ciamsa/Core/Entities/Crops/CiamCropsType.php" />
         <option value="$PROJECT_DIR$/app/Http/Requests/Crops/CreateStageCropsRequest.php" />
-        <option value="$PROJECT_DIR$/app/Ciamsa/Core/Repositories/Crops/CropsStageRepo.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/crops/stage/partials/table.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/AdminControllers/Crops/CropStageController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/crops/stage/partials/fields.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Requests/Crops/EditStageCropsRequest.php" />
+        <option value="$PROJECT_DIR$/app/Ciamsa/Core/Repositories/Crops/CropsStageRepo.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/AdminControllers/Crops/CropStageController.php" />
       </list>
     </option>
   </component>
@@ -1044,19 +1037,19 @@
       <workItem from="1470449293253" duration="1751000" />
       <workItem from="1470608147582" duration="5871000" />
       <workItem from="1470692807486" duration="11587000" />
-      <workItem from="1470750009357" duration="6085000" />
+      <workItem from="1470750009357" duration="6566000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="172757000" />
+    <option name="totallyTimeSpent" value="173238000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21588486" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21588486" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1413,34 +1406,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Ciamsa/Core/Repositories/Crops/CropsStageRepo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/crops/stage/partials/table.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="45" column="33" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminControllers/Products/ProductsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
           <caret line="159" column="69" selection-start-line="149" selection-start-column="8" selection-end-line="159" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminControllers/Crops/CropStageController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="160" column="5" selection-start-line="160" selection-start-column="5" selection-end-line="160" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -1463,8 +1432,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Requests/Crops/EditStageCropsRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="58" column="7" selection-start-line="58" selection-start-column="7" selection-end-line="58" selection-end-column="7" />
+        <state relative-caret-position="631">
+          <caret line="64" column="25" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/crops/stage/partials/table.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="45" column="33" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Ciamsa/Core/Repositories/Crops/CropsStageRepo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="48" column="94" selection-start-line="48" selection-start-column="94" selection-end-line="48" selection-end-column="94" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminControllers/Crops/CropStageController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="193" column="37" selection-start-line="193" selection-start-column="37" selection-end-line="193" selection-end-column="37" />
           <folding />
         </state>
       </provider>

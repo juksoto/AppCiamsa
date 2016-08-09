@@ -42,11 +42,11 @@ class CropsStageRepo extends Model
      * archivo a su nueva ubicacion.
      * Si no existe el archivo viejo, fue borrado o esta corrupto, copia una imagen por defecto.
      */
-    public function renameFile($request, $nameOldFile)
+    public function renameFile($request, $nameOldFile, $typeName)
     {
 
         $nameField  = "image";
-        $fileName   =  "stage-crops-". str_slug($request -> stage) ;
+        $fileName   =  "stage-crops-". str_slug($request -> stage). '-'. str_slug( $typeName)  ;
         $urlPath    = 'media/stage-crops/';
 
         $extension =  explode('.',  $nameOldFile);
