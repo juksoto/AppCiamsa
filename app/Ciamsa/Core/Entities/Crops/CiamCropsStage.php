@@ -15,7 +15,7 @@ class CiamCropsStage extends Model
     protected $fillable = [
         'stage',
         'subline',
-        'reference',
+        'type_id',
         'image',
         'active',
     ];
@@ -63,12 +63,19 @@ class CiamCropsStage extends Model
      * Las etapas que pertenecen a tipo de cultivos
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
+    /*
     public function type()
     {
         return $this
             -> belongsToMany( 'Ciamsa\Core\Entities\Crops\CiamCropsType',  'ciam_type_has_stage_crops' , 'crops_type_id' , 'crops_stage_id' )
             -> withPivot('active')
             -> withTimestamps();
+    }*/
+
+    public function type()
+    {
+        return $this
+            -> belongsTo('Ciamsa\Core\Entities\Crops\CiamCropsType', 'type_id');
     }
 
 }

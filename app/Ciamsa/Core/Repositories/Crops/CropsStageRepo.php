@@ -26,7 +26,7 @@ class CropsStageRepo extends Model
     public function uploadFile($request)
     {
         $nameField  = "image";
-        $fileName   =  "stage-crops-". str_slug($request -> stage) ;
+        $fileName   =  "stage-crops-". str_slug( $request -> stage). '-'. str_slug( $request -> reference)  ;
         $urlPath    = 'media/stage-crops/';
 
         $fileLoaded = $this -> helper -> resolveFile($nameField, $fileName, $urlPath, $request);
@@ -50,7 +50,7 @@ class CropsStageRepo extends Model
         $urlPath    = 'media/stage-crops/';
 
         $extension =  explode('.',  $nameOldFile);
-        $fileName   =  "stage-crops-". str_slug($request -> stage) .'.'. $extension[1] ;
+        $fileName   =  "stage-crops-". str_slug($request -> stage) .'-'. str_slug($request -> reference) . '.' . $extension[1] ;
 
         if (file_exists ( $urlPath . $nameOldFile ))
         {

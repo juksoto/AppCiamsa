@@ -71,7 +71,8 @@ class CropStageController extends Controller
      */
     public function index()
     {
-        $collection = CiamCropsStage::stagecropsname( $this -> request -> get('search') )
+        $collection = CiamCropsStage::with('type')
+            -> stagecropsname( $this -> request -> get('search') )
             -> sortable()
             -> active( $this -> request -> get('active') )
             -> orderBy( 'stage', 'ASC' )
