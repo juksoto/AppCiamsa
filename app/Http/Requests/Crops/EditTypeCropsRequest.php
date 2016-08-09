@@ -38,7 +38,8 @@ class EditTypeCropsRequest extends Request
     public function rules()
     {
         return [
-            'crops' => 'required|unique:ciam_crops_type,crops' . $this -> route-> getParameter('crops'),
+            'crops' => 'required|unique:ciam_crops_type,crops,' . $this -> route-> getParameter('type'),
+            'icon' => 'image|mimes:gif,png|max:1024|unique:ciam_crops_type,icon,' . $this -> route-> getParameter('icon'),
         ];
     }
     public function messages()
@@ -48,6 +49,9 @@ class EditTypeCropsRequest extends Request
             'crops.unique'     => trans('admin.message.type_crops_already_exists'),
             'required'         => trans('admin.message.is_required'),
             'unique'           => trans('admin.message.already_exists'),
+            'icon.mimes'      => trans('admin.message.mimes_stage_crops'),
+            'icon.required'      => trans('admin.message.image_stage_crops'),
+            'icon.max'        => trans('admin.message.max_stage_crops'),
         ];
     }
     /**

@@ -65,8 +65,5 @@ class CropsStageRepo extends Model
 
     }
 
-
-
-
 }
 

@@ -14,7 +14,7 @@
     </section>
 
 
-    {!! Form::model($data -> collection,['route' => ['admin.crops.type.update', $data -> collection], 'method' => 'PUT', 'class' => 'form-horizontal',  'id' => 'form' ])!!}
+    {!! Form::model($data -> collection,['route' => ['admin.crops.type.update', $data -> collection], 'method' => 'PUT', 'class' => 'form-horizontal',  'id' => 'form' ,'files' => true ])!!}
 
     <section class="form-group">
         <section class="col-md-12">

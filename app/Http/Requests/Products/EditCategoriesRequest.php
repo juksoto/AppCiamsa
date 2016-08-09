@@ -38,7 +38,7 @@ class EditCategoriesRequest extends Request
     public function rules()
     {
         return [
-            'category' => 'required|unique:ciam_categories,category,' . $this -> route-> getParameter('crops'),
+            'category' => 'required|unique:ciam_categories,category,' . $this -> route-> getParameter('categories'),
         ];
     }
     public function messages()

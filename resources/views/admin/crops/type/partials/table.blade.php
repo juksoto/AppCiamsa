@@ -7,7 +7,9 @@
         <th class="text-capitalize">
             @sortablelink('crops')
         </th>
-
+        <th class="text-capitalize">
+            {{ trans('admin.crops.image') }}
+        </th>
         <th class="text-left text-capitalize">
             {{ trans('admin.status.status') }}
         </th>
@@ -30,6 +32,9 @@
                         Editar
                     </a>
                 </small>
+            </td>
+            <td class="text-left">
+                <img src="{!! URL::asset('media/type-crops') . '/' . $collection -> icon !!} " alt="" width="50">
             </td>
             <td class="text-left">
                 <a href="#" class="btn-active">

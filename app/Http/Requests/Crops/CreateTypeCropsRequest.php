@@ -25,6 +25,7 @@ class CreateTypeCropsRequest extends Request
     {
         return [
             'crops' => 'required|unique:ciam_crops_type,crops',
+            'icon' => 'image|mimes:gif,png|max:1024',
         ];
     }
 
@@ -35,6 +36,9 @@ class CreateTypeCropsRequest extends Request
             'crops.unique'     => trans('admin.message.type_crops_already_exists'),
             'required'         => trans('admin.message.is_required'),
             'unique'           => trans('admin.message.already_exists'),
+            'image.mimes'      => trans('admin.message.mimes_stage_crops'),
+            'image.required'      => trans('admin.message.image_stage_crops'),
+            'image.max'        => trans('admin.message.max_stage_crops'),
         ];
     }
 

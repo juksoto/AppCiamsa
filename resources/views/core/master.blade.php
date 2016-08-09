@@ -15,7 +15,6 @@
     <!-- content -->
     <section class="content">
         @yield('content')
-         <!-- //require 'includes/modalIndex.php'-->
     </section>
     <!-- End  content -->
     <!-- Bottom -->

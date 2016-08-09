@@ -40,6 +40,7 @@ return [
         'new_type_crops'                    => 'Nuevo Tipo de Cultivos',        
         'title_type_crops'                  => 'Tipo de Cultivos',
         'type_crops'                        => 'Tipo de Cultivos',
+        'icon_type_crops'                   => 'Icono',
         
         // Generales
         'id'                                => 'ID',
@@ -76,7 +77,7 @@ return [
         'type_crops_is_required'            => 'El tipo de cultivo es requerido',        
         'type_crops_already_exists'         => 'Este tipo de cultivo ya existe.',        
         'type_stage_crops_already_exists'   => 'Este tipo de cultivo ya existe en esta etapa.',        
-        'create_new_type_crops'             => 'Se ha creado un nuevo tipo de cultivo',    
+        'create_new_type_crops'             => 'Se ha creado un nuevo tipo de cultivo',
 
         //Products
         'error_products_no_category' => 'No existe una categoria o no esta activa. Primero debe crear categorias.',  
@@ -127,8 +128,7 @@ return [
             'products'                        => 'Productos',
             'create_products'                 => 'Crear productos',
             'content_create_products'         => 'Escriba el nombre del nuevo producto o complemento y escoja la categoria.',
-            'content_create_products'         => 'Escriba el nombre del nuevo producto o complemento y escoja la categoria.',
-            'enter_a_product'                 => 'Escriba un producto',        
+            'enter_a_product'                 => 'Escriba un producto',
             'image_product'                   => 'Imagen del producto',        
             'image_components'                => 'Imagen de los componentes',        
 
@@ -140,17 +140,6 @@ return [
             'description_tsProducts'            => 'Crear, editar y eliminar los tipos, etapas de cultivos con los productos',
             'create_tsProducts'                 => 'Crear relacion',
             'create_content_header_tsProducts'  => 'Cree  una relacion entre productos, tipo y etapas de cultivo.',
-            
-
-            
-            'content_create_products'         => 'Escriba el nombre del nuevo producto o complemento y escoja la categoria.',
-            'content_create_products'         => 'Escriba el nombre del nuevo producto o complemento y escoja la categoria.',
-            'enter_a_product'                 => 'Escriba un producto',        
-            'image_product'                   => 'Imagen del producto',        
-            'image_components'                => 'Imagen de los componentes',        
-
-            'edit_products'                   => 'Editar Productos',  
-            'content_edit_products'           => 'Edite los productos de la aplicación',
             
             // Generales
             'id'                                => 'ID',

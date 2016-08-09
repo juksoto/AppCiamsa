@@ -10,6 +10,7 @@ use Ciamsa\Core\Entities\Crops\CiamCropsType;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\Crops\CreateTypeCropsRequest;
 use App\Http\Requests\Crops\EditTypeCropsRequest;
+use Ciamsa\Core\Repositories\Crops\CropsTypeRepo;
 
 class CropTypeController extends Controller
 {
@@ -32,18 +33,22 @@ class CropTypeController extends Controller
      */
     private $typeCrop;
 
+    protected $typeRepo;
+
 
     /**
      * @param Request $request
      * beforeFilter Este filtro sirve para llamar el metodo findUser con las siguientes opciones
      */
-    public function __construct(Request $request, Helpers $helper)
+    public function __construct(Request $request, Helpers $helper, CropsTypeRepo $typeRepo)
     {
         $this -> request = $request;
 
         $this -> helper = $helper;
 
         $this -> data = new \stdClass();
+
+        $this -> typeRepo = $typeRepo;
 
         //$this -> middleware('findUser', ['only' => ['show','edit','update','destroy']]);
 
@@ -96,7 +101,17 @@ class CropTypeController extends Controller
      */
     public function store(CreateTypeCropsRequest $request)
     {
-        $typeCrop = CiamCropsType::create( $request -> all() );
+        $typeCrop = new CiamCropsType();
+        $typeCrop  -> fill( $request -> all() );
+
+        if ($request -> hasFile('icon')) {
+            if ($request -> file('icon') -> isValid()) {
+                $fileLoaded = $this -> typeRepo -> uploadFile($request);
+                $typeCrop  -> icon = $fileLoaded;
+            }
+        }
+
+        $typeCrop ->  save();
 
         $message_floating = trans('admin.message.alert_field_create');
         $message_alert ="alert-success";
@@ -143,8 +158,22 @@ class CropTypeController extends Controller
     public function update(EditTypeCropsRequest $request, $id)
     {
         $this -> findUser($id);
-
         $this -> typeCrop -> fill( $request -> all() );
+
+        // Verifica si cargo un archivo. Envia a su respectiva posicion y guarda el nombre.
+
+        if ($request -> hasFile('icon')) {
+            if ($request -> file('icon') -> isValid()) {
+                $fileLoaded = $this -> typeRepo -> uploadFile($request);
+                $this -> typeCrop -> icon = $fileLoaded;
+            }
+        }
+        else
+        {
+            // Si no cargo, busque el archivo viejo y renombrelo.
+            $fileName = $this -> typeRepo -> renameFile($request, $this -> typeCrop-> icon);
+            $this -> typeCrop -> icon = $fileName;
+        }
         $this -> typeCrop -> save();
 
         $message_floating = $this -> typeCrop -> crops . " " . trans('admin.message.alert_field_update');
