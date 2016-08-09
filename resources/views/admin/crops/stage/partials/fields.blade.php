@@ -15,6 +15,14 @@
             <span class="glyphicon form-control-feedback" id="stage1"></span>
         </div>
     </div>
+    <div class="form-group has-feedback ">
+        {!! Form::label('reference',trans('admin.crops.reference_stage_crops'), ['class' => 'col-sm-2 control-label'] ) !!}
+
+        <div class="col-sm-10">
+            {!! Form::text('reference', null, ['class' => 'form-control', 'placeholder' => trans('admin.crops.enter_a_reference_stage_crops')])  !!}
+            <span class="glyphicon form-control-feedback" id="stage1"></span>
+        </div>
+    </div>
 
     <div class="form-group has-feedback ">
         @if (! empty($data -> collection -> image))

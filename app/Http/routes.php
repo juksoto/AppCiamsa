@@ -63,3 +63,11 @@ Route::get('tipo-cultivo',
         'as'   => 'stepOne',
     ]
 );
+
+//Step two
+Route::get('etapa-cultivo/{id}',
+    [
+        'uses' => 'CoreControllers\CoreController@stepTwo',
+        'as'   => 'stepTwo',
+    ]
+);

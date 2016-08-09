@@ -15,6 +15,7 @@ class CiamCropsStage extends Model
     protected $fillable = [
         'stage',
         'subline',
+        'reference',
         'image',
         'active',
     ];

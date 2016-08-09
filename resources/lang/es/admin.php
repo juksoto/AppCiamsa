@@ -23,6 +23,9 @@ return [
         'new_stage_crops'                   => 'Crear nueva etapa de cultivo',        
         'subline_stage_crops'               => 'Linea secundaria',
         'title_stage_crops'                 => 'Etapa del Cultivo',
+        'reference_stage_crops'             => 'Referencia Tipo Cultivo',
+        'enter_a_reference_stage_crops'     => 'Escriba el tipo de cultivo de referencia.',
+        'reference'                         => 'Referencia',
 
         // Relacion Tipos y Etapas  de cultivos
         'title_tsCrop_crops'                => 'Relacion Tipo y Etapas de Cultivos',

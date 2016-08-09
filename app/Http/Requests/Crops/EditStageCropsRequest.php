@@ -38,8 +38,9 @@ class EditStageCropsRequest extends Request
     public function rules()
     {
         return [
-            'stage'     => 'required|unique:ciam_crops_stage,stage,' . $this -> route-> getParameter('stage'),
-            'image'     => 'image|mimes:gif,png|max:1024|unique:ciam_crops_stage,image,' . $this -> route-> getParameter('image'),
+            'stage'         => 'required',
+            'reference'     => 'required',
+            'image'         => 'image|mimes:gif,png|max:1024|unique:ciam_crops_stage,image,' . $this -> route-> getParameter('image'),
         ];
     }
     public function messages()

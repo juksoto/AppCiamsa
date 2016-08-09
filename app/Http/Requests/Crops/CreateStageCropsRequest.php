@@ -24,7 +24,8 @@ class CreateStageCropsRequest extends Request
     public function rules()
     {
         return [
-            'stage'     => 'required|unique:ciam_crops_stage,stage',
+            'stage'     => 'required',
+            'reference' => 'required',
             'image'     => 'required|image|mimes:gif,png|max:1024',
         ];
     }

@@ -4,9 +4,9 @@
 @endsection
 @section('class-section')
     wrapper-step-one
-@endsection
-@section('nav')
-        <!-- NAV -->
+    @endsection
+    @section('nav')
+            <!-- NAV -->
     <nav>
         <section class="row text-small-only-center">
             <article class="small-12 medium-3 column ">
@@ -21,10 +21,10 @@
         </section>
     </nav>
     <!-- end NAV -->
-@endsection
+    @endsection
 
     @section('content')
-        <!-- title -->
+            <!-- title -->
     <section class="row header-title">
         <section class="small-10 small-centered column text-center">
             <article>
@@ -45,21 +45,22 @@
     <section class="row content">
         <section class="small-10 medium-9 small-centered column text-center">
             <ul class="row small-up-4 medium-up-5 list-icon-cultivo" id="list-cultivo">
-            @forelse($data as $key => $value)
+                @forelse($data as $key => $value)
                     <li class ="column icon-cultivo text-center" >
-                        <a href="{{ route('stepTwo', $value -> id) }}">
+                        <a href="{!! route('stepOne', $value -> id !!}">
                             <img src="{!! asset( 'media/type-crops/'. $value -> icon )!!}" alt="{!! $value -> crops !!}">
                             <h3>
                                 {!! $value -> crops !!}
+                                {!! $value -> id !!}
                             </h3>
                         </a>
                     </li>
-            @empty
-                <div class="alert alert-danger alert-dismissible fade in" role="alert">
-                    <button stage="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                    {{ trans('admin.message.no_records_found') }}
-                </div>
-            @endforelse
+                @empty
+                    <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                        <button stage="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        {{ trans('admin.message.no_records_found') }}
+                    </div>
+                @endforelse
             </ul>
         </section>
     </section>
