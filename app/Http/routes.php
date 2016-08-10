@@ -71,3 +71,11 @@ Route::get('etapa-cultivo/{id}',
         'as'   => 'stepTwo',
     ]
 );
+
+//Step three
+Route::get('fertilizantes/{id}',
+    [
+        'uses' => 'CoreControllers\CoreController@stepThree',
+        'as'   => 'stepThree',
+    ]
+);

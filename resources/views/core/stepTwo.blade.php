@@ -1,6 +1,6 @@
 @extends('core.master')
 @section('title')
-    CIAMSA - Paso 1 - Tipo de cultivo
+    {{ trans('app.app.stage_crops') }}
 @endsection
 @section('class-section')
     wrapper-step-two
@@ -20,7 +20,7 @@
                     <span class="step">
                        {{ trans('app.app.step_2_3') }}
                     </span>
-                    {{ trans('app.app.stage_crops') }}
+                    {{ trans('app.app.stage_crops') }} {!! $data -> type !!}
                     <span class="textline">
                         {{ trans('app.app.select_stage_crops') }}
                     </span>
@@ -36,7 +36,7 @@
             <ul class="row small-up-1 medium-up-{!! $data -> cantType !!}  list-image-cultivo" id="list-image-cultivo">
                 @forelse($data as $key => $value)
                     <li class ="column text-center cultivo-{!! $key !!}"  >
-                        <a href="{{ route('stepTwo', $value -> id) }}">
+                        <a href="{{ route('stepThree', $value -> id) }}">
                             <img src="{!! asset( 'media/stage-crops/'. $value -> image )!!}" alt="" >
                             <h3>
                                 {!! $value -> stage !!}

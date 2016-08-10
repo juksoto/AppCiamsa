@@ -1,6 +1,6 @@
 @extends('core.master')
 @section('title')
-    CIAMSA - Paso 1 - Tipo de cultivo
+    {{ trans('app.app.type_crops') }}
 @endsection
 @section('class-section')
     wrapper-step-one

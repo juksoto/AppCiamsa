@@ -23,6 +23,14 @@ return [
         'step_2_3'              => 'Paso 2 de 3',
         'select_stage_crops'    => 'Seleccione la etapa en la que se encuentra su cultivo',
         'stage_crops'           => 'Etapas de cultivo',
+
+        // Paso 3
+        'step_3_3'                      => 'Paso 3 de 3',
+        'fertilzer_description_one'     => 'Las mejores alternativas de fertilizantes para el cultivo ',
+        'fertilzer_description_two'     => ' en la etapa ',
+        'fertilzer_description_three'   => ' son: ',
+
+        'fertilizer_title'          => 'Fertilizantes para su cultivo',
     ),
 
     'submit'  => array(
