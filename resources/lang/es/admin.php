@@ -50,6 +50,8 @@ return [
         'image'                             => 'imagen',
         'subline'                           => 'Sublinea', 
 
+        'order_number'                      => 'Orden'
+
 
     ),
 
@@ -98,7 +100,6 @@ return [
         'max_products'              => 'El peso máximo para la imagene es de 1MB',  
         'mimes_image_products'      => 'La imagen es un campo requerido, debe ser formato PNG o GIF y no pesar más de 1MB', 
         'mimes_components_products' => 'Los componentes es un campo requerido, debe ser formato PNG, GIF o JPG y no pesar más de 1MB', 
-
 
 
          // Validaciones

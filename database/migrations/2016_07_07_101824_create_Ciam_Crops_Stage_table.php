@@ -17,6 +17,7 @@ class CreateCiamCropsStageTable extends Migration
             $table -> string('stage');
             $table -> string('subline');
             $table -> string('image');
+            $table -> string('order_number');
 
             // id Categories
             $table -> integer('type_id') -> unsigned();

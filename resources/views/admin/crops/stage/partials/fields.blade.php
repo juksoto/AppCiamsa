@@ -29,6 +29,15 @@
     </div>
 
     <div class="form-group has-feedback ">
+        {!! Form::label('order_number',trans('admin.crops.order_number'), ['class' => 'col-sm-2 control-label'] ) !!}
+
+        <div class="col-sm-2">
+            {!! Form::number('order_number', null, ['class' => 'form-control', 'maxlength' => '2'])  !!}
+            <span class="glyphicon form-control-feedback" id="order_number1"></span>
+        </div>
+    </div>
+
+    <div class="form-group has-feedback ">
         @if (! empty($data -> collection -> image))
         {!! Form::label('image',trans('admin.crops.image_stage_crops'), ['class' => 'col-sm-2 control-label'] ) !!}
 

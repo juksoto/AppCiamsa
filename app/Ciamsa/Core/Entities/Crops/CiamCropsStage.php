@@ -17,11 +17,14 @@ class CiamCropsStage extends Model
         'subline',
         'type_id',
         'image',
+        'order_number',
         'active',
+
     ];
 
     protected $sortable = [
-        'stage'
+        'stage',
+        'order_number',
     ];
     
     

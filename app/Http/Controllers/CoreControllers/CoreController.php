@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\CoreControllers;
 
 use Ciamsa\Core\Entities\Crops\CiamCropsType;
-use Ciamsa\Core\Entities\Relations\CiamTypehasStageCrops;
-use Ciamsa\Core\Repositories\Crops\CropsTypeRepo;
+use Ciamsa\Core\Entities\Crops\CiamCropsStage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -23,8 +22,14 @@ class CoreController extends Controller
     }
     public function stepTwo($id)
     {
-        $data = CiamCropsType::find($id) -> stage() -> wherePivot('active' , 1) -> get();
-        dd($data);
+        $data = CiamCropsStage::with('type')
+            -> where ('type_id' , $id)
+            -> active(1)
+            -> orderBy( 'order_number', 'ASC' )
+            -> paginate();
+
+        $cantType = $data -> count();
+        $data -> cantType =$cantType;
         return view( 'core.stepTwo' , compact('data') );
     }
 }

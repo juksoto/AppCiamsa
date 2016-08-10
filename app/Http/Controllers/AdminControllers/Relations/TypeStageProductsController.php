@@ -98,7 +98,6 @@ class TypeStageProductsController extends Controller
             $collection ->  category = $products -> category;
             $collection ->  products = $products;
             $collection -> toBase();
-
         }
 
         $this -> data -> collections = $collections;
@@ -117,7 +116,7 @@ class TypeStageProductsController extends Controller
     {
         $typeAllCrops = CiamCropsType::all();
         $stageAllCrops = CiamCropsStage::all();
-        $products = CiamProducts::all();
+        $products = CiamProducts::with('category') -> get();
 
         $this -> data -> typeAllCrops =  $typeAllCrops;
         $this -> data -> stageAllCrops =  $stageAllCrops;
@@ -159,16 +158,14 @@ class TypeStageProductsController extends Controller
      */
     public function show($id)
     {
-        $collections = CiamTypehasStageCrops::where( 'crops_type_id' , $id ) -> where ('active' , 1) -> get();
-
+        $collections = CiamCropsStage::where( 'type_id' , $id ) -> where ('active' , 1) -> get();
         $stageArray = Array();
 
         foreach ($collections as $key => $collection) {
-            $stage = CiamCropsStage::find($collection -> crops_stage_id );
-            $stageArray[$key]['id'] = $stage -> id;
-            $stageArray[$key]['stage'] = $stage -> stage;
+            $stageArray[$key]['id'] = $collection -> id;
+            $stageArray[$key]['stage'] = $collection -> stage;
         }
-            return response() -> json($stageArray);
+        return response() -> json($stageArray);
     }
 
     /**
@@ -183,7 +180,7 @@ class TypeStageProductsController extends Controller
 
         $typeAllCrops = CiamCropsType::all();
         $stageAllCrops = CiamCropsStage::all();
-        $products = CiamProducts::all();
+        $products = CiamProducts::with('category') -> get();
 
         $this -> data -> typeAllCrops =  $typeAllCrops;
         $this -> data -> stageAllCrops =  $stageAllCrops;

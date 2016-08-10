@@ -64,7 +64,7 @@ class ProductsController extends Controller
         $collection = CiamProducts::with('category')
             -> productsName ($this -> request->get('search'))
             -> active ($this -> request -> get('active'))
-            -> orderBy ('product', 'DESC')
+            -> orderBy ('category_id', 'ASC')
             -> paginate();
 
         $this -> data -> collections = $collection;

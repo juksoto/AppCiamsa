@@ -6,21 +6,8 @@
     wrapper-step-one
 @endsection
 @section('nav')
-        <!-- NAV -->
-    <nav>
-        <section class="row text-small-only-center">
-            <article class="small-12 medium-3 column ">
-                <a href="">
-                    <img src="images/logo-ciamsa.png" alt="" width="180px" class ="logo">
-                </a>
-            </article>
-            <section class="small-12 medium-9 column text-medium-right btn-header">
-                <a href="{{ route('index')}}" class="button btn-sunflower"> <span class="icon-home" aria-hidden="true"></span> Inicio</a>
-                <a href="cotizar.php" class="button btn-ciamsa"> <span class="icon-user" aria-hidden="true"></span> Solicitar cotización</a>
-            </section>
-        </section>
-    </nav>
-    <!-- end NAV -->
+    <a href="{{ route('index')}}" class="button btn-sunflower"> <span class="icon-home" aria-hidden="true"></span> {{ trans('app.submit.home') }}</a>
+    <a href="cotizar.php" class="button btn-ciamsa"> <span class="icon-user" aria-hidden="true"></span> {{ trans('app.submit.quote') }}</a>
 @endsection
 
     @section('content')
@@ -30,11 +17,11 @@
             <article>
                 <h2>
                     <span class="step">
-                        Paso 1 de 3
+                       {{ trans('app.app.step_1_3') }}
                     </span>
-                    Tipos de Cultivos
+                    {{ trans('app.app.type_crops') }}
                     <span class="textline">
-                        Seleccione su tipo de cultivo
+                        {{ trans('app.app.select_type_crops') }}
                     </span>
                 </h2>
             </article>
@@ -56,8 +43,8 @@
                     </li>
             @empty
                 <div class="alert alert-danger alert-dismissible fade in" role="alert">
-                    <button stage="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                    {{ trans('admin.message.no_records_found') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    {{ trans('app.app.no_type_found') }}
                 </div>
             @endforelse
             </ul>
@@ -69,7 +56,7 @@
 @section('bottom')
     <section class="small-12 column text-center">
         <a href="cotizar.php">
-            <img data-interchange="[images/ads/forkamix-mezclas-medidas-m.jpg, small], [images/ads/forkamix-mezclas-medidas-m.jpg, medium], [images/ads/forkamix-mezclas-medidas.jpg, large]"  alt="Forkamix a la medida" >
+            <img data-interchange="[{{asset('images/ads/forkamix-mezclas-medidas-m.jpg')}}, small], [{{asset('images/ads/forkamix-mezclas-medidas-m.jpg') }}, medium], [{{asset('images/ads/forkamix-mezclas-medidas.jpg') }}, large]"  alt="Forkamix a la medida" >
         </a>
     </section>
 @endsection

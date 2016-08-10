@@ -447,52 +447,52 @@ ul.list-icon-cultivo h3 {
   -ms-transform: scale(1.1, 1.1);
   transform: scale(1.1, 1.1);
 }
-.wrapper-step-two .content .cultivo-1 h3 {
+.wrapper-step-two .content .cultivo-0 h3 {
   background: #e9573f;
 }
-.wrapper-step-two .content .cultivo-1 p.subline {
+.wrapper-step-two .content .cultivo-0 p.subline {
   color: #e9573f;
 }
-.wrapper-step-two .content .cultivo-1 a:hover h3 {
+.wrapper-step-two .content .cultivo-0 a:hover h3 {
   background: #fc6e51;
 }
-.wrapper-step-two .content .cultivo-1 a:hover p {
+.wrapper-step-two .content .cultivo-0 a:hover p {
   color: #fc6e51;
 }
-.wrapper-step-two .content .cultivo-2 h3 {
+.wrapper-step-two .content .cultivo-1 h3 {
   background: #5d3f6a;
 }
-.wrapper-step-two .content .cultivo-2 p.subline {
+.wrapper-step-two .content .cultivo-1 p.subline {
   color: #5d3f6a;
 }
-.wrapper-step-two .content .cultivo-2 a:hover h3 {
+.wrapper-step-two .content .cultivo-1 a:hover h3 {
   background: #41274c;
 }
-.wrapper-step-two .content .cultivo-2 a:hover p {
+.wrapper-step-two .content .cultivo-1 a:hover p {
   color: #41274c;
 }
-.wrapper-step-two .content .cultivo-3 h3 {
+.wrapper-step-two .content .cultivo-2 h3 {
   background: #70a53b;
 }
-.wrapper-step-two .content .cultivo-3 p.subline {
+.wrapper-step-two .content .cultivo-2 p.subline {
   color: #70a53b;
 }
-.wrapper-step-two .content .cultivo-3 a:hover h3 {
+.wrapper-step-two .content .cultivo-2 a:hover h3 {
   background: #b0c600;
 }
-.wrapper-step-two .content .cultivo-3 a:hover p {
+.wrapper-step-two .content .cultivo-2 a:hover p {
   color: #b0c600;
 }
-.wrapper-step-two .content .cultivo-4 h3 {
+.wrapper-step-two .content .cultivo-3 h3 {
   background: #3bafda;
 }
-.wrapper-step-two .content .cultivo-4 p.subline {
+.wrapper-step-two .content .cultivo-3 p.subline {
   color: #3bafda;
 }
-.wrapper-step-two .content .cultivo-4 a:hover h3 {
+.wrapper-step-two .content .cultivo-3 a:hover h3 {
   background: #4fc1e9;
 }
-.wrapper-step-two .content .cultivo-4 a:hover p {
+.wrapper-step-two .content .cultivo-3 a:hover p {
   color: #4fc1e9;
 }
 .wrapper-step-three {
@@ -589,6 +589,10 @@ ul.list-icon-cultivo h3 {
 }
 .wrapper-cotizar .input-one {
   display: none;
+}
+.color-white {
+  color: #fff !important;
+  margin: 1em;
 }
 /** 
 * Custom Queries 

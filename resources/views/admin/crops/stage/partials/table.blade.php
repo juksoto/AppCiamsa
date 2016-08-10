@@ -14,6 +14,9 @@
         <th class="text-capitalize">
             {{ trans('admin.crops.type_crops') }}
         </th>
+        <th class="text-capitalize">
+            {{ trans('admin.crops.order_number') }}
+        </th>
 
         <th class="text-capitalize">
             {{ trans('admin.crops.image') }}
@@ -47,6 +50,9 @@
             </td>
             <td class="text-left">
                 {!! $collection -> type -> crops !!}
+            </td>
+            <td class="text-left">
+                {!! $collection -> order_number !!}
             </td>
             <td class="text-left">
                 <img src="{!! URL::asset('media/stage-crops') . '/' . $collection -> image !!} " alt="" width="100">

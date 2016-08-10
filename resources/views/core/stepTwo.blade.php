@@ -3,24 +3,12 @@
     CIAMSA - Paso 1 - Tipo de cultivo
 @endsection
 @section('class-section')
-    wrapper-step-one
+    wrapper-step-two
     @endsection
     @section('nav')
-            <!-- NAV -->
-    <nav>
-        <section class="row text-small-only-center">
-            <article class="small-12 medium-3 column ">
-                <a href="">
-                    <img src="images/logo-ciamsa.png" alt="" width="180px" class ="logo">
-                </a>
-            </article>
-            <section class="small-12 medium-9 column text-medium-right btn-header">
-                <a href="{{ route('index')}}" class="button btn-sunflower"> <span class="icon-home" aria-hidden="true"></span> Inicio</a>
-                <a href="cotizar.php" class="button btn-ciamsa"> <span class="icon-user" aria-hidden="true"></span> Solicitar cotización</a>
-            </section>
-        </section>
-    </nav>
-    <!-- end NAV -->
+        <a href="{{ route('index')}}" class="button btn-sunflower"> <span class="icon-home" aria-hidden="true"></span> {{ trans('app.submit.home') }}</a>
+        <a href="{{ route('stepOne') }}"  class="button btn-aqua"> <span class="icon-back" aria-hidden="true" style="padding-top:5px"></span> {{ trans('app.submit.back') }}</a>
+        <a href="cotizar.php" class="button btn-ciamsa"> <span class="icon-user" aria-hidden="true"></span> {{ trans('app.submit.quote') }}</a>
     @endsection
 
     @section('content')
@@ -30,11 +18,11 @@
             <article>
                 <h2>
                     <span class="step">
-                        Paso 1 de 3
+                       {{ trans('app.app.step_2_3') }}
                     </span>
-                    Tipos de Cultivos
+                    {{ trans('app.app.stage_crops') }}
                     <span class="textline">
-                        Seleccione su tipo de cultivo
+                        {{ trans('app.app.select_stage_crops') }}
                     </span>
                 </h2>
             </article>
@@ -43,23 +31,36 @@
     <!-- End  title -->
     <!-- content -->
     <section class="row content">
-        <section class="small-10 medium-9 small-centered column text-center">
-            <ul class="row small-up-4 medium-up-5 list-icon-cultivo" id="list-cultivo">
+
+        <section class="small-10 @if($data -> cantType == 2) medium-8 @else medium-11 @endif small-centered column text-center">
+            <ul class="row small-up-1 medium-up-{!! $data -> cantType !!}  list-image-cultivo" id="list-image-cultivo">
                 @forelse($data as $key => $value)
-                    <li class ="column icon-cultivo text-center" >
-                        <a href="{!! route('stepOne', $value -> id !!}">
-                            <img src="{!! asset( 'media/type-crops/'. $value -> icon )!!}" alt="{!! $value -> crops !!}">
+                    <li class ="column text-center cultivo-{!! $key !!}"  >
+                        <a href="{{ route('stepTwo', $value -> id) }}">
+                            <img src="{!! asset( 'media/stage-crops/'. $value -> image )!!}" alt="" >
                             <h3>
-                                {!! $value -> crops !!}
-                                {!! $value -> id !!}
+                                {!! $value -> stage !!}
                             </h3>
+                            <?php
+                            if (isset( $value -> subline )){
+                            ?> <p class="subline"> {!! $value -> subline !!}</p>
+                            <?php
+                            }
+                            ?>
                         </a>
                     </li>
                 @empty
-                    <div class="alert alert-danger alert-dismissible fade in" role="alert">
-                        <button stage="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                        {{ trans('admin.message.no_records_found') }}
-                    </div>
+                   <section class="small-6 small-centered">
+                       <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                           {{ trans('app.app.no_stage_found') }}
+                       </div>
+                       <p>
+                           <a href="{{ route('stepOne') }}" class="button btn-danger color-white"> <span class="icon-back" aria-hidden="true" style="padding-top:5px"></span>
+                               {{ trans('app.submit.back') }}
+                           </a>
+                       </p>
+                   </section>
                 @endforelse
             </ul>
         </section>
@@ -70,17 +71,17 @@
 @section('bottom')
     <section class="small-12 column text-center">
         <a href="cotizar.php">
-            <img data-interchange="[images/ads/forkamix-mezclas-medidas-m.jpg, small], [images/ads/forkamix-mezclas-medidas-m.jpg, medium], [images/ads/forkamix-mezclas-medidas.jpg, large]"  alt="Forkamix a la medida" >
+            <img data-interchange="[{{asset('images/ads/solucion-uan-m.jpg')}} , small], [{{asset('images/ads/solucion-uan-m.jpg')}} , medium], [{{asset('images/ads/solucion-uan.jpg,')}} large ]"  alt="Solucion UAN" >
         </a>
     </section>
 @endsection
 @section('scripts')
     <script>
         {{-- SCRIPTS ANIMATE INDEX --}}
-        function animateStepOne()
+        function animateStepTwo()
         {
-            $("#list-cultivo li").each(function(indice, elemento) {
-                duracion = 100 * indice;
+            $("#list-image-cultivo li").each(function(indice, elemento) {
+                duracion = 150 * indice;
                 $(elemento).delay(duracion).animate({ marginTop: "5px", opacity:"1"},1000);
             });
         }
@@ -88,18 +89,8 @@
 
     {{-- SCRIPTS MODAL --}}
     <script>
-        $('.btnProductos').click(function (e) {
-            e.preventDefault();
-            $("#response-modalProductos").html("<p>Buscando...</p>");
-            var row = $(this).parents('li');
-            var name = row.data('name');
-            $url = 'images/productos_description/' + name + ".jpg";
-            $('#img_producto').attr("src",$url);
-
-        });
-
         $(document).ready(function(){
-            animateStepOne();
+            animateStepTwo();
         });
     </script>
 

@@ -6,7 +6,7 @@
             <select name="crops_type_id" id="crops_type_id" class = "form-control" required>
                 <option value="">{{ trans('admin.submit.select') }}</option>
                 @foreach($data -> typeAllCrops as $crops)
-                    <option name="select_country" value="{!!$crops -> id !!}"
+                    <option name="select_type" value="{!!$crops -> id !!}"
                             @if (isset($data -> collection) and ($data -> collection -> crops_type_id  == $crops -> id ) )  selected @endif>{!! $crops -> crops !!}</option>
                 @endforeach
             </select>
@@ -32,7 +32,7 @@
             <select name="product_id" id="product_id" class = "form-control" required>
                 <option value="">{{ trans('admin.submit.select') }}</option>
                 @foreach($data -> products as $product)
-                    <option name="select_country" value="{!!$product -> id !!}"  @if (isset($data -> collection) and ($data -> collection -> product_id  == $product -> id ) )  selected @endif>{!! $product -> product !!}</option>
+                    <option name="select_country" value="{!!$product -> id !!}"  @if (isset($data -> collection) and ($data -> collection -> product_id  == $product -> id ) )  selected @endif>{!! $product -> category -> category !!} -  {!! $product -> product !!}</option>
                 @endforeach
             </select>
         </div>
