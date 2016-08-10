@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 10-08-2016 a las 20:08:33
+-- Tiempo de generación: 11-08-2016 a las 00:55:00
 -- Versión del servidor: 10.1.10-MariaDB
 -- Versión de PHP: 7.0.4
 
@@ -86,7 +86,10 @@ INSERT INTO `ciam_crops_stage` (`id`, `stage`, `subline`, `image`, `order_number
 (14, 'Segunda Aplicación', '', 'stage-crops-segunda-aplicacion-arroz.png', '2', 1, 1, '2016-08-10 16:24:03', '2016-08-10 16:24:03'),
 (15, 'Producción O Llenado', '', 'stage-crops-produccion-o-llenado-arroz.png', '3', 1, 1, '2016-08-10 16:24:42', '2016-08-10 16:24:42'),
 (16, 'Siembra O Remate', '', 'stage-crops-siembra-o-remate-papa.png', '1', 8, 1, '2016-08-10 17:10:47', '2016-08-10 17:10:47'),
-(17, 'Reabone O Desyerbe', '', 'stage-crops-reabone-o-desyerbe-papa.png', '2', 8, 1, '2016-08-10 17:11:07', '2016-08-10 17:11:07');
+(17, 'Reabone O Desyerbe', '', 'stage-crops-reabone-o-desyerbe-papa.png', '2', 8, 1, '2016-08-10 17:11:07', '2016-08-10 17:11:07'),
+(18, 'Siembra', '', 'stage-crops-siembra-frutales.png', '1', 4, 1, '2016-08-10 19:36:10', '2016-08-10 19:36:10'),
+(19, 'Crecimiento Y Desarrollo', '', 'stage-crops-crecimiento-y-desarrollo-frutales.png', '2', 4, 1, '2016-08-10 19:36:45', '2016-08-10 19:36:45'),
+(20, 'Frutos', '', 'stage-crops-frutos-frutales.png', '3', 4, 1, '2016-08-10 19:37:03', '2016-08-10 19:37:03');
 
 -- --------------------------------------------------------
 
@@ -384,7 +387,8 @@ INSERT INTO `ciam_product_type_stage` (`id`, `crops_type_id`, `crops_stage_id`, 
 (109, 10, 3, 44, 1, '2016-08-10 18:05:45', '2016-08-10 18:05:45'),
 (110, 10, 3, 45, 1, '2016-08-10 18:05:52', '2016-08-10 18:05:52'),
 (111, 10, 3, 37, 1, '2016-08-10 18:06:02', '2016-08-10 18:06:02'),
-(112, 10, 3, 42, 1, '2016-08-10 18:06:15', '2016-08-10 18:06:15');
+(112, 10, 3, 42, 1, '2016-08-10 18:06:15', '2016-08-10 18:06:15'),
+(113, 1, 15, 38, 1, '2016-08-10 22:53:44', '2016-08-10 22:53:44');
 
 -- --------------------------------------------------------
 
@@ -585,7 +589,7 @@ ALTER TABLE `ciam_categories`
 -- AUTO_INCREMENT de la tabla `ciam_crops_stage`
 --
 ALTER TABLE `ciam_crops_stage`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `ciam_crops_type`
 --
@@ -605,7 +609,7 @@ ALTER TABLE `ciam_products`
 -- AUTO_INCREMENT de la tabla `ciam_product_type_stage`
 --
 ALTER TABLE `ciam_product_type_stage`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 --
 -- AUTO_INCREMENT de la tabla `ciam_registers`
 --
