@@ -86,8 +86,10 @@ class TypeStageProductsController extends Controller
     public function index()
     {
 
-        $collections = CiamTypeStageProducts::active ($this -> request -> get('active'))
-            -> paginate();
+        $collections = CiamTypeStageProducts::active ($this -> request
+            -> get('active'))
+            -> orderBy('crops_type_id' , 'ASC')
+            -> paginate(30);
 
         foreach ($collections as $collection) {
             $stage = CiamCropsStage::find($collection -> crops_stage_id );
@@ -158,7 +160,10 @@ class TypeStageProductsController extends Controller
      */
     public function show($id)
     {
-        $collections = CiamCropsStage::where( 'type_id' , $id ) -> where ('active' , 1) -> get();
+        $collections = CiamCropsStage::where( 'type_id' , $id )
+            -> where ('active' , 1)
+            -> orderBy( 'order_number', 'ASC' )
+            -> get();
         $stageArray = Array();
 
         foreach ($collections as $key => $collection) {
@@ -179,13 +184,15 @@ class TypeStageProductsController extends Controller
         $this -> findUser($id);
 
         $typeAllCrops = CiamCropsType::all();
-        $stageAllCrops = CiamCropsStage::all();
+
+        $stageAllCrops = CiamCropsStage::where('type_id', $this -> tsProducts -> crops_type_id) -> where ('active' , 1) -> get();
+
         $products = CiamProducts::with('category') -> get();
 
         $this -> data -> typeAllCrops =  $typeAllCrops;
         $this -> data -> stageAllCrops =  $stageAllCrops;
         $this -> data -> products =  $products;
-        $this -> data -> collection =  $this -> tsProducts;;
+        $this -> data -> collection =  $this -> tsProducts;
         $this -> data -> stageEnabled =  true;
 
         $data = $this -> data;

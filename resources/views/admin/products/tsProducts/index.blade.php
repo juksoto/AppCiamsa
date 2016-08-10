@@ -78,6 +78,7 @@
     <section class="row row-centered">
         <section class="col-md-12">
             @include('admin.products.tsProducts.partials.table')
+            {{ $data -> collections -> appends(['sort' => 'category_id'])->links() }}
         </section>
     </section>
 

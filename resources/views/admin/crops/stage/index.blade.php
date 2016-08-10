@@ -78,6 +78,7 @@
     <section class="row table-responsive" >
         <section class="col-md-12">
             @include('admin.crops.stage.partials.table')
+            {{ $data -> collections -> appends(['sort' => 'stage'])->links() }}
         </section>
     </section>
 

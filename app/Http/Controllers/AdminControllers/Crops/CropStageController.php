@@ -77,7 +77,7 @@ class CropStageController extends Controller
             -> sortable()
             -> active( $this -> request -> get('active') )
             -> orderBy( 'type_id', 'ASC' )
-            -> paginate();
+            -> paginate(20);
 
         $this -> data -> collections = $collection;
         $data = $this -> data;
