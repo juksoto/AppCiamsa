@@ -7,7 +7,7 @@
 @endsection
 @section('nav')
     <a href="{{ route('index')}}" class="button btn-sunflower"> <span class="icon-home" aria-hidden="true"></span> {{ trans('app.submit.home') }}</a>
-    <a href="cotizar.php" class="button btn-ciamsa"> <span class="icon-user" aria-hidden="true"></span> {{ trans('app.submit.quote') }}</a>
+    <a href="{!! route('quote') !!}" class="button btn-ciamsa"> <span class="icon-user" aria-hidden="true"></span> {!! trans('app.submit.quote') !!}</a>
 @endsection
 
     @section('content')
@@ -74,15 +74,6 @@
 
     {{-- SCRIPTS MODAL --}}
     <script>
-        $('.btnProductos').click(function (e) {
-            e.preventDefault();
-            $("#response-modalProductos").html("<p>Buscando...</p>");
-            var row = $(this).parents('li');
-            var name = row.data('name');
-            $url = 'images/productos_description/' + name + ".jpg";
-            $('#img_producto').attr("src",$url);
-
-        });
 
         $(document).ready(function(){
             animateStepOne();

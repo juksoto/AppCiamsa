@@ -6,6 +6,7 @@ use Ciamsa\Core\Entities\Crops\CiamCropsType;
 use Ciamsa\Core\Entities\Crops\CiamCropsStage;
 use Ciamsa\Core\Entities\Products\CiamProductCategories;
 use Ciamsa\Core\Entities\Products\CiamProducts;
+use Ciamsa\Core\Entities\Registers\CiamDepartments;
 use Ciamsa\Core\Entities\Relations\CiamTypeStageProducts;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -106,5 +107,41 @@ class CoreController extends Controller
 
 
         return view( 'core.stepThree' , compact('data') );
+    }
+
+    public function quote()
+    {
+        $data           = new \stdClass();
+        $allType        = CiamCropsType::where('active', 1 ) -> get();
+        $allDepartment  = CiamDepartments::where('active', 1 ) -> get();
+
+        $allStage = CiamCropsStage::where('active', 1 ) -> get();
+        $products = CiamProducts::where('active',1) -> get();
+
+        $data -> allType        = $allType;
+        $data -> allStage       = $allStage;
+        $data -> products       = $products;
+        $data -> allDepartments = $allDepartment;
+
+        $data -> stageEnabled = false;
+        $data -> productEnabled = false;
+
+        return view( 'core.quote' , compact('data') );
+    }
+
+    public function showStage($idType)
+    {
+
+        $data = CiamCropsStage::where('type_id',$idType ) -> get();
+
+        return $data;
+    }
+
+    public function showProducts($idType, $idStage)
+    {
+
+        //$data = CiamCropsStage::find($id );
+
+//        return $data;
     }
 }

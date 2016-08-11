@@ -9,7 +9,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| Register The Auto Loader
+| Registers The Auto Loader
 |--------------------------------------------------------------------------
 |
 | Composer provides a convenient, automatically generated class loader for

@@ -79,3 +79,12 @@ Route::get('fertilizantes/{id}',
         'as'   => 'stepThree',
     ]
 );
+
+//Quote
+Route::group(['prefix' => 'cotizar' , 'as' => 'quote'], function() {
+
+    Route::get('/', ['uses' => 'CoreControllers\CoreController@quote']);
+
+    Route::get('create', ['uses' => 'CoreControllers\CoreController@createQuote', 'as' => '.create']);
+
+});

@@ -1,7 +1,7 @@
 @extends('core.master')
 
 @section('title')
-    CIAMSA - Conozca el producto para nutrir su cultivo
+    {!! trans('app.app.index_title') !!}
 @endsection
 
 @section('class-section')
@@ -9,7 +9,7 @@
 @endsection
 
 @section('nav')
-            <a href="cotizar.php" class="button btn-ciamsa"> <span class="icon-user" aria-hidden="true"></span> Solicitar cotización</a>
+            <a href="{!! route('quote') !!}" class="button btn-ciamsa"> <span class="icon-user" aria-hidden="true"></span> {!! trans('app.submit.quote') !!}</a>
 @endsection
 
 @section('content')

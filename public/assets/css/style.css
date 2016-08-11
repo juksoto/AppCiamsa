@@ -373,6 +373,10 @@ ul.list-icon-cultivo h3 {
   display: block;
   font-size: 0.6em;
 }
+.wrapper-app .bottom {
+  margin-top: 2em;
+  padding-bottom: 2em;
+}
 .wrapper-step .bottom {
   margin-top: 4em;
 }
@@ -391,16 +395,8 @@ ul.list-icon-cultivo h3 {
 .wrapper-step .logo {
   display: none;
 }
-.wrapper-step-one .bottom {
-  margin-top: 2em;
-  margin-bottom: 2em;
-}
 .wrapper-step-one .content {
   margin-top: 4em;
-}
-.wrapper-step-two .bottom {
-  margin-top: 2em;
-  margin-bottom: 2em;
 }
 .wrapper-step-two .content {
   margin-top: 2em;
@@ -474,10 +470,6 @@ ul.list-icon-cultivo h3 {
 }
 .wrapper-step-two .content .cultivo-3 a:hover p {
   color: #4fc1e9;
-}
-.wrapper-step-three .bottom {
-  margin-top: 2em;
-  padding-bottom: 2em;
 }
 .wrapper-step-three .content {
   padding-top: 2em;
@@ -556,10 +548,6 @@ ul.list-icon-cultivo h3 {
   background: url("../img/bg_paper.png") no-repeat center top;
   height: 47.5em;
   margin-top: -1em;
-}
-.wrapper-cotizar .bottom {
-  margin-top: 2em;
-  margin-bottom: 2em;
 }
 .wrapper-cotizar .content {
   padding-top: 0.1em;
