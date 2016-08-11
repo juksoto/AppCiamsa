@@ -31,6 +31,7 @@ return [
         'fertilzer_description_three'   => ' son: ',
 
         'fertilizer_title'          => 'Fertilizantes para su cultivo',
+        'fertilizer_complements'    => 'Complementarios',
     ),
 
     'submit'  => array(

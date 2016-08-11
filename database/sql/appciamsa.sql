@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 11-08-2016 a las 00:55:00
+-- Tiempo de generación: 11-08-2016 a las 20:25:21
 -- Versión del servidor: 10.1.10-MariaDB
 -- Versión de PHP: 7.0.4
 
@@ -43,7 +43,7 @@ INSERT INTO `ciam_categories` (`id`, `category`, `image`, `active`, `created_at`
 (1, 'Forkamix', '', 1, '2016-08-09 21:41:02', '2016-08-09 21:41:02'),
 (2, 'Nutrikimia', '', 1, '2016-08-09 21:51:16', '2016-08-09 21:51:16'),
 (3, 'Simples', '', 1, '2016-08-09 22:09:29', '2016-08-09 22:09:29'),
-(4, 'Complementos', '', 1, '2016-08-09 22:09:42', '2016-08-09 22:09:42'),
+(4, 'Complementarios', '', 1, '2016-08-09 22:09:42', '2016-08-11 15:32:16'),
 (5, 'Nitroeffi', '', 1, '2016-08-09 22:14:39', '2016-08-09 22:14:39'),
 (6, 'Otros', '', 1, '2016-08-10 15:30:01', '2016-08-10 15:30:01');
 

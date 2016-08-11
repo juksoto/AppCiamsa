@@ -22,7 +22,7 @@
                     </span>
                     {{ trans('app.app.fertilizer_title') }}
                     <span class="textline">
-                        {{ trans('app.app.fertilzer_description_one') . $data -> type . trans('app.app.fertilzer_description_two') . $data -> stage . trans('app.app.fertilzer_description_three')  }}
+                        {{ trans('app.app.fertilzer_description_one') . $data -> type  }}<br> {{  trans('app.app.fertilzer_description_two') . $data -> stage . trans('app.app.fertilzer_description_three')  }}
                     </span>
                 </h2>
             </article>
@@ -31,15 +31,15 @@
     <!-- End  title -->
     <!-- content -->
     <section class="row content">
-
+        @include('core.stepThree.modal')
         <section class="small-12 medium-11 small-centered column text-center list-fertilizantes" >
             <ul class="row small-up-3 medium-up-5 list-fertilizantes" id="list-fertilizantes">
-                @forelse($data as $key => $value )
-                    <li class="column text-center etapa-{!! $data -> stage_id  !!} tipo-{!! $data -> type_id  !!}"  data-id="{!! $value['id'] !!}" data-etapa="{!! $data -> stage  !!}" data-tipo="{!! $data -> type !!}">
+                @forelse($data -> collections as $key => $value )
+                    <li class="column text-center"  data-id="{!! $value['id'] !!}" data-components="{!! $value['components']!!}" data-category = "{!! $value['category']!!}" data-category_slug="{!! $value['category_slug']!!}" data-image="{!! $value['image']!!}" data-product="{!! $value['product']!!}">
                         <a data-open="modalProductos" class="btnReferencia" >
                             <img src="{{asset('media/products/'. $value['category_slug'].'/'. $value['image'])}}" alt="{!! $value['category'] !!} {!! $value['product'] !!}">
                             <h4>
-                                {!! $value['category'] !!} {!! $value['product'] !!}
+                                {!! $value['category'] !!} <span>{!! $value['product'] !!} </span>
                             </h4>
                         </a>
                     </li>
@@ -59,6 +59,31 @@
             </ul>
         </section>
     </section>
+
+    @if (isset($data -> complements))
+        <section class="row content">
+            <section class="small-12 medium-11 small-centered column text-center list-complements" >
+                <section class="small-12 text-center">
+                    <h3>
+                        {{ trans('app.app.fertilizer_complements') }}
+                    </h3>
+                </section>
+
+                <ul class="row small-up-3 medium-up-5 list-complements" id="list-complements">
+                    @foreach($data -> complements as $key => $value )
+                        <li class="column text-center"  data-id="{!! $value['id'] !!}" data-components="{!! $value['components']!!}" data-category = "none" data-category_slug="{!! $value['category_slug']!!}" data-image="{!! $value['image']!!}" data-product="{!! $value['product']!!}">
+                            <a data-open="modalProductos" class="btnReferencia" >
+                                <img src="{{asset('media/products/'. $value['category_slug'].'/'. $value['image'])}}" alt="{!! $value['category'] !!} {!! $value['product'] !!}">
+                                <h4>
+                                   {!! $value['product'] !!}
+                                </h4>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </section>
+        </section>
+    @endif
     <!-- End  content -->
 @endsection
 
@@ -79,6 +104,30 @@
                 $(elemento).delay(duracion).animate({ marginTop: "5px", opacity:"1"},1000);
             });
         }
+    </script>
+
+    <script>
+        var $modal = $('#modalProductos');
+        $('.btnReferencia').click(function (e) {
+            e.preventDefault();
+            $("#response-modalProductos").html("<p>Buscando...</p>");
+
+            var row = $(this).parents('li');
+            var id = row.data('id');
+            var components = row.data('components');
+            var category_slug = row.data('category_slug');
+            var category = row.data('category');
+            if (category == 'none') {  category = "";        }
+            var product = row.data('product');
+            var image = row.data('image');
+
+            $url        = "{{ asset('media/products/')}}" +  "/"  + category_slug +  "/" + image;
+            $urlComp    = "{{ asset('media/products/')}}" +  "/"  + category_slug + "/"  + components;
+            $('#modalProductos #img_referencia').html("<img src ='" + $url + "' alt='"+image +"'  /> " );
+            $('#modalProductos #img_referencia_componentes').html("<h3 class='text-small-only-center' id ='titleModalComponents'>"+ category + " " + product +" </h3> <img src ='" + $urlComp +"' alt='' />"  );
+            if (category == '') {  $("#titleModalComponents").addClass('titleComponents');        }
+
+        });
     </script>
 
     {{-- SCRIPTS MODAL --}}

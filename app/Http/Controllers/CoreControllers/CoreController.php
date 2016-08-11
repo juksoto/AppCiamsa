@@ -43,41 +43,68 @@ class CoreController extends Controller
 
     public function stepThree($id)
     {
+        $data = new \stdClass();
+
         // Buscamos el id de la etapa de cultivo que selecciono
         $stage = CiamCropsStage::where('id',$id)
             -> active(1)
             -> with('type')
             -> first();
 
-        // En la tabla de relacion, buscamos todos los
+        // En la tabla de relacion, buscamos todos los productos de esta etapa.
         $relations = CiamTypeStageProducts::where('crops_stage_id' ,$stage -> id )
             -> where('crops_type_id' , $stage -> type_id )
             -> where ('active' , 1 )
             -> get();
 
         $collections = collect();
+        $complements = collect();
+
+        /**
+         * Vamos producto por producto y buscamos la informacion de la categoria y
+           todo lo guardamos en una sola coleccion que enviamos a la vista,
+         */
 
         foreach ($relations as $relation) {
             // Buscamos los productos
             $products = collect(CiamProducts::find($relation -> product_id));
 
-            $category = CiamProductCategories::find($products['category_id']);
+            // Si la categoria es diferente a la 4 que es los complementarios
+            if($products['category_id'] != 4)
+            {
+                $category = CiamProductCategories::find($products['category_id']);
+                //Buscamos info del tipo de cutlivo
+                $merged = $products -> merge([
+                    "category"      => $category -> category,
+                    "category_slug" => str_slug($category -> category)
+                ]);
 
-            //Buscamos info del tipo de cutlivo
-            $merged = $products -> merge([
-                "category"      => $category -> category,
-                "category_slug" => str_slug($category -> category)
-            ]);
+                $collections -> push($merged);
+            }
+            else
+            {
+                // Productos complementarios
+                $category = CiamProductCategories::find($products['category_id']);
+                //Buscamos info del tipo de cutlivo
+                $merged = $products -> merge([
+                    "category"      => $category -> category,
+                    "category_slug" => str_slug($category -> category)
+                ]);
 
-            $collections -> push($merged);
+                $complements -> push($merged);
+                $data -> complements = $complements;
+            }
+
         }
 
-        $collections -> type_id     = $stage -> type -> id;
-        $collections -> type        = $stage -> type -> crops;
-        $collections -> stage       = $stage -> stage;
-        $collections -> stage_id    = $stage -> id;
+        $data -> type_id     = $stage -> type -> id;
+        $data -> type        = $stage -> type -> crops;
+        $data -> stage       = $stage -> stage;
+        $data -> stage_id    = $stage -> id;
 
-        $data = $collections;
+        $data -> collections = $collections;
+
+
         return view( 'core.stepThree' , compact('data') );
     }
 }

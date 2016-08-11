@@ -332,22 +332,20 @@ ul.list-icon-cultivo h3 {
   padding: 0.5em;
   margin-top: 0em;
   margin-bottom: 0.5em;
-}
-.modal-content h3.etapa-1 {
   background: #e9573f;
 }
-.modal-content h3.etapa-2 {
-  background: #5d3f6a;
-}
-.modal-content h3.etapa-3 {
-  background: #70a53b;
-}
-.modal-content h3.etapa-4 {
-  background: #3bafda;
+.modal-content h3.titleComponents {
+  background: #007736 !important;
 }
 .reveal {
   -webkit-border-radius: 1em;
   border-radius: 1em;
+}
+.wrapper-app {
+  background: url("../img/bg_sky.jpg") no-repeat #fff top center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
 }
 .wrapper-app .btn-header a {
   margin: 0.5em 0.2em;
@@ -375,12 +373,6 @@ ul.list-icon-cultivo h3 {
   display: block;
   font-size: 0.6em;
 }
-.wrapper-step {
-  background: url("../img/bg_sky.jpg") no-repeat #fff top center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-}
 .wrapper-step .bottom {
   margin-top: 4em;
 }
@@ -399,24 +391,12 @@ ul.list-icon-cultivo h3 {
 .wrapper-step .logo {
   display: none;
 }
-.wrapper-step-one {
-  background: url("../img/bg_sky.jpg") no-repeat #fff top center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-}
 .wrapper-step-one .bottom {
   margin-top: 2em;
   margin-bottom: 2em;
 }
 .wrapper-step-one .content {
   margin-top: 4em;
-}
-.wrapper-step-two {
-  background: url("../img/bg_sky.jpg") no-repeat #fff top center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
 }
 .wrapper-step-two .bottom {
   margin-top: 2em;
@@ -495,20 +475,12 @@ ul.list-icon-cultivo h3 {
 .wrapper-step-two .content .cultivo-3 a:hover p {
   color: #4fc1e9;
 }
-.wrapper-step-three {
-  background: url("../img/bg_madera.jpg") repeat;
-}
-.wrapper-step-three .bg-paper {
-  background: url("../img/bg_paper.png") no-repeat center top;
-  height: 47.5em;
-  margin-top: -1em;
-}
 .wrapper-step-three .bottom {
   margin-top: 2em;
-  margin-bottom: 2em;
+  padding-bottom: 2em;
 }
 .wrapper-step-three .content {
-  padding-top: 0.1em;
+  padding-top: 2em;
 }
 .wrapper-step-three .list-filter {
   border-top: 2px dashed #70a53b;
@@ -519,10 +491,12 @@ ul.list-icon-cultivo h3 {
 .wrapper-step-three .list-filter .list-logo-products a.button {
   margin-top: 1em;
 }
-.wrapper-step-three .list-fertilizantes img {
+.wrapper-step-three .list-fertilizantes img,
+.wrapper-step-three .list-complements img {
   width: 60%;
 }
-.wrapper-step-three .list-fertilizantes h4 {
+.wrapper-step-three .list-fertilizantes h4,
+.wrapper-step-three .list-complements h4 {
   -webkit-border-radius: 1em;
   border-radius: 1em;
   color: #fff;
@@ -532,36 +506,39 @@ ul.list-icon-cultivo h3 {
   text-transform: uppercase;
 }
 .wrapper-step-three .list-fertilizantes li a:hover img,
-.wrapper-step-three .list-fertilizantes li a:hover h4 {
+.wrapper-step-three .list-complements li a:hover img,
+.wrapper-step-three .list-fertilizantes li a:hover h4,
+.wrapper-step-three .list-complements li a:hover h4 {
   -webkit-transform: scale(1.2, 1.2);
   -moz-transform: scale(1.2, 1.2);
   -o-transform: scale(1.2, 1.2);
   -ms-transform: scale(1.2, 1.2);
   transform: scale(1.2, 1.2);
 }
-.wrapper-step-three .list-fertilizantes li.etapa-1 h4 {
-  background: #e9573f;
-}
-.wrapper-step-three .list-fertilizantes li.etapa-1 a:hover h4 {
+.wrapper-step-three .list-fertilizantes li h4,
+.wrapper-step-three .list-complements li h4 {
   background: #fc6e51;
 }
-.wrapper-step-three .list-fertilizantes li.etapa-2 h4 {
-  background: #5d3f6a;
+.wrapper-step-three .list-fertilizantes li a:hover h4,
+.wrapper-step-three .list-complements li a:hover h4 {
+  background: #e9573f;
 }
-.wrapper-step-three .list-fertilizantes li.etapa-2 a:hover h4 {
-  background: #41274c;
+.wrapper-step-three .list-fertilizantes li span,
+.wrapper-step-three .list-complements li span {
+  display: block;
 }
-.wrapper-step-three .list-fertilizantes li.etapa-3 h4 {
+.wrapper-step-three .list-complements h3 {
+  color: #70a53b;
+  line-height: 1;
+  padding: 0.5em;
+  text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
+  border-bottom: 1px solid #70a53b;
+}
+.wrapper-step-three ul.list-complements h4 {
+  background: #007736;
+}
+.wrapper-step-three ul.list-complements a:hover h4 {
   background: #70a53b;
-}
-.wrapper-step-three .list-fertilizantes li.etapa-3 a:hover h4 {
-  background: #b0c600;
-}
-.wrapper-step-three .list-fertilizantes li.etapa-4 h4 {
-  background: #3bafda;
-}
-.wrapper-step-three .list-fertilizantes li.etapa-4 a:hover h4 {
-  background: #4fc1e9;
 }
 .wrapper-cotizar {
   background: url("../img/bg_madera.jpg") repeat;

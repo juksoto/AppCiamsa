@@ -268,19 +268,16 @@ ul
 		padding 0.5em
 		margin-top 0em
 		margin-bottom 0.5em
-		&.etapa-1
-			background	colorBitterSweet2
-		&.etapa-2
-			background colorBellFlower1
-		&.etapa-3
-			background colorCiamsa2
-		&.etapa-4
-			background colorAqua2
+		background	colorBitterSweet2
+		&.titleComponents
+			background	colorCiamsa !important
 		
 .reveal
 	border-radius 1em
 	
 .wrapper-app
+	background url('../img/bg_sky.jpg') no-repeat white top center fixed
+	background-size cover
 	.btn-header
 		a
 			margin 0.5em 0.2em
@@ -304,8 +301,6 @@ ul
 					font-size 0.6em
 					
 .wrapper-step
-	background url('../img/bg_sky.jpg') no-repeat white top center fixed
-	background-size cover
 	.bottom
 		margin-top 4em
 	.content
@@ -319,16 +314,12 @@ ul
 	.logo
 		display none
 .wrapper-step-one
-	background url('../img/bg_sky.jpg') no-repeat white top center fixed
-	background-size cover
 	.bottom
 		margin-top 2em
 		margin-bottom 2em
 	.content
 		margin-top 4em	
 .wrapper-step-two
-	background url('../img/bg_sky.jpg') no-repeat white top center fixed
-	background-size cover
 	.bottom
 		margin-top 2em
 		margin-bottom 2em
@@ -394,19 +385,12 @@ ul
 				p
 					color colorAqua1
 .wrapper-step-three
-	background url('../img/bg_madera.jpg') repeat
-	
-	.bg-paper
-		background url('../img/bg_paper.png') no-repeat center top
-		height 47.5em
-		margin-top -1em
-
 	.bottom
 		margin-top 2em
-		margin-bottom 2em
+		padding-bottom 2em
 		
 	.content
-		padding-top 0.1em
+		padding-top 2em
 
 	.list-filter
 		border-top 2px dashed colorCiamsa2
@@ -414,7 +398,7 @@ ul
 			margin-top 1em
 			a.button
 				margin-top 1em
-	.list-fertilizantes
+	.list-fertilizantes, .list-complements
 		img
 			width 60%
 		h4
@@ -429,30 +413,32 @@ ul
 			a:hover
 				img, h4
 					transform scale(1.2 ,1.2)
-			&.etapa-1
+			&
 				h4
-					background	colorBitterSweet2
+					background	colorBitterSweet1
 				a:hover
 					h4
-						background colorBitterSweet1
-			&.etapa-2
-				h4
-					background colorBellFlower1
-				a:hover
-					h4
-						background colorBellFlower2
-			&.etapa-3
-				h4
-					background colorCiamsa2
-				a:hover
-					h4
-						background colorCiamsa3
-			&.etapa-4
-				h4
-					background colorAqua2
-				a:hover
-					h4
-						background colorAqua1
+						background colorBitterSweet2
+				span 
+					display block
+	
+	.list-complements
+		h3
+			color colorCiamsa2
+			line-height 1
+			padding 0.5em
+			text-shadow -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white
+			border-bottom 1px solid colorCiamsa2
+			
+	ul.list-complements
+		h4
+			background	colorCiamsa
+		a:hover
+			h4
+				background	colorCiamsa2
+			
+			
+
 .wrapper-cotizar
 	background url('../img/bg_madera.jpg') repeat
 
