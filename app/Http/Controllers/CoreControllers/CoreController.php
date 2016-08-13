@@ -186,4 +186,8 @@ class CoreController extends Controller
         return response() -> json($productArray);
 
     }
+    public function createQuote(Request $request)
+    {
+        dd($request -> all());
+    }
 }

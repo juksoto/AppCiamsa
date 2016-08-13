@@ -85,7 +85,7 @@ Route::group(['prefix' => 'cotizar' , 'as' => 'quote'], function() {
 
     Route::match(array('GET', 'POST') ,'/', ['uses' => 'CoreControllers\CoreController@quote']);
 
-    Route::get('create', ['uses' => 'CoreControllers\CoreController@createQuote', 'as' => '.create']);
+    Route::post('create', ['uses' => 'CoreControllers\CoreController@createQuote', 'as' => '.create']);
 
     Route::get('showProducts/{stage}/{type}', ['uses' => 'CoreControllers\CoreController@showProducts', 'as' => '.showProducts']);
 

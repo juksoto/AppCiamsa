@@ -57,6 +57,8 @@
     </section>
 @endsection
 @section('scripts')
+    <script type="text/javascript" src="{{URL::asset('assets/js/validate/jquery.validate.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('assets/js/validate/validate.js')}}"></script>
 
     <script>
 
@@ -171,6 +173,105 @@
                 console.log('error');
             });
          }
+
+        /**
+         * Create news headquarter
+         * @return object DOM
+         */
+
+        function createTemplateCrops()
+        {
+
+            initNumPhone = 0;
+
+            var $cropSection = $('#wrapper-crops');
+            // get the last DIV which ID starts with ^= "headquarter_template_"
+            var $template = $('section[id^="template_wrapper_"]:last');
+
+            // Read the Number from that DIV's ID (i.e: 3 from "headquarter_template_3")
+            // And increment that number by 1
+            var num = parseInt( $template.prop("id").match(/\d+/g), 10 ) +1;
+
+            // Clone it and assign the new ID (i.e: from num 4 to ID "headquarter_template_4")
+            $sectionClone = $template.clone().prop('id', 'template_wrapper_' + num );
+
+            //Clone
+            $sectionClone.clone().appendTo($cropSection);
+
+            //Modify the attributes and class
+            setAttributeClone(num);
+        }
+
+          /**
+      * Modify all fields of the headquarter, except phone. For this function call createPhone
+      * @param  number numHeadquarter id headquarters where we will create new phones
+      */
+    function setAttributeClone(numCrop){
+
+
+         // Modify the id of the copy
+        templateCrop = '#template_wrapper_'+ numCrop;
+
+        // Modify Section Crops Type Select
+        cropsType = templateCrop +' select[id="crops_type_id_' + (numCrop - 1) + '"]';
+        $(cropsType).attr('name','crops_type_id_' + numCrop );
+        $(cropsType).attr('onchange','enableStage(' + numCrop + ',null)');
+        $(cropsType).attr('id','crops_type_id_' + numCrop );
+        $(cropsType).val('');
+
+        // Modify Crops Stage
+        cropsStage = templateCrop + ' select[id^="crops_stage_id_' + (numCrop - 1) + '"]';
+        $(cropsStage).empty();
+        $(cropsStage).attr('name','crops_stage_id_' + numCrop);
+        $(cropsStage).attr('onchange','enableProducts(' + numCrop + ',null)');
+        $(cropsStage).attr('id','crops_stage_id_' + numCrop);
+        $(cropsStage).val('');
+         $(cropsStage).prop("disabled", true);
+
+
+        // Modify Products
+        products = templateCrop + ' select[id^="product_id_' + (numCrop - 1) + '"]';
+        $(products).empty();
+        $(products).attr('name','product_id_' + numCrop);
+        $(products).attr('id','product_id_' + numCrop);
+        $(products).val('');
+        $(products).prop("disabled", true);
+
+        // Modify Complements
+        complements = templateCrop + ' select[id^="complements_id_' + (numCrop - 1) + '"]';
+        $(complements).empty();
+        $(complements).attr('name','complements_id_' + numCrop);
+        $(complements).attr('id','complements_id_' + numCrop);
+        $(complements).val('');
+        $(complements).prop("disabled", true);
+
+        // Modify Mezcla
+        mezcla = templateCrop + ' [id^="mezcla_medida_' + (numCrop - 1) + '"]';
+        $(mezcla).attr('name','mezcla_medida_' + numCrop);
+        $(mezcla).attr('id','mezcla_medida_' + numCrop);
+        $(mezcla).val('');
+
+        // Modify Label Mezcla
+        labelMezcla = templateCrop + ' [id^="labelMezcla_' + (numCrop - 1) + '"]';
+        console.log($(labelMezcla));
+        $(labelMezcla).attr('for','mezcla_medida_' + numCrop);
+        $(labelMezcla).attr('id','labelMezcla_' + numCrop);
+        $(labelMezcla).val('');
+
+         // Modify the attribute conClick of #remove_headquarter
+        $(templateCrop + ' #removeCrops').attr("onClick" , "removeCrops(" + numCrop + ")")
+
+        // Number of Headquarter
+         $('#total_crops').val(numCrop);
+
+    }
+
+     function removeCrops(idCrop)
+    {
+        wrapperCrops = "#template_wrapper_" + idCrop;
+        $(wrapperCrops).remove();
+    }
+
 
     </script>
 

@@ -7,8 +7,8 @@
         {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('app.message.enter_a_name') , 'required'])  !!}
         <span class="glyphicon glyphicon-ok form-control-feedback" id="name1"></span>
 
-        {!! Form::text('direccion', null, ['class' => 'form-control input-one' , 'placeholder' => trans('app.message.enter_a_name') , 'required'])  !!}
-        {!! Form::text('persona', 'ciamsa app', ['class' => 'form-control input-one', 'placeholder' => trans('app.message.enter_a_name') , 'required'])  !!}
+        {!! Form::text('direccion', null, ['class' => 'form-control input-one' , 'placeholder' => trans('app.message.enter_a_name')])  !!}
+        {!! Form::text('persona', 'ciamsa app', ['class' => 'form-control input-one', 'placeholder' => trans('app.message.enter_a_name')])  !!}
 
     </article>
 </section>
@@ -30,7 +30,7 @@
         {!! Form::label('company',trans('app.form.company'), ['class' => 'control-label'] ) !!}
     </article>
     <article class="small-8  medium-9 columns">
-        {!! Form::text('company', null, ['class' => 'form-control', 'placeholder' => trans('app.message.enter_a_company') , 'required'])  !!}
+        {!! Form::text('company', null, ['class' => 'form-control', 'placeholder' => trans('app.message.enter_a_company') ])  !!}
         <span class="glyphicon glyphicon-ok form-control-feedback" id="company1"></span>
     </article>
 </section>
@@ -79,7 +79,7 @@
         {!! Form::label('mobile',trans('app.form.mobile'), ['class' => 'control-label'] ) !!}
     </article>
     <article class="small-8  medium-9 columns">
-        {!! Form::text('mobile', null, ['class' => 'form-control', 'placeholder' => trans('app.message.enter_a_mobile') , 'required'])  !!}
+        {!! Form::text('mobile', null, ['class' => 'form-control', 'placeholder' => trans('app.message.enter_a_mobile') ])  !!}
         <span class="glyphicon glyphicon-ok form-control-feedback" id="company1"></span>
     </article>
 </section>
@@ -88,13 +88,18 @@
 <section class="wrapper-crops" id = "wrapper-crops">
     <!-- TEMPLATE -->
     <section id="template_wrapper_0">
+        <section class="row">
+            <section class="small-12 text-right column removeCrops" id="removeCrop">
+                <a href="#"  id="removeCrops" onclick="removeCrops()"><span class="icon-cancel-circle"></span></a>
+            </section>
+        </section>
         <!-- Tipo Cultivo -->
         <section class="row">
             <article class="small-4 medium-3 text-left columns">
                 {!! Form::label('crops_type_id',trans('app.form.type_crops'), ['class' => 'control-label'] ) !!}
             </article>
             <section class="small-8 medium-9 columns">
-                <select name="crops_type_id_0" id="crops_type_id_0" class = "form-control" required onchange="enableStage(0,null)">
+                <select name="crops_type_id_0" id="crops_type_id_0" class = "form-control"  onchange="enableStage(0,null)">
                     <option value="">{{ trans('app.message.select') }}</option>
                     @foreach($data -> allType as $type)
 
@@ -112,7 +117,7 @@
                 {!! Form::label('crops_stage_id',trans('app.form.stage_crops'), ['class' => 'control-label'] ) !!}
             </article>
             <section class="small-8 medium-9 columns">
-                <select name="crops_stage_id_0" id="crops_stage_id_0" class = "form-control" required @if ($data -> stageEnabled == false) disabled @endif  onchange="enableProducts(0,null)" >
+                <select name="crops_stage_id_0" id="crops_stage_id_0" class = "form-control"  @if ($data -> stageEnabled == false) disabled @endif  onchange="enableProducts(0,null)" >
                     <option value="">{{ trans('app.message.select') }}</option>
                     @foreach($data -> allStage as $stage)
                         <option name="select_type" value="{!!$stage -> id !!}">
@@ -128,7 +133,7 @@
                 {!! Form::label('product_id',trans('app.form.product'), ['class' => 'control-label'] ) !!}
             </article>
             <article class="small-8 medium-9 columns">
-                <select name="product_id_0" id="product_id_0" class = "form-control" required @if ($data -> productEnabled == false) disabled @endif>
+                <select name="product_id_0" id="product_id_0" class = "form-control"  @if ($data -> productEnabled == false) disabled @endif>
                     <option value="">{{ trans('app.message.select') }}</option>
                     @foreach($data -> products as $product)
                         <option name="select_type" value="{!!$product -> id !!}">
@@ -144,7 +149,7 @@
                 {!! Form::label('complements_id',trans('app.form.complements'), ['class' => 'control-label'] ) !!}
             </article>
             <article class="small-8 medium-9 columns">
-                <select name="complements_id_0" id="complements_id_0" class = "form-control" required @if ($data -> complementsEnabled == false) disabled @endif>
+                <select name="complements_id_0" id="complements_id_0" class = "form-control"  @if ($data -> complementsEnabled == false) disabled @endif>
                     <option value="">{{ trans('app.message.select') }}</option>
                     @foreach($data -> complements as $complement)
                         <option name="select_type" value="{!!$complement -> id !!}">
@@ -160,7 +165,7 @@
                 {!! Form::checkbox('mezcla_medida_0', 'si' , null, ['class' => 'form-control' , 'id' => 'mezcla_medida_0']) !!}
             </article>
             <article class="small-8  medium-9 columns text-medium-left text-small-only-center">
-                {!! Form::label('mezcla_medida_0',trans('app.form.forkamix'), ['class' => 'control-label'] ) !!}
+                {!! Form::label('mezcla_medida_0',trans('app.form.forkamix'), ['class' => 'control-label', 'id' =>"labelMezcla_0"] ) !!}
             </article>
         </section>
         <!-- End Forkamix a la medida -->
@@ -171,10 +176,12 @@
 <!-- END WRAPPER CROPS -->
 <section class="row">
     <section class="small-12 columns text-center addProducts">
-        <a href="#" class="button btn-aqua">
+        <a href="#" class="button btn-aqua" onclick="createTemplateCrops()">
             <span class="icon-plus" style="font-size: 0.8em"></span>  {!! trans('app.submit.add_product') !!}
         </a>
     </section>
+    {!! Form::hidden('total_crops',null, ['id' => 'total_crops']) !!}
+
 </section>
 <!-- Mensaje -->
 <section class="row">
@@ -189,7 +196,7 @@
 <!-- Mensaje -->
 <section class="row">
     <article class="small-12 columns">
-        {!! Form::submit(trans('app.submit.quote') , ['class' => 'button btn-grapefruit']) !!}
+        {!! Form::submit(trans('app.submit.quote') , ['class' => 'button btn-grapefruit' , 'id' => 'send-form']) !!}
     </article>
 </section>
 <!-- End Mensaje -->

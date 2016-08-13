@@ -549,6 +549,7 @@ ul.list-icon-cultivo h3 {
 .wrapper-cotizar input[type='text'],
 .wrapper-cotizar input[type='email'] {
   height: 2rem !important;
+  border-color: #aab2bd;
 }
 .wrapper-cotizar input[type="checkbox"] {
   height: 1.1rem;
@@ -571,6 +572,26 @@ ul.list-icon-cultivo h3 {
 }
 .wrapper-cotizar .addProducts {
   margin: 1em 0;
+}
+.wrapper-cotizar section #template_wrapper_0 span {
+  display: none;
+}
+.wrapper-cotizar section[id^='template_wrapper_'] {
+  margin-top: 1em;
+}
+.wrapper-cotizar section[id^='template_wrapper_'] span {
+  cursor: pointer;
+}
+.wrapper-cotizar .removeCrops a {
+  color: #da4453;
+}
+.wrapper-cotizar .help-block {
+  color: #da4453;
+  padding-bottom: 0.5em;
+  margin-top: -1em;
+}
+.wrapper-cotizar .error-input {
+  border-color: #da4453 !important;
 }
 .color-white {
   color: #fff !important;
