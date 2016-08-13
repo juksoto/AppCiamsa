@@ -73,7 +73,7 @@ Route::get('etapa-cultivo/{id}',
 );
 
 //Step three
-Route::get('fertilizantes/{id}',
+Route::get('fertilizantes/{type}/{stage}',
     [
         'uses' => 'CoreControllers\CoreController@stepThree',
         'as'   => 'stepThree',
@@ -83,8 +83,10 @@ Route::get('fertilizantes/{id}',
 //Quote
 Route::group(['prefix' => 'cotizar' , 'as' => 'quote'], function() {
 
-    Route::get('/', ['uses' => 'CoreControllers\CoreController@quote']);
+    Route::match(array('GET', 'POST') ,'/', ['uses' => 'CoreControllers\CoreController@quote']);
 
     Route::get('create', ['uses' => 'CoreControllers\CoreController@createQuote', 'as' => '.create']);
+
+    Route::get('showProducts/{stage}/{type}', ['uses' => 'CoreControllers\CoreController@showProducts', 'as' => '.showProducts']);
 
 });

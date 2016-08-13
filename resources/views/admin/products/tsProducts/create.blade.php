@@ -37,5 +37,5 @@
 
 @section('scripts')
     @include('admin.products.tsProducts.partials.scripts')
-    <script tsCrop="text/javascript" src="{{URL::asset('admin/js/custom/custom.js')}}"></script>
+    <script text="text/javascript" src="{{URL::asset('admin/js/custom/custom.js')}}"></script>
 @endsection

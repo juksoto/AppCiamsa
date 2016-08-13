@@ -7,7 +7,7 @@
     @endsection
     @section('nav')
         <a href="{{ route('index')}}" class="button btn-sunflower"> <span class="icon-home" aria-hidden="true"></span> {{ trans('app.submit.home') }}</a>
-        <a href="{{ route('stepTwo' , $data -> type_id) }}"  class="button btn-aqua"> <span class="icon-back" aria-hidden="true" style="padding-top:5px"></span> {{ trans('app.submit.back') }}</a>
+        <a href="{{ route('stepOne') }}"  class="button btn-aqua"> <span class="icon-back" aria-hidden="true" style="padding-top:5px"></span> {{ trans('app.submit.back') }}</a>
         <a href="{!! route('quote') !!}" class="button btn-ciamsa"> <span class="icon-user" aria-hidden="true"></span> {!! trans('app.submit.quote') !!}</a>
     @endsection
 
@@ -36,7 +36,7 @@
             <ul class="row small-up-1 medium-up-{!! $data -> cantType !!}  list-image-cultivo" id="list-image-cultivo">
                 @forelse($data as $key => $value)
                     <li class ="column text-center cultivo-{!! $key !!}"  >
-                        <a href="{{ route('stepThree', $value -> id) }}">
+                        <a href="{{ route('stepThree', [ $value -> type_id, $value -> id, ]) }}">
                             <img src="{!! asset( 'media/stage-crops/'. $value -> image )!!}" alt="" >
                             <h3>
                                 {!! $value -> stage !!}
@@ -70,7 +70,7 @@
 
 @section('bottom')
     <section class="small-12 column text-center">
-        <a href="cotizar.php">
+        <a href="{!! route('quote') !!}">
             <img data-interchange="[{{asset('images/ads/solucion-uan-m.jpg')}} , small], [{{asset('images/ads/solucion-uan-m.jpg')}} , medium], [{{asset('images/ads/solucion-uan.jpg,')}} large ]"  alt="Solucion UAN" >
         </a>
     </section>

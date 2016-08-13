@@ -8,7 +8,7 @@
 @section('nav')
     <a href="{{ route('index')}}" class="button btn-sunflower"> <span class="icon-home" aria-hidden="true"></span> {{ trans('app.submit.home') }}</a>
     <a href="{{ route('stepTwo' , $data -> type_id) }}"  class="button btn-aqua"> <span class="icon-back" aria-hidden="true" style="padding-top:5px"></span> {{ trans('app.submit.back') }}</a>
-    <a href="{!! route('quote') !!}" class="button btn-ciamsa"> <span class="icon-user" aria-hidden="true"></span> {!! trans('app.submit.quote') !!}</a>
+    <a href="#" class="button btn-ciamsa" onclick="submitForm()"> <span class="icon-user" aria-hidden="true"></span> {!! trans('app.submit.quote') !!}</a>
     @endsection
 
     @section('content')
@@ -36,7 +36,7 @@
             <ul class="row small-up-3 medium-up-5 list-fertilizantes" id="list-fertilizantes">
                 @forelse($data -> collections as $key => $value )
                     <li class="column text-center"  data-id="{!! $value['id'] !!}" data-components="{!! $value['components']!!}" data-category = "{!! $value['category']!!}" data-category_slug="{!! $value['category_slug']!!}" data-image="{!! $value['image']!!}" data-product="{!! $value['product']!!}">
-                        <a data-open="modalProductos" class="btnReferencia" >
+                        <a data-open="modalProductos" class="btnReferencia" onclick="idProduct(this)">
                             <img src="{{asset('media/products/'. $value['category_slug'].'/'. $value['image'])}}" alt="{!! $value['category'] !!} {!! $value['product'] !!}">
                             <h4>
                                 {!! $value['category'] !!} <span>{!! $value['product'] !!} </span>
@@ -72,7 +72,7 @@
                 <ul class="row small-up-3 medium-up-5 list-complements" id="list-complements">
                     @foreach($data -> complements as $key => $value )
                         <li class="column text-center"  data-id="{!! $value['id'] !!}" data-components="{!! $value['components']!!}" data-category = "none" data-category_slug="{!! $value['category_slug']!!}" data-image="{!! $value['image']!!}" data-product="{!! $value['product']!!}">
-                            <a data-open="modalProductos" class="btnReferencia" >
+                            <a data-open="modalProductos" class="btnReferencia" onclick="idProduct(this)" >
                                 <img src="{{asset('media/products/'. $value['category_slug'].'/'. $value['image'])}}" alt="{!! $value['category'] !!} {!! $value['product'] !!}">
                                 <h4>
                                    {!! $value['product'] !!}
@@ -83,13 +83,19 @@
                 </ul>
             </section>
         </section>
+
     @endif
     <!-- End  content -->
+        {!! Form::open(['route' => ['quote', ], 'method' => 'POST', 'class' => '' , 'id' => 'form-product-id'])!!}
+        {!! Form::hidden('product_id_text',0, ['id' => 'product_id_text']) !!}
+        {!! Form::hidden('type',$data -> type_id) !!}
+        {!! Form::hidden('stage',$data -> stage_id) !!}
+        {!! Form::close()!!}
 @endsection
 
 @section('bottom')
     <section class="small-12 column text-center">
-        <a href="cotizar.php">
+        <a  href="{!! route('quote') !!}">
             <img data-interchange="[{{asset('images/ads/nitroeffi-m.jpg')}} , small], [{{asset('images/ads/nitroeffi-m.jpg')}} , medium], [{{asset('images/ads/nitroeffi.jpg')}}, large]"  alt="Solucion UAN" >
         </a>
     </section>
@@ -104,6 +110,25 @@
                 $(elemento).delay(duracion).animate({ marginTop: "5px", opacity:"1"},1000);
             });
         }
+
+        {{--
+        * Enviamos el id usando un formulario con el metodo post. Cada vez que seleccione un producto cambia el valor
+        a enviar con el formulario.
+        --}}
+        function idProduct(element)
+        {
+            var row = $(element).parents('li');
+            var id = row.data('id');
+            $('#product_id_text').val(id);
+        }
+
+        function submitForm()
+        {
+           $('#form-product-id').submit();
+        }
+
+
+
     </script>
 
     <script>

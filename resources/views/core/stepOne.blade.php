@@ -55,7 +55,7 @@
 
 @section('bottom')
     <section class="small-12 column text-center">
-        <a href="cotizar.php">
+        <a href="{!! route('quote') !!}">
             <img data-interchange="[{{asset('images/ads/forkamix-mezclas-medidas-m.jpg')}}, small], [{{asset('images/ads/forkamix-mezclas-medidas-m.jpg') }}, medium], [{{asset('images/ads/forkamix-mezclas-medidas.jpg') }}, large]"  alt="Forkamix a la medida" >
         </a>
     </section>

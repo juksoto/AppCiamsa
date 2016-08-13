@@ -86,66 +86,96 @@
 <!-- End Celular -->
 <!-- WRAPPER CROPS -->
 <section class="wrapper-crops" id = "wrapper-crops">
-    <!-- Tipo Cultivo -->
-    <section class="row">
-        <article class="small-4 medium-3 text-left columns">
-            {!! Form::label('crops_type_id',trans('app.form.type_crops'), ['class' => 'control-label'] ) !!}
-        </article>
-        <section class="small-8 medium-9 columns">
-            <select name="crops_type_id" id="crops_type_id" class = "form-control" required>
-                <option value="">{{ trans('app.message.select') }}</option>
-                @foreach($data -> allType as $type)
-                    <option name="select_type" value="{!!$type -> id !!}">
-                        {!! $type -> crops !!}</option>
-                @endforeach
-            </select>
+    <!-- TEMPLATE -->
+    <section id="template_wrapper_0">
+        <!-- Tipo Cultivo -->
+        <section class="row">
+            <article class="small-4 medium-3 text-left columns">
+                {!! Form::label('crops_type_id',trans('app.form.type_crops'), ['class' => 'control-label'] ) !!}
+            </article>
+            <section class="small-8 medium-9 columns">
+                <select name="crops_type_id_0" id="crops_type_id_0" class = "form-control" required onchange="enableStage(0,null)">
+                    <option value="">{{ trans('app.message.select') }}</option>
+                    @foreach($data -> allType as $type)
+
+
+                        <option name="select_type" value="{!!$type -> id !!}"  @if (isset($data -> idType) and ($data -> idType == $type -> id)) selected @endif >
+                            {!! $type -> crops !!}</option>
+                    @endforeach
+                </select>
+            </section>
         </section>
-    </section>
-    <!-- End Tipo Cultivo -->
-    <!-- Etapa del cutltivo -->
-    <section class="row">
-        <article class="small-4 medium-3 text-left columns">
-            {!! Form::label('crops_stage_id',trans('app.form.stage_crops'), ['class' => 'control-label'] ) !!}
-        </article>
-        <section class="small-8 medium-9 columns">
-            <select name="crops_stage_id" id="crops_stage_id" class = "form-control" required @if ($data -> stageEnabled == false) disabled @endif>
-                <option value="">{{ trans('app.message.select') }}</option>
-                @foreach($data -> allStage as $stage)
-                    <option name="select_type" value="{!!$stage -> id !!}">
-                        {!! $stage -> stage !!}</option>
-                @endforeach
-            </select>
+        <!-- End Tipo Cultivo -->
+        <!-- Etapa del cutltivo -->
+        <section class="row">
+            <article class="small-4 medium-3 text-left columns">
+                {!! Form::label('crops_stage_id',trans('app.form.stage_crops'), ['class' => 'control-label'] ) !!}
+            </article>
+            <section class="small-8 medium-9 columns">
+                <select name="crops_stage_id_0" id="crops_stage_id_0" class = "form-control" required @if ($data -> stageEnabled == false) disabled @endif  onchange="enableProducts(0,null)" >
+                    <option value="">{{ trans('app.message.select') }}</option>
+                    @foreach($data -> allStage as $stage)
+                        <option name="select_type" value="{!!$stage -> id !!}">
+                            {!! $stage -> stage !!}</option>
+                    @endforeach
+                </select>
+            </section>
         </section>
+        <!-- End Etapa del cutltivo -->
+        <!-- Producto -->
+        <section class="row">
+            <article class="small-4 medium-3 text-left columns">
+                {!! Form::label('product_id',trans('app.form.product'), ['class' => 'control-label'] ) !!}
+            </article>
+            <article class="small-8 medium-9 columns">
+                <select name="product_id_0" id="product_id_0" class = "form-control" required @if ($data -> productEnabled == false) disabled @endif>
+                    <option value="">{{ trans('app.message.select') }}</option>
+                    @foreach($data -> products as $product)
+                        <option name="select_type" value="{!!$product -> id !!}">
+                            {!! $product -> product !!}</option>
+                    @endforeach
+                </select>
+            </article>
+        </section>
+        <!-- End Producto -->
+        <!-- Complements -->
+        <section class="row">
+            <article class="small-4 medium-3 text-left columns">
+                {!! Form::label('complements_id',trans('app.form.complements'), ['class' => 'control-label'] ) !!}
+            </article>
+            <article class="small-8 medium-9 columns">
+                <select name="complements_id_0" id="complements_id_0" class = "form-control" required @if ($data -> complementsEnabled == false) disabled @endif>
+                    <option value="">{{ trans('app.message.select') }}</option>
+                    @foreach($data -> complements as $complement)
+                        <option name="select_type" value="{!!$complement -> id !!}">
+                            {!! $complement -> product !!}</option>
+                    @endforeach
+                </select>
+            </article>
+        </section>
+        <!-- End Complements -->
+        <!-- Forkamix a la medida -->
+        <section class="row">
+            <article class="small-4 medium-3 columns text-medium-right text-small-only-center">
+                {!! Form::checkbox('mezcla_medida_0', 'si' , null, ['class' => 'form-control' , 'id' => 'mezcla_medida_0']) !!}
+            </article>
+            <article class="small-8  medium-9 columns text-medium-left text-small-only-center">
+                {!! Form::label('mezcla_medida_0',trans('app.form.forkamix'), ['class' => 'control-label'] ) !!}
+            </article>
+        </section>
+        <!-- End Forkamix a la medida -->
     </section>
-    <!-- End Etapa del cutltivo -->
-    <!-- Producto -->
-    <section class="row">
-        <article class="small-4 medium-3 text-left columns">
-            {!! Form::label('product_id',trans('app.form.product'), ['class' => 'control-label'] ) !!}
-        </article>
-        <article class="small-8 medium-9 columns">
-            <select name="product_id" id="product_id" class = "form-control" required @if ($data -> productEnabled == false) disabled @endif>
-                <option value="">{{ trans('app.message.select') }}</option>
-                @foreach($data -> products as $product)
-                    <option name="select_type" value="{!!$product -> id !!}">
-                        {!! $product -> product !!}</option>
-                @endforeach
-            </select>
-        </article>
-    </section>
-    <!-- End Producto -->
-    <!-- Forkamix a la medida -->
-    <section class="row">
-        <article class="small-4 medium-3 columns text-medium-right text-small-only-center">
-            {!! Form::checkbox('mezcla_medida', 'si' , ['class' => 'form-control']) !!}
-        </article>
-        <article class="small-8  medium-9 columns text-medium-left text-small-only-center">
-            {!! Form::label('mezcla_medida',trans('app.form.forkamix'), ['class' => 'control-label'] ) !!}
-        </article>
-    </section>
-    <!-- End Forkamix a la medida -->
+    <!-- end template-->
+
 </section>
 <!-- END WRAPPER CROPS -->
+<section class="row">
+    <section class="small-12 columns text-center addProducts">
+        <a href="#" class="button btn-aqua">
+            <span class="icon-plus" style="font-size: 0.8em"></span>  {!! trans('app.submit.add_product') !!}
+        </a>
+    </section>
+</section>
 <!-- Mensaje -->
 <section class="row">
     <article class="small-12 columns text-left">
@@ -159,7 +189,7 @@
 <!-- Mensaje -->
 <section class="row">
     <article class="small-12 columns">
-        {!! Form::submit(trans('app.submit.quote') , ['class' => 'button']) !!}
+        {!! Form::submit(trans('app.submit.quote') , ['class' => 'button btn-grapefruit']) !!}
     </article>
 </section>
 <!-- End Mensaje -->

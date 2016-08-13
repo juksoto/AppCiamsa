@@ -9,7 +9,7 @@
             </article>
             <section class="row">
                 <article class="small-12 small-centered column text-center">
-                    <a href="cotizar.php" class="button btn-grapefruit">
+                    <a  href="#"  class="button btn-grapefruit" onclick="submitForm()">
                         <span class="icon-information"></span> Solicitar cotización
                     </a>
                 </article>

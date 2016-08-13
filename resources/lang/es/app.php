@@ -55,7 +55,7 @@ return [
         'forkamix'          => 'Deseo Forkamix mezcla a la medida',
         'information'       => 'Información adicional',
         'product'           => 'Productos',
-        'product'           => 'Productos',
+        'complements'       => 'Complementarios',
         
     ),
     'message'  => array(
@@ -71,7 +71,9 @@ return [
     'submit'  => array(
         'back'              => 'Regresar',
         'home'              => 'Inicio',
-        'quote'             => 'Solicitar Cotización'
+        'quote'             => 'Solicitar Cotización',
+        'add_product'       => 'Agregar otro producto',
+        
     ),
 
 ];
