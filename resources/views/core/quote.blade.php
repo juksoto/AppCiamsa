@@ -32,6 +32,11 @@
                 <!-- End  title -->
             </section>
             <!-- END CONTENT -->
+            <section class="row">
+                <section class="small-12 column">
+                    @include('core.partials.message')
+                </section>
+            </section>
             <!-- FORM -->
             <section class="row form-cotizar text-center">
                 <section class="small-12 medium-8 columns medium-centered">
@@ -118,7 +123,6 @@
                     if ((element['id'] == productID))
                     {
                         selectItem = "selected";
-                        console.log(element['id'])
                     }
                     if (element['category_id'] != 4)
                     {

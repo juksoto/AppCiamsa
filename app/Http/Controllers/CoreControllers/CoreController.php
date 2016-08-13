@@ -2,28 +2,46 @@
 
 namespace App\Http\Controllers\CoreControllers;
 
-use Ciamsa\Core\Entities\Crops\CiamCropsType;
-use Ciamsa\Core\Entities\Crops\CiamCropsStage;
-use Ciamsa\Core\Entities\Products\CiamProductCategories;
-use Ciamsa\Core\Entities\Products\CiamProducts;
-use Ciamsa\Core\Entities\Registers\CiamDepartments;
-use Ciamsa\Core\Entities\Relations\CiamTypeStageProducts;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Routing\Route;
 use App\Http\Requests;
+use App\Http\Requests\CreateRegisterRequest;
+use Ciamsa\Core\Entities\CiamRegister;
+use Ciamsa\Core\Entities\Crops\CiamCropsStage;
+use Ciamsa\Core\Entities\Crops\CiamCropsType;
+use Ciamsa\Core\Repositories\RegisterRepo;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 
 class CoreController extends Controller
 {
+    public function __construct()
+    {
+    }
+
+    /**
+     * @return mixed
+     * [description] Index de la app
+     */
     public function index()
     {
         return view( 'core.index' );
     }
+
+    /**
+     * @return mixed
+     * * [description] Paso 01
+     */
     public function stepOne()
     {
         $data = CiamCropsType::where('active' , 1) -> get();
         return view( 'core.stepOne' , compact('data') );
     }
+
+    /**
+     * @param $id
+     * @return mixed
+     * * [description] Paso 02
+     */
     public function stepTwo($id)
     {
 
@@ -41,153 +59,57 @@ class CoreController extends Controller
         return view( 'core.stepTwo' , compact('data') );
     }
 
+    /**
+     * @param $typeID
+     * @param $stageID
+     * @return mixed
+     * * [description] Paso 03
+     */
+
     public function stepThree($typeID,$stageID)
     {
-        $data = new \stdClass();
-
-        // Buscamos el id de la etapa de cultivo que selecciono
-        $stage = CiamCropsStage::where('id',$stageID)
-            -> active(1)
-            -> with('type')
-            -> first();
-
-        // En la tabla de relacion, buscamos todos los productos de esta etapa.
-        $relations = CiamTypeStageProducts::where('crops_stage_id' ,$stageID )
-            -> where('crops_type_id' ,$typeID )
-            -> where ('active' , 1 )
-            -> get();
-
-        $collections = collect();
-        $complements = collect();
-
-        /**
-         * Vamos producto por producto y buscamos la informacion de la categoria y
-           todo lo guardamos en una sola coleccion que enviamos a la vista,
-         */
-
-        foreach ($relations as $relation) {
-            // Buscamos los productos
-            $products = collect(CiamProducts::find($relation -> product_id));
-
-            // Si la categoria es diferente a la 4 que es los complementarios
-            if($products['category_id'] != 4)
-            {
-                $category = CiamProductCategories::find($products['category_id']);
-                //Buscamos info del tipo de cutlivo
-                $merged = $products -> merge([
-                    "category"      => $category -> category,
-                    "category_slug" => str_slug($category -> category)
-                ]);
-
-                $collections -> push($merged);
-            }
-            else
-            {
-                // Productos complementarios
-                $category = CiamProductCategories::find($products['category_id']);
-                //Buscamos info del tipo de cutlivo
-                $merged = $products -> merge([
-                    "category"      => $category -> category,
-                    "category_slug" => str_slug($category -> category)
-                ]);
-
-                $complements -> push($merged);
-                $data -> complements = $complements;
-            }
-
-        }
-
-        $data -> type_id     = $typeID;
-        $data -> type        = $stage -> type -> crops;
-        $data -> stage       = $stage -> stage;
-        $data -> stage_id    = $stageID;
-
-        $data -> collections = $collections -> sortBy('category_id');
+        $stepThree = new RegisterRepo();
+        $data = $stepThree -> stepThree($stageID, $typeID);
 
         return view( 'core.stepThree' , compact('data') );
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     * [description] Formulario de cotizar. Llama el layout y todas sus funciones.
+     */
+
     public function quote(Request $request)
     {
-        $data           = new \stdClass();
-        $allType        = CiamCropsType::where('active', 1 ) -> get();
-        $allDepartment  = CiamDepartments::where('active', 1 ) -> get();
+        $registerRepo = new RegisterRepo();
+        $data = $registerRepo -> getQuote($request);
 
-        $allStage = CiamCropsStage::where('active', 1 ) -> get();
-        $products = CiamProducts::where('active',1) -> get();
-
-        $data -> allType        = $allType;
-        $data -> allStage       = $allStage;
-        $data -> products       = $data -> complements = $products;
-        $data -> allDepartments = $allDepartment;
-
-        $data -> stageEnabled = false;
-        $data -> productEnabled = false;
-        $data -> complementsEnabled = false;
-
-        $getType    =  $request -> get('type');
-        $getStage   =  $request -> get('stage');
-        $getProduct  =  $request -> get('product_id_text');
-
-        if ( isset($getType ) and isset($getStage ) )
-        {
-            $data -> idType     = $getType;
-            $data -> idStage    = $getStage;
-            if (isset($getProduct))
-            {
-                $data -> idProduct  = $getProduct;
-            }
-        }
-
-
-
-        return view( 'core.quote' , compact('data') );
+         return view( 'core.quote' , compact('data') );
     }
 
+    /**
+     * @param $stageID
+     * @param $typeID
+     * @return mixed
+     * [description] Muestra los productos en el formulario de cotizar
+     */
     public function showProducts($stageID, $typeID)
     {
-
-        // En la tabla de relacion, buscamos todos los productos de esta etapa.
-        $relations = CiamTypeStageProducts::where('crops_stage_id' ,$stageID )
-            -> where('crops_type_id' , $typeID)
-            -> where ('active' , 1 )
-            -> get();
-
-        $collections = collect();
-
-        /**
-         * Vamos producto por producto y buscamos la informacion de la categoria y
-        todo lo guardamos en una sola coleccion que enviamos a la vista,
-         */
-
-        foreach ($relations as $relation) {
-            // Buscamos los productos
-            $products = collect(CiamProducts::find($relation -> product_id));
-            $category = CiamProductCategories::find($products['category_id']);
-            //Buscamos info del tipo de cutlivo
-            $merged = $products -> merge([
-                "category"      => $category -> category,
-                "category_slug" => str_slug($category -> category)
-            ]);
-
-            $collections -> push($merged);
-        }
-
-        $productArray = Array();
-
-
-        foreach ($collections as $key => $collection) {
-            $productArray[$key]['id'] = $collection['id'];
-            $productArray[$key]['product'] = $collection['product'];
-            $productArray[$key]['category_id'] = $collection['category_id'];
-            $productArray[$key]['category'] = $collection['category'];
-        }
-
-        return response() -> json($productArray);
-
+       $products = new RegisterRepo();
+        return $products -> showProducts($typeID, $stageID);
     }
-    public function createQuote(Request $request)
+
+    /**
+     * @param Requests\CreateRegisterRequest $request
+     * @return mixed
+     * [description] Guarda el formulario en la BD
+     */
+    public function createQuote(CreateRegisterRequest $request)
     {
-        dd($request -> all());
+        $register = new RegisterRepo();
+        $register -> saveForm($request);
+
+        return redirect() -> route('index');
     }
 }

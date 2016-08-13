@@ -54,11 +54,11 @@
 <!-- Ciudad -->
 <section class="row">
     <article class="small-4 medium-3 text-left columns">
-        {!! Form::label('city',trans('app.form.city'), ['class' => 'control-label'] ) !!}
+        {!! Form::label('town',trans('app.form.town'), ['class' => 'control-label'] ) !!}
     </article>
     <article class="small-8  medium-9 columns">
-        {!! Form::text('city', null, ['class' => 'form-control', 'placeholder' => trans('app.message.enter_a_city') , 'required'])  !!}
-        <span class="glyphicon glyphicon-ok form-control-feedback" id="city1"></span>
+        {!! Form::text('town', null, ['class' => 'form-control', 'placeholder' => trans('app.message.enter_a_town') , 'required'])  !!}
+        <span class="glyphicon glyphicon-ok form-control-feedback" id="town1"></span>
     </article>
 </section>
 <!-- End Ciudad -->
@@ -102,8 +102,6 @@
                 <select name="crops_type_id_0" id="crops_type_id_0" class = "form-control"  onchange="enableStage(0,null)">
                     <option value="">{{ trans('app.message.select') }}</option>
                     @foreach($data -> allType as $type)
-
-
                         <option name="select_type" value="{!!$type -> id !!}"  @if (isset($data -> idType) and ($data -> idType == $type -> id)) selected @endif >
                             {!! $type -> crops !!}</option>
                     @endforeach
@@ -180,7 +178,7 @@
             <span class="icon-plus" style="font-size: 0.8em"></span>  {!! trans('app.submit.add_product') !!}
         </a>
     </section>
-    {!! Form::hidden('total_crops',null, ['id' => 'total_crops']) !!}
+    {!! Form::hidden('total_crops','0', ['id' => 'total_crops']) !!}
 
 </section>
 <!-- Mensaje -->
