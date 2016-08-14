@@ -67,7 +67,7 @@ createBtnColor(bgColor1, bgColor2, colorFont1, colorFont2)
 
 /** Create styles for the alerts **/
 createAlerts(bgColor, borderColor, colorFont, colorLink)
-	background-color bgColor
+	background-color rgba(bgColor, 0.8)
 	border borderColor
 	color colorFont
 	padding 0.5em 
@@ -123,14 +123,20 @@ select, textarea
 /****
  * Alerts
  */
- 
+		
 .successful
- 	createAlerts(colorGrass1, colorGrass2, colorGrass2, wfile:/C:/xampp/htdocs/ciamsa/layout/animate/animate_index.phphite)
+	createAlerts(colorGrass1, colorGrass2, colorGrass2, white)
+
+.alert-successful
+	createAlerts(colorGrass1, colorGrass2, white, white)	
 	
 .notice
 	createAlerts(colorSunFlower1, colorSunFlower2, colorSunFlower3, white )
 
 .danger
+	createAlerts(colorGrapeFruit1, colorGrapeFruit2, white, white )
+
+.alert-danger
 	createAlerts(colorGrapeFruit1, colorGrapeFruit2, white, white )
 
 .info
@@ -146,6 +152,8 @@ select, textarea
 	top 3em
 	width 20em
 	z-index 9999
+	p
+		margin 0
 
 /**
 * Animate APP
@@ -255,6 +263,7 @@ ul
 			font-size 1.4em
 			margin-top 0.5em
 			margin-bottom 1em  
+
 .logo
 	width 105px
 	

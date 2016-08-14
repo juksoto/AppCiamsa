@@ -63,6 +63,19 @@ return [
         'select_a_filter ' => 'Seleccione un filtro',
     ),
 
+    'quote'  => array(
+        'name'           => 'Nombre',
+        'email'          => 'Correo',
+        'department'     => 'Depto',
+        'city'           => 'Ciudad',
+        'type'           => 'Tipo',
+        'stage'          => 'Etapa',
+        'category'       => 'Categoría',
+        'product'        => 'Producto',
+        'mezcla'         => 'Mezcla Medida',
+    ),
+
+
     'message'  => array(
 
         //Alerts
@@ -152,6 +165,14 @@ return [
             'image'                             => 'imagen',
             'subline'                           => 'Sublinea', 
         ),
+
+    'register' => array(
+        'register_title'             => 'Registros',
+        'register_description'      => 'Registros de la aplicación. Puede descargar esta informacion.',
+        'has_been_removed'          => 'ha sido removido.',
+        'published'                 => 'publicado',
+        'unpublished'               => 'despublicado',
+    ),
 
     'status' => array(
         'status'                    => 'Estado',

@@ -29,11 +29,18 @@
 @section('scripts')
     @parent
     <script type="text/javascript">
+        function showAlertFloating()
+        {
+            $(".alert-floating").show();
+            $(".alert-floating").delay(1500).hide(600);
+        };
+
         $(document).ready(function() {
             showAlertFloating();
-            console.log('entre');
         });
     </script>
+
+
 @endsection
 
 @endif

@@ -102,33 +102,47 @@ textarea {
 /****
  * Alerts
  */
-.successful,
-createAlerts(colorGrass1,
-colorGrass2,
-wfile:/C:/xampp/htdocs/ciamsa/layout/animate/animate_index.phphite),
+.successful {
+  background-color: rgba(160,212,104,0.8);
+  border: 1px solid #8cc152;
+  color: #8cc152;
+  padding: 0.5em;
+}
+.successful a {
+  color: #fff;
+}
+.successful a:hover {
+  color: #8cc152;
+  text-decoration: underline;
+}
+.alert-successful {
+  background-color: rgba(160,212,104,0.8);
+  border: 1px solid #8cc152;
+  color: #fff;
+  padding: 0.5em;
+}
+.alert-successful a {
+  color: #fff;
+}
+.alert-successful a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
 .notice {
-  background-color: #ffce54;
+  background-color: rgba(255,206,84,0.8);
   border: 1px solid #f6bb42;
   color: #8a6d3b;
   padding: 0.5em;
 }
-.successful a,
-createAlerts(colorGrass1 a,
-colorGrass2 a,
-wfile:/C:/xampp/htdocs/ciamsa/layout/animate/animate_index.phphite) a,
 .notice a {
   color: #fff;
 }
-.successful a:hover,
-createAlerts(colorGrass1 a:hover,
-colorGrass2 a:hover,
-wfile:/C:/xampp/htdocs/ciamsa/layout/animate/animate_index.phphite) a:hover,
 .notice a:hover {
   color: #8a6d3b;
   text-decoration: underline;
 }
 .danger {
-  background-color: #ed5565;
+  background-color: rgba(237,85,101,0.8);
   border: 1px solid #da4453;
   color: #fff;
   padding: 0.5em;
@@ -140,8 +154,21 @@ wfile:/C:/xampp/htdocs/ciamsa/layout/animate/animate_index.phphite) a:hover,
   color: #fff;
   text-decoration: underline;
 }
+.alert-danger {
+  background-color: rgba(237,85,101,0.8);
+  border: 1px solid #da4453;
+  color: #fff;
+  padding: 0.5em;
+}
+.alert-danger a {
+  color: #fff;
+}
+.alert-danger a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
 .info {
-  background-color: #4fc1e9;
+  background-color: rgba(79,193,233,0.8);
   border: 1px solid #3bafda;
   color: #3bafda;
   padding: 0.5em;
@@ -163,6 +190,9 @@ wfile:/C:/xampp/htdocs/ciamsa/layout/animate/animate_index.phphite) a:hover,
   top: 3em;
   width: 20em;
   z-index: 9999;
+}
+.alert-floating p {
+  margin: 0;
 }
 /**
 * Animate APP

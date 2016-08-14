@@ -5,12 +5,14 @@ namespace App\Http\Controllers\CoreControllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Http\Requests\CreateRegisterRequest;
-use Ciamsa\Core\Entities\CiamRegister;
+use Ciamsa\Core\Entities\Registers\CiamRegister;
 use Ciamsa\Core\Entities\Crops\CiamCropsStage;
 use Ciamsa\Core\Entities\Crops\CiamCropsType;
 use Ciamsa\Core\Repositories\RegisterRepo;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class CoreController extends Controller
 {
@@ -107,9 +109,33 @@ class CoreController extends Controller
      */
     public function createQuote(CreateRegisterRequest $request)
     {
+        
         $register = new RegisterRepo();
         $register -> saveForm($request);
 
         return redirect() -> route('index');
+    }
+
+    /**
+     * @param Requests\CreateRegisterRequest $request
+     * @return mixed
+     * [description] Guarda el formulario en la BD
+     */
+    public function showRegister(Request $request)
+    {
+        $register = new RegisterRepo();
+        $data = $register -> showRegister();
+
+        //Pagination
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+
+        $col = new Collection($data);
+        $perPage = 20;
+        $currentPageSearchResults = $col -> slice(($currentPage - 1) * $perPage, $perPage)->all();
+        $collection = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
+
+        $collection -> setPath($request->url());
+
+        return view( 'admin.register.index' , compact('collection') );
     }
 }

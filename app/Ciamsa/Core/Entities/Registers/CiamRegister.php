@@ -1,6 +1,6 @@
 <?php
 
-namespace Ciamsa\Core\Entities;
+namespace Ciamsa\Core\Entities\Registers;
 
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
@@ -26,5 +26,6 @@ class CiamRegister extends Model
     protected $sortable = [
         'name',
     ];
-    
+
+
 }

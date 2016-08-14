@@ -13,6 +13,11 @@
 @endsection
 
 @section('content')
+    <section class="row">
+        <section class="small-12 column">
+            @include('core.partials.message')
+        </section>
+    </section>
         <!-- Logos -->
     <section class="row hide-for-small-only">
         <section class="small-10 small-centered column text-center">

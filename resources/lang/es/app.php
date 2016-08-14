@@ -66,6 +66,8 @@ return [
         'enter_a_phone'     => 'Ingrese una teléfono',
         'enter_a_mobile'    => 'Ingrese un celular',
         'select'            => 'Seleccionar',
+        'send_form_success' => '¡Solicitud enviada correctamente!',
+        'send_form_error' => '¡Ha ocurrido enviando la solicitud!',
     ),
     
     'submit'  => array(
