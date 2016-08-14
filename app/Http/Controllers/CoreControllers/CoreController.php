@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CoreController extends Controller
 {
@@ -138,4 +139,47 @@ class CoreController extends Controller
 
         return view( 'admin.register.index' , compact('collection') );
     }
+    
+    public function exportReport ($rangIni, $rangFinal)
+    {
+        $expRepo = new RegisterRepo();
+        $collection = $expRepo -> exportReport($rangIni, $rangFinal);
+
+        Excel::create('Reporte CIAMSA', function($excel) use($collection) {
+
+            $excel -> sheet('Registros', function($sheet) use($collection){
+
+                $sheet -> appendRow(array_keys($collection[0])); // column names
+
+                // Set black background
+                $sheet->row(1, function($row) {
+
+                    // call cell manipulation methods
+                    $row -> setFontWeight('bold');
+
+                });
+
+                $sheet -> setCellValue('A1', 'ID');
+                $sheet -> setCellValue('B1', 'Nombre');
+                $sheet -> setCellValue('C1', 'Correo');
+                $sheet -> setCellValue('D1', 'Empresa');
+                $sheet -> setCellValue('E1', 'Telefono');
+                $sheet -> setCellValue('F1', 'Celular');
+                $sheet -> setCellValue('G1', 'Empresa');
+                $sheet -> setCellValue('H1', 'Informacion');
+                $sheet -> setCellValue('I1', 'Fecha');
+                $sheet -> setCellValue('J1', 'Depto');
+                $sheet -> setCellValue('K1', 'Mezcla Medida');
+                $sheet -> setCellValue('L1', 'Tipo');
+                $sheet -> setCellValue('M1', 'Etapa');
+                $sheet -> setCellValue('N1', 'Producto');
+                $sheet -> setCellValue('O1', 'Categoria');
+
+                $sheet->fromArray($collection, null, 'A2', false, false);
+
+            });
+        })->export('xlsx');
+    }
+
+
 }

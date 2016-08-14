@@ -19,81 +19,6 @@ class RegisterRepo extends Model
     {
         return CiamRegister::all() -> where ( 'active' , true );
     }
-    public function saveForm($request)
-    {
-        // Validacion de honeyspot
-        if (empty($request -> direccion) and ($request -> persona == "ciamsa app"))
-        {
-            \DB::transaction(function() use ($request)
-            {
-                // Save in register table
-                try {
-
-                    $register = new CiamRegister();
-                    $register  -> fill( $request -> all() );
-                    $register  -> save();
-                }
-
-                catch(\Exception $e)
-                {
-                    \DB::rollback();
-                    throw $e;
-                }
-
-                // Save in relation of register has crops stage and type
-                try {
-
-                    // Guardamos la informacion del formulario
-
-                    $contentCrops = $this -> resolveCrops( $request );
-                    foreach ($contentCrops as $key => $valueCrops)
-                    {
-                        if (isset($valueCrops) and $valueCrops['type'] != "")
-                        {
-                            $relation = new CiamRelationRegister();
-                            $relation -> crops_type_id = $valueCrops['type'];
-                            $relation -> crops_stage_id = $valueCrops['stage'];
-                            $relation -> product_id = $valueCrops['product'];
-                            $relation -> mezcla_medida = $valueCrops['mezcla'];
-                            $relation -> register_id = $register -> id;
-                            $relation -> save();
-
-                            // Si existe un complementario
-                            $validateNull = $this -> validateFieldIsNotNull($valueCrops['complement']);
-                            if ($validateNull == true )
-                            {
-                                $relation = new CiamRelationRegister();
-                                $relation -> crops_type_id = $valueCrops['type'];
-                                $relation -> crops_stage_id = $valueCrops['stage'];
-                                $relation -> product_id = $valueCrops['complement'];
-                                $relation -> mezcla_medida = $valueCrops['mezcla'];
-                                $relation -> register_id = $register -> id;
-                                $relation -> save();
-                            }
-                        }
-                    }
-                    $message_floating = trans('app.message.send_form_success');
-                    $message_alert ="alert-successful";
-
-                    Session::flash('message_floating', $message_floating);
-                    Session::flash('message_alert', $message_alert);
-                }
-
-                catch(\Exception $e)
-                {
-                    $message_floating = trans('app.message.send_form_error');
-                    $message_alert ="alert-danger";
-
-                    Session::flash('message_floating', $message_floating);
-                    Session::flash('message_alert', $message_alert);
-
-                    \DB::rollback();
-                    throw $e;
-                }
-
-            });
-        }
-    }
     public function stepThree($stageID, $typeID)
     {
         $data = new \stdClass();
@@ -192,7 +117,7 @@ class RegisterRepo extends Model
         }
 
         return $data;
-        
+
     }
     public function showProducts($typeID, $stageID)
     {
@@ -233,11 +158,84 @@ class RegisterRepo extends Model
 
         return response() -> json($productArray);
     }
+    public function saveForm($request)
+    {
+        // Validacion de honeyspot
+        if (empty($request -> direccion) and ($request -> persona == "ciamsa app"))
+        {
+            \DB::transaction(function() use ($request)
+            {
+                // Save in register table
+                try {
 
+                    $register = new CiamRegister();
+                    $register  -> fill( $request -> all() );
+                    $register  -> save();
+                }
 
+                catch(\Exception $e)
+                {
+                    \DB::rollback();
+                    throw $e;
+                }
+
+                // Save in relation of register has crops stage and type
+                try {
+
+                    // Guardamos la informacion del formulario
+
+                    $contentCrops = $this -> resolveCrops( $request );
+                    foreach ($contentCrops as $key => $valueCrops)
+                    {
+                        if (isset($valueCrops) and $valueCrops['type'] != "")
+                        {
+                            $relation = new CiamRelationRegister();
+                            $relation -> crops_type_id = $valueCrops['type'];
+                            $relation -> crops_stage_id = $valueCrops['stage'];
+                            $relation -> product_id = $valueCrops['product'];
+                            $relation -> mezcla_medida = $valueCrops['mezcla'];
+                            $relation -> register_id = $register -> id;
+                            $relation -> save();
+
+                            // Si existe un complementario
+                            $validateNull = $this -> validateFieldIsNotNull($valueCrops['complement']);
+                            if ($validateNull == true )
+                            {
+                                $relation = new CiamRelationRegister();
+                                $relation -> crops_type_id = $valueCrops['type'];
+                                $relation -> crops_stage_id = $valueCrops['stage'];
+                                $relation -> product_id = $valueCrops['complement'];
+                                $relation -> mezcla_medida = $valueCrops['mezcla'];
+                                $relation -> register_id = $register -> id;
+                                $relation -> save();
+                            }
+                        }
+                    }
+                    $message_floating = trans('app.message.send_form_success');
+                    $message_alert ="alert-successful";
+
+                    Session::flash('message_floating', $message_floating);
+                    Session::flash('message_alert', $message_alert);
+                }
+
+                catch(\Exception $e)
+                {
+                    $message_floating = trans('app.message.send_form_error');
+                    $message_alert ="alert-danger";
+
+                    Session::flash('message_floating', $message_floating);
+                    Session::flash('message_alert', $message_alert);
+
+                    \DB::rollback();
+                    throw $e;
+                }
+
+            });
+        }
+    }
     public function showRegister()
     {
-        $allRegister = CiamRegister::all();
+        $allRegister = CiamRegister::where('active',1) ->get();
 
         $registerArray = array();
 
@@ -339,6 +337,40 @@ class RegisterRepo extends Model
 
     }
 
+    public function exportReport($ranIni, $ranFin)
+    {
+        // Rango del array
+        $data = $this -> showRegister();
+        //Array final
+        $collection = array();
+        $totalRegistros = count($data);
+        for($i = $ranIni; $i <=$ranFin; $i++ )
+        {
+            array_push($collection , $data[$i]);
+        }
+
+        // Quitamos algunos keys que no necesitamos
+        $removeKeys = array('active', 'updated_at' , 'crops_type_id', 'crops_stage_id', 'product_id', 'register_id', 'category_id','department_id');
+
+        foreach ($collection as $pos => $collect)
+        {
+            foreach($removeKeys as $key) {
+                if (isset( $collection[$pos]['category']['category']))
+                {
+                    $collection[$pos]['category_name'] = $collection[$pos]['category']['category'];
+                    unset($collection[$pos]['category']);
+                }
+                if (isset($collect[$key]))
+                {
+                    unset($collection[$pos][$key]);
+                }
+                unset($collection[$pos]['crops_stage_id']);
+                unset($collection[$pos]['product_id']);
+            }
+        }
+
+        return $collection;
+    }
     /**
      * Valida si en el request cuantos ciltivos existen
      * Guarda en una array los valores y los devuelve a la transaccion.

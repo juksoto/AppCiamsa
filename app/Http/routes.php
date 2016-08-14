@@ -32,11 +32,17 @@ Route::group(['prefix' => 'admin'], function()
 
     Route::resource('tsProducts', 'AdminControllers\Relations\TypeStageProductsController');
 
-// ROUTE INDEXS
+// ROUTE Registros
     Route::get('registros',
         [
             'uses' => 'CoreControllers\CoreController@showRegister',
             'as'   => 'admin.register.index',
+        ]
+    );
+    Route::get('reporte/{inicial}/{final}',
+        [
+            'uses' => 'CoreControllers\CoreController@exportReport',
+            'as'   => 'admin.register.report',
         ]
     );
 });

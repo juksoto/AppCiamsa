@@ -16,7 +16,7 @@ class CreateCiamRelationRegisterTable extends Migration
             $table -> increments('id');
 
             // id crops type
-            $table -> integer('crops_type_id') -> unsigned();
+            $table -> integer('crops_type_id') -> unsigned() -> nullable();
             $table -> foreign('crops_type_id') -> references('id') -> on('ciam_crops_type') -> onDelete('cascade');
 
             // id crops stage
