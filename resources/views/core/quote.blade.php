@@ -15,7 +15,7 @@
 
     @section('content')
         <!-- BG PAPER -->
-        <section class="bg-paper expanded">
+        <section class="bg-paper row">
             <!--  CONTENT -->
             <section class="content">
                 <!-- title -->

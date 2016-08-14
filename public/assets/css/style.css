@@ -587,14 +587,16 @@ ul.list-icon-cultivo h3 {
   margin-top: 0.5em;
 }
 .wrapper-cotizar .bg-paper {
-  background: url("../img/bg_paper.png") no-repeat center top;
-  margin-top: -1em;
+  background: rgba(255,255,255,0.7) no-repeat center top;
 }
 .wrapper-cotizar .content {
   padding-top: 0.1em;
 }
 .wrapper-cotizar .input-one {
   display: none;
+}
+.wrapper-cotizar .header-title {
+  margin-top: 0;
 }
 .wrapper-cotizar .wrapper-crops {
   background: rgba(0,0,0,0.1);
