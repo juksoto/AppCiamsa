@@ -197,6 +197,8 @@ class TypeStageProductsController extends Controller
 
         $data = $this -> data;
 
+      
+
         return view('admin.products.tsProducts.edit',  compact('data'));
 
     }

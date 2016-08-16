@@ -120,5 +120,6 @@ Route::get('dashboard',
         'as'   => 'dashboard',
     ]
 );
+Route::any('register','HomeController@index');
 
 

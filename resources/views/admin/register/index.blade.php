@@ -75,7 +75,7 @@
 
                 </section>
                 <section class="col-xs-12 col-sm-6">
-                    {!! Form::submit(trans('admin.submit.download'), ['class' => 'btn btn-success ' , 'id' => 'send-form']) !!}
+                        <input class="btn btn-success " id="send-form" type="submit" value="{{trans('admin.submit.download')}}" @if ($collection -> countRegister == 0)  disabled="disabled" @endif >
                 </section>
             </section>
             {!! Form::close()!!}

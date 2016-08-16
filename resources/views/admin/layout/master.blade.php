@@ -27,8 +27,8 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand">
-                        Registros
+                    <a class="navbar-brand" href="{{route('dashboard') }}">
+                        DASHHBOARD
                     </a>
                 </div>
 
@@ -39,7 +39,6 @@
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
                             <li class="dropdown">
                                    <p style="padding: 1em 0">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 11-08-2016 a las 20:25:21
+-- Tiempo de generación: 16-08-2016 a las 22:17:37
 -- Versión del servidor: 10.1.10-MariaDB
 -- Versión de PHP: 7.0.4
 
@@ -89,7 +89,13 @@ INSERT INTO `ciam_crops_stage` (`id`, `stage`, `subline`, `image`, `order_number
 (17, 'Reabone O Desyerbe', '', 'stage-crops-reabone-o-desyerbe-papa.png', '2', 8, 1, '2016-08-10 17:11:07', '2016-08-10 17:11:07'),
 (18, 'Siembra', '', 'stage-crops-siembra-frutales.png', '1', 4, 1, '2016-08-10 19:36:10', '2016-08-10 19:36:10'),
 (19, 'Crecimiento Y Desarrollo', '', 'stage-crops-crecimiento-y-desarrollo-frutales.png', '2', 4, 1, '2016-08-10 19:36:45', '2016-08-10 19:36:45'),
-(20, 'Frutos', '', 'stage-crops-frutos-frutales.png', '3', 4, 1, '2016-08-10 19:37:03', '2016-08-10 19:37:03');
+(20, 'Frutos', '', 'stage-crops-frutos-frutales.png', '3', 4, 1, '2016-08-10 19:37:03', '2016-08-10 19:37:03'),
+(21, 'Siembra', '', 'stage-crops-siembra-palma.png', '1', 7, 1, '2016-08-16 19:52:39', '2016-08-16 19:52:39'),
+(22, 'Crecimiento', '', 'stage-crops-crecimiento-palma.png', '2', 7, 1, '2016-08-16 19:52:55', '2016-08-16 19:52:55'),
+(23, 'Producción', '', 'stage-crops-produccion-palma.png', '3', 7, 1, '2016-08-16 19:53:21', '2016-08-16 19:53:21'),
+(24, 'Siembra', '', 'stage-crops-siembra-hortalizas.png', '1', 5, 1, '2016-08-16 20:07:24', '2016-08-16 20:07:24'),
+(25, 'Crecimiento', '', 'stage-crops-crecimiento-hortalizas.png', '2', 5, 1, '2016-08-16 20:07:35', '2016-08-16 20:07:35'),
+(26, 'Producción', '', 'stage-crops-produccion-.png', '3', 5, 1, '2016-08-16 20:07:49', '2016-08-16 20:07:59');
 
 -- --------------------------------------------------------
 
@@ -364,7 +370,7 @@ INSERT INTO `ciam_product_type_stage` (`id`, `crops_type_id`, `crops_stage_id`, 
 (86, 10, 2, 7, 1, '2016-08-10 17:43:14', '2016-08-10 17:43:14'),
 (87, 10, 2, 18, 1, '2016-08-10 17:43:26', '2016-08-10 17:43:26'),
 (88, 10, 2, 19, 1, '2016-08-10 17:43:43', '2016-08-10 17:43:43'),
-(89, 10, 3, 31, 1, '2016-08-10 17:43:55', '2016-08-10 18:01:53'),
+(89, 10, 3, 15, 0, '2016-08-10 17:43:55', '2016-08-16 19:40:33'),
 (90, 10, 1, 16, 1, '2016-08-10 17:44:04', '2016-08-10 18:00:33'),
 (91, 10, 1, 4, 1, '2016-08-10 17:44:14', '2016-08-10 18:00:16'),
 (92, 10, 2, 45, 1, '2016-08-10 17:44:26', '2016-08-10 17:59:46'),
@@ -376,7 +382,7 @@ INSERT INTO `ciam_product_type_stage` (`id`, `crops_type_id`, `crops_stage_id`, 
 (98, 10, 3, 6, 1, '2016-08-10 17:46:09', '2016-08-10 17:46:09'),
 (99, 10, 3, 10, 1, '2016-08-10 17:46:19', '2016-08-10 18:01:22'),
 (100, 10, 2, 17, 1, '2016-08-10 17:47:54', '2016-08-10 17:47:54'),
-(101, 10, 3, 32, 1, '2016-08-10 18:03:15', '2016-08-10 18:03:15'),
+(101, 10, 3, 32, 0, '2016-08-10 18:03:15', '2016-08-10 18:03:15'),
 (102, 10, 3, 36, 1, '2016-08-10 18:03:29', '2016-08-10 18:03:29'),
 (103, 10, 3, 35, 1, '2016-08-10 18:03:42', '2016-08-10 18:03:42'),
 (104, 10, 3, 39, 1, '2016-08-10 18:03:58', '2016-08-10 18:03:58'),
@@ -384,11 +390,33 @@ INSERT INTO `ciam_product_type_stage` (`id`, `crops_type_id`, `crops_stage_id`, 
 (106, 10, 3, 38, 1, '2016-08-10 18:04:34', '2016-08-10 18:04:34'),
 (107, 10, 3, 43, 1, '2016-08-10 18:05:00', '2016-08-10 18:05:00'),
 (108, 10, 3, 41, 1, '2016-08-10 18:05:10', '2016-08-10 18:05:10'),
-(109, 10, 3, 44, 1, '2016-08-10 18:05:45', '2016-08-10 18:05:45'),
+(109, 10, 3, 44, 1, '2016-08-10 18:05:45', '2016-08-16 19:44:39'),
 (110, 10, 3, 45, 1, '2016-08-10 18:05:52', '2016-08-10 18:05:52'),
 (111, 10, 3, 37, 1, '2016-08-10 18:06:02', '2016-08-10 18:06:02'),
 (112, 10, 3, 42, 1, '2016-08-10 18:06:15', '2016-08-10 18:06:15'),
-(113, 1, 15, 38, 1, '2016-08-10 22:53:44', '2016-08-10 22:53:44');
+(113, 1, 15, 38, 1, '2016-08-10 22:53:44', '2016-08-10 22:53:44'),
+(114, 7, 21, 20, 1, '2016-08-16 20:08:43', '2016-08-16 20:08:43'),
+(115, 7, 21, 25, 1, '2016-08-16 20:08:57', '2016-08-16 20:08:57'),
+(116, 7, 21, 3, 1, '2016-08-16 20:09:11', '2016-08-16 20:09:29'),
+(117, 7, 21, 33, 1, '2016-08-16 20:09:50', '2016-08-16 20:09:50'),
+(118, 7, 21, 4, 1, '2016-08-16 20:10:06', '2016-08-16 20:10:15'),
+(119, 7, 21, 34, 1, '2016-08-16 20:10:26', '2016-08-16 20:10:26'),
+(120, 7, 22, 33, 1, '2016-08-16 20:11:23', '2016-08-16 20:11:23'),
+(121, 7, 22, 35, 1, '2016-08-16 20:11:45', '2016-08-16 20:11:45'),
+(122, 7, 22, 37, 1, '2016-08-16 20:11:54', '2016-08-16 20:11:54'),
+(123, 7, 22, 42, 1, '2016-08-16 20:12:05', '2016-08-16 20:12:05'),
+(124, 7, 22, 43, 1, '2016-08-16 20:12:19', '2016-08-16 20:12:19'),
+(125, 7, 22, 39, 1, '2016-08-16 20:12:28', '2016-08-16 20:12:28'),
+(126, 7, 22, 40, 1, '2016-08-16 20:12:40', '2016-08-16 20:12:40'),
+(127, 7, 22, 36, 1, '2016-08-16 20:12:50', '2016-08-16 20:12:50'),
+(128, 7, 22, 41, 1, '2016-08-16 20:12:59', '2016-08-16 20:12:59'),
+(129, 7, 23, 12, 1, '2016-08-16 20:13:33', '2016-08-16 20:13:33'),
+(130, 7, 23, 6, 1, '2016-08-16 20:13:42', '2016-08-16 20:13:42'),
+(131, 7, 23, 10, 1, '2016-08-16 20:13:55', '2016-08-16 20:13:55'),
+(132, 7, 23, 36, 1, '2016-08-16 20:14:06', '2016-08-16 20:14:06'),
+(133, 7, 23, 35, 1, '2016-08-16 20:14:22', '2016-08-16 20:14:22'),
+(134, 7, 23, 39, 1, '2016-08-16 20:14:32', '2016-08-16 20:14:32'),
+(135, 7, 23, 40, 1, '2016-08-16 20:14:40', '2016-08-16 20:14:40');
 
 -- --------------------------------------------------------
 
@@ -419,8 +447,8 @@ CREATE TABLE `ciam_registers` (
 
 CREATE TABLE `ciam_relation_register` (
   `id` int(10) UNSIGNED NOT NULL,
-  `crops_type_id` int(10) UNSIGNED NOT NULL,
-  `crops_stage_id` int(10) UNSIGNED NOT NULL,
+  `crops_type_id` int(10) UNSIGNED DEFAULT NULL,
+  `crops_stage_id` int(10) UNSIGNED DEFAULT NULL,
   `product_id` int(10) UNSIGNED DEFAULT NULL,
   `register_id` int(10) UNSIGNED NOT NULL,
   `mezcla_medida` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -486,10 +514,19 @@ CREATE TABLE `users` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `is_admin` tinyint(1) NOT NULL,
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `is_admin`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Juan Carlos Soto', 'juksoto@gmail.com', '$2y$10$8t2olyVIMgjoCtiDAtrVbuU3Z0V2D29nxNJ5KAHfg3UJ9OEKhgn1G', 1, 'GCPgZA5fpoXKo9fWrml5fjR6k4RsJHsJ7Z6mw4sFO6hE8RfM0yTb0D9LPt0n', '2016-08-16 16:05:18', '2016-08-16 19:28:55'),
+(2, 'Juan Carlos ', 'juksotto@gmail.com', '$2y$10$9rgZSmuOPXugbrGm6TJwROUGevaFgLn21EJBts6eL63QWxfr/lB4C', 0, 'igDYETYKdFYnkwRfT15hUh2cXIPOF1KwoxEREcf0dTx69omyFDVeOtMS3opl', '2016-08-16 17:01:47', '2016-08-16 19:29:13');
 
 --
 -- Índices para tablas volcadas
@@ -589,7 +626,7 @@ ALTER TABLE `ciam_categories`
 -- AUTO_INCREMENT de la tabla `ciam_crops_stage`
 --
 ALTER TABLE `ciam_crops_stage`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT de la tabla `ciam_crops_type`
 --
@@ -609,7 +646,7 @@ ALTER TABLE `ciam_products`
 -- AUTO_INCREMENT de la tabla `ciam_product_type_stage`
 --
 ALTER TABLE `ciam_product_type_stage`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
 --
 -- AUTO_INCREMENT de la tabla `ciam_registers`
 --
@@ -629,7 +666,7 @@ ALTER TABLE `ciam_users`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Restricciones para tablas volcadas
 --

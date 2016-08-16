@@ -89,5 +89,5 @@
 
 @endsection
 @section('scripts')
-    <script tsCrop="text/javascript" src="{{URL::asset('admin/js/custom/custom.js')}}"></script>
+    <script tsCrop="text/javascript" src="{{URL::asset('assets/admin/js/custom/custom.js')}}"></script>
 @endsection

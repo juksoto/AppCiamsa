@@ -14,7 +14,7 @@ return [
         'admin_title' => "Panel de Control",
         'admin_description' => "Opcines del panel de control",
         ),
-    
+
     'crops'  => array(
         
         // Etapas de cultivos
@@ -163,6 +163,7 @@ return [
             'title_tsProducts'                  => 'Relación Productos, Tipo y Etapas de Cultivos', 
             'description_tsProducts'            => 'Crear, editar y eliminar los tipos, etapas de cultivos con los productos',
             'create_tsProducts'                 => 'Crear relacion',
+            'edit_tsProducts'                   => 'Editar relacion',
             'create_content_header_tsProducts'  => 'Cree  una relacion entre productos, tipo y etapas de cultivo.',
             
             // Generales
