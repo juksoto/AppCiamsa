@@ -30,13 +30,13 @@ class Admin
                 }
                 else
                     {
-                        return redirect()->route('admin.register.index');
+                        return redirect() -> route('admin.register.index');
                     }
             }
         }
         else
         {
-            return redirect()->route('dashboard');
+            return redirect() -> route('dashboard');
         }
 
     }
