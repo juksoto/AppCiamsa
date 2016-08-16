@@ -14,38 +14,45 @@
 /**
  * Groups AdminControllers Controllers
  */
-Route::group(['prefix' => 'admin'], function()
+Route::group(['middleware' => ['admin']], function ()
 {
-    Route::group(['prefix' => 'crops'], function()
+    Route::group(['prefix' => 'admin'], function()
     {
-        Route::resource('type', 'AdminControllers\Crops\CropTypeController');
-        Route::resource('stage', 'AdminControllers\Crops\CropStageController');
-        Route::resource('tsCrop', 'AdminControllers\Crops\CropTypeStageController');
 
-    });
+        Route::group(['prefix' => 'crops'], function()
+        {
+            Route::resource('type', 'AdminControllers\Crops\CropTypeController');
+            Route::resource('stage', 'AdminControllers\Crops\CropStageController');
+            Route::resource('tsCrop', 'AdminControllers\Crops\CropTypeStageController');
 
-    Route::group(['prefix' => 'products'], function()
-    {
-        Route::resource('categories', 'AdminControllers\Products\ProductCategoriesController');
-        Route::resource('products', 'AdminControllers\Products\ProductsController');
-    });
+        });
 
-    Route::resource('tsProducts', 'AdminControllers\Relations\TypeStageProductsController');
+        Route::group(['prefix' => 'products'], function()
+        {
+            Route::resource('categories', 'AdminControllers\Products\ProductCategoriesController');
+            Route::resource('products', 'AdminControllers\Products\ProductsController');
+        });
+
+        Route::resource('tsProducts', 'AdminControllers\Relations\TypeStageProductsController');
 
 // ROUTE Registros
-    Route::get('registros',
-        [
-            'uses' => 'CoreControllers\CoreController@showRegister',
-            'as'   => 'admin.register.index',
-        ]
-    );
-    Route::post('reporte',
-        [
-            'uses' => 'CoreControllers\CoreController@exportReport',
-            'as'   => 'admin.register.report',
-        ]
-    );
+        Route::get('registros',
+            [
+                'uses' => 'CoreControllers\CoreController@showRegister',
+                'as'   => 'admin.register.index',
+            ]
+        );
+        Route::post('reporte',
+            [
+                'uses' => 'CoreControllers\CoreController@exportReport',
+                'as'   => 'admin.register.report',
+            ]
+        );
+    });
 });
+
+
+
 // ROUTE INDEXS
 Route::get('/',
     [
@@ -103,3 +110,15 @@ Route::group(['prefix' => 'cotizar' , 'as' => 'quote'], function() {
     Route::get('showProducts/{stage}/{type}', ['uses' => 'CoreControllers\CoreController@showProducts', 'as' => '.showProducts']);
 
 });
+
+
+Route::auth();
+
+Route::get('dashboard',
+    [
+        'uses' => 'HomeController@index',
+        'as'   => 'dashboard',
+    ]
+);
+
+

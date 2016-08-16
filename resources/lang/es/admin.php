@@ -10,6 +10,11 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'admin'  => array(
+        'admin_title' => "Panel de Control",
+        'admin_description' => "Opcines del panel de control",
+        ),
+    
     'crops'  => array(
         
         // Etapas de cultivos
