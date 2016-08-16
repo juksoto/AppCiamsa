@@ -371,6 +371,41 @@ class RegisterRepo extends Model
 
         return $collection;
     }
+
+    public function resolveRank($cantBlock, $totalRegister)
+    {
+        $options = array();
+        //cantidad de bloques
+        if ($totalRegister > $cantBlock )
+        {
+            $rankBlock = ceil($totalRegister / $cantBlock);
+
+            for ( $i = 0; $i < $rankBlock; $i++)
+            {
+                $rankStart = ($cantBlock * $i) + 1;
+                $options[$i]['rankStart'] = $rankStart;
+
+                //  Si es el ultimo rango
+                if ($i == ($rankBlock - 1 ) )
+                {
+                    $rankEnd = $totalRegister;
+                    $options[$i]['rankEnd'] = $rankEnd;
+                }
+                else
+                {
+                    $rankEnd = ($rankStart + $cantBlock) - 1 ;
+                    $options[$i]['rankEnd'] = $rankEnd;
+                }
+            }
+        }
+        else
+        {
+            $options[0]['rankStart'] = 1;
+            $options[0]['rankEnd'] = $totalRegister;
+        }
+
+        return $options;
+    }
     /**
      * Valida si en el request cuantos ciltivos existen
      * Guarda en una array los valores y los devuelve a la transaccion.

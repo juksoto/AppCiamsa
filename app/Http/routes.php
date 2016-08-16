@@ -39,7 +39,7 @@ Route::group(['prefix' => 'admin'], function()
             'as'   => 'admin.register.index',
         ]
     );
-    Route::get('reporte/{inicial}/{final}',
+    Route::post('reporte',
         [
             'uses' => 'CoreControllers\CoreController@exportReport',
             'as'   => 'admin.register.report',

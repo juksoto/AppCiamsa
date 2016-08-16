@@ -190,6 +190,7 @@ return [
         'back'              => 'Regresar',
         'create_button'     => 'Guardar',
         'create_new_button' => 'Guardar y Nuevo',
+        'download'          => 'Descargar',
         'filter'            => 'Filtrar',
         'filter_object'     => 'Filtro',
         'publish'           => 'Publicar',

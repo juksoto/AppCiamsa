@@ -12,60 +12,82 @@
         </article>
     </section>
 
-    <!-- Section Filter -->
-    {!! Form::model(Request::all(),['route' => 'admin.register.index', 'method' => 'GET' , 'class' => 'row margin-xs-bottom no-margin-md-bottom' ])!!}
+    <section class="row">
+        <section class="col-sm-7">
+            <!-- Section Filter -->
+            {!! Form::model(Request::all(),['route' => 'admin.register.index', 'method' => 'GET' , 'class' => 'row margin-xs-bottom no-margin-md-bottom' ])!!}
 
-    <article class="col-sm-12 col-md-4 filter-section">
-        <div class="row">
-            <!-- Search Field -->
-            <div class="col-sm-8">
-                <div class="form-search search-only form-group">
-                    <i class="search-icon glyphicon glyphicon-search"></i>
-                    {!! Form::text('search', null, ['class' => 'form-control search-query', 'placeholder' => trans('admin.filter.search') ])  !!}
+            <article class="col-sm-12 col-sm-6 filter-section">
+                <div class="row">
+                    <!-- Search Field -->
+                    <div class="col-sm-8">
+                        <div class="form-search search-only form-group">
+                            <i class="search-icon glyphicon glyphicon-search"></i>
+                            {!! Form::text('search', null, ['class' => 'form-control search-query', 'placeholder' => trans('admin.filter.search') ])  !!}
+                        </div>
+                    </div>
+                    <!-- End Search Field -->
+
+                    <!-- Active Select -->
+                    <div class="col-sm-4 no-padding">
+                        {!! Form::select ('active' , config('CiamsaApp.active') , null , [ 'class' => 'form-control col-sm-2']) !!}
+                    </div>
+                    <!-- End Active Select -->
                 </div>
-            </div>
-            <!-- End Search Field -->
+            </article>
 
-            <!-- Active Select -->
-            <div class="col-sm-4 no-padding">
-                {!! Form::select ('active' , config('CiamsaApp.active') , null , [ 'class' => 'form-control col-sm-2']) !!}
-            </div>
-            <!-- End Active Select -->
-        </div>
-    </article>
+            <article class="col-md-6 col-sm-6 text-sm-center">
+                <ul class="list-inline text-xs-center text-md-left">
+                    <li class="text-left" >
+                        <button type="submit" class="btn btn-primary">
+                            <span class=" glyphicon glyphicon-filter" aria-hidden="true"></span>
+                            {{ trans('admin.submit.filter') }}
+                        </button>
+                    </li>
+                    <li class="text-left">
+                        <a class="btn btn-danger" href="{{ route('admin.crops.type.index') }}">
+                            <span class=" glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            {{ trans('admin.submit.filter_object') }}
+                        </a>
 
-    <article class="col-md-4 col-sm-6 text-sm-center">
-        <ul class="list-inline text-xs-center text-md-left">
-            <li class="text-left" >
-                <button type="submit" class="btn btn-primary">
-                    <span class=" glyphicon glyphicon-filter" aria-hidden="true"></span>
-                    {{ trans('admin.submit.filter') }}
-                </button>
-            </li>
-            <li class="text-left">
-                <a class="btn btn-danger" href="{{ route('admin.crops.type.index') }}">
-                    <span class=" glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    {{ trans('admin.submit.filter_object') }}
-                </a>
+                    </li>
+                </ul>
+            </article>
+            {!! Form::close()!!}
+                    <!-- End Section Filter -->
+            <!-- Section Ranks -->
+        </section>
 
-            </li>
-        </ul>
-    </article>
-    <article class="col-sm-6 col-md-4 col-xs-12">
-        <ul class="list-inline text-md-right text-xs-center margin-xs-top no-margin-sm-top">
-            <li class="col-md-offset-5 col-xs-offset-0">
-                <a class="btn btn-success" href="{{ route('admin.crops.type.create') }}">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    {{ trans('admin.submit.add') }}
-                </a>
-            </li>
-        </ul>
-    </article>
 
-    <!-- End Section Filter -->
-    {!! Form::close()!!}
+        <article class="col-xs-12 col-sm-12 col-md-4 ">
+            {!! Form::open(['route' => 'admin.register.report', 'method' => 'POST' , 'class' => '' ])!!}
+            <section class="row">
+                  <section class="col-xs-12 col-sm-6">
+                    <select name="cantRegistros" id="" @if ($collection -> countRegister == 0)  disabled="disabled" @endif required>
+                        <option value=""> Seleccione el rango </option>
+                        @if ($collection -> countRegister != 0)
 
-            <!-- End Section Filter -->
+                            @foreach($collection -> options as $option )
+                                <option value="{!! $option['rankStart']!!}|{!! $option['rankEnd']!!}"> {!! $option['rankStart']!!} a {!! $option['rankEnd']!!}</option>
+                            @endforeach
+                        @endif
+                    </select>
+
+                </section>
+                <section class="col-xs-12 col-sm-6">
+                    {!! Form::submit(trans('admin.submit.download'), ['class' => 'btn btn-success ' , 'id' => 'send-form']) !!}
+                </section>
+            </section>
+            {!! Form::close()!!}
+        </article>
+
+
+
+                <!-- End Section Filter -->
+    </section>
+
+
+
 
     <!-- Secton Message -->
     <section class="row">

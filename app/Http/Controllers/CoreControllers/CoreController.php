@@ -135,13 +135,22 @@ class CoreController extends Controller
         $currentPageSearchResults = $col -> slice(($currentPage - 1) * $perPage, $perPage)->all();
         $collection = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
 
+        $collection -> countRegister = count($data);
+        $blockRegister = 300;
+
+        $collection -> options = $register -> resolveRank($blockRegister, ($collection -> countRegister -1));
+
         $collection -> setPath($request->url());
 
         return view( 'admin.register.index' , compact('collection') );
     }
     
-    public function exportReport ($rangIni, $rangFinal)
+    public function exportReport (Request $request)
     {
+        $rank = explode("|" , $request -> cantRegistros );
+        $rangIni = $rank[0];
+        $rangFinal = $rank[1];
+
         $expRepo = new RegisterRepo();
         $collection = $expRepo -> exportReport($rangIni, $rangFinal);
 
