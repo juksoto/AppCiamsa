@@ -16,6 +16,7 @@ class CiamCropsStage extends Model
         'stage',
         'subline',
         'type_id',
+        'slug',
         'image',
         'order_number',
         'active',

@@ -45,19 +45,21 @@ class CoreController extends Controller
      * @return mixed
      * * [description] Paso 02
      */
-    public function stepTwo($id)
+    public function stepTwo($tipo)
     {
+        $tipo = CiamCropsType::where('crops',$tipo) -> first();
 
         $data = CiamCropsStage::with('type')
-            -> where ('type_id' , $id)
+            -> where ('type_id' , $tipo -> id)
             -> active(1)
             -> orderBy( 'order_number', 'ASC' )
             -> paginate();
         
         $cantType = $data -> count();
-        $type = CiamCropsType::find($id);
+        $type = CiamCropsType::find( $tipo  -> id);
         $data -> cantType = $cantType;
         $data -> type = $type -> crops;
+        $data -> slugType = $type -> slug;
 
         return view( 'core.stepTwo' , compact('data') );
     }
@@ -69,11 +71,11 @@ class CoreController extends Controller
      * * [description] Paso 03
      */
 
-    public function stepThree($typeID,$stageID)
+    public function stepThree($slugType, $slugStage,$stageID)
     {
-        $stepThree = new RegisterRepo();
-        $data = $stepThree -> stepThree($stageID, $typeID);
 
+        $stepThree = new RegisterRepo();
+        $data = $stepThree -> stepThree($stageID);
         return view( 'core.stepThree' , compact('data') );
     }
 

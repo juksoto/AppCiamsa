@@ -34,7 +34,7 @@
             <ul class="row small-up-4 medium-up-5 list-icon-cultivo" id="list-cultivo">
             @forelse($data as $key => $value)
                     <li class ="column icon-cultivo text-center" >
-                        <a href="{{ route('stepTwo', $value -> id) }}">
+                        <a href="{{ route('stepTwo', $value -> slug) }}">
                             <img src="{!! asset( 'media/type-crops/'. $value -> icon )!!}" alt="{!! $value -> crops !!}">
                             <h3>
                                 {!! $value -> crops !!}

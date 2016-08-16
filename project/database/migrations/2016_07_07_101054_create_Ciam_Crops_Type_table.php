@@ -15,6 +15,7 @@ class CreateCiamCropsTypeTable extends Migration
         Schema::create('ciam_crops_type', function (Blueprint $table) {
             $table -> increments('id');
             $table -> string('crops');
+            $table -> string('slug');
             $table -> string('icon');
             $table -> boolean('active') ->default(true);
             $table -> timestamps();

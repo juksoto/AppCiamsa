@@ -19,7 +19,7 @@ class RegisterRepo extends Model
     {
         return CiamRegister::all() -> where ( 'active' , true );
     }
-    public function stepThree($stageID, $typeID)
+    public function stepThree($stageID)
     {
         $data = new \stdClass();
 
@@ -31,7 +31,7 @@ class RegisterRepo extends Model
 
         // En la tabla de relacion, buscamos todos los productos de esta etapa.
         $relations = CiamTypeStageProducts::where('crops_stage_id' ,$stageID )
-            -> where('crops_type_id' ,$typeID )
+            -> where('crops_type_id' ,$stage -> type -> id )
             -> where ('active' , 1 )
             -> get();
 
@@ -75,9 +75,11 @@ class RegisterRepo extends Model
 
         }
 
-        $data -> type_id     = $typeID;
+        $data -> type_id     = $stage -> type -> id ;
         $data -> type        = $stage -> type -> crops;
+        $data -> slugType    = $stage -> type -> slug;
         $data -> stage       = $stage -> stage;
+        $data -> slugStage   = $stage -> slug;
         $data -> stage_id    = $stageID;
 
         $data -> collections = $collections -> sortBy('category_id');

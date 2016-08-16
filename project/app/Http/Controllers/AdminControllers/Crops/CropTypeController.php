@@ -110,7 +110,7 @@ class CropTypeController extends Controller
                 $typeCrop  -> icon = $fileLoaded;
             }
         }
-
+        $typeCrop -> slug = str_slug ($request -> crops);
         $typeCrop ->  save();
 
         $message_floating = trans('admin.message.alert_field_create');
@@ -174,6 +174,7 @@ class CropTypeController extends Controller
             $fileName = $this -> typeRepo -> renameFile($request, $this -> typeCrop-> icon);
             $this -> typeCrop -> icon = $fileName;
         }
+        $this -> typeCrop -> slug = str_slug ($request -> crops);
         $this -> typeCrop -> save();
 
         $message_floating = $this -> typeCrop -> crops . " " . trans('admin.message.alert_field_update');

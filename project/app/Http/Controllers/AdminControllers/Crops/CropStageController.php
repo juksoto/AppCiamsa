@@ -121,6 +121,8 @@ class CropStageController extends Controller
             }
         }
 
+
+        $Stage -> slug = str_slug ($request -> stage);
         $Stage ->  save();
 
         $message_floating = $Stage -> stage . " " . trans('admin.message.alert_field_update');
@@ -170,6 +172,7 @@ class CropStageController extends Controller
      */
     public function update(EditStageCropsRequest $request, $id)
     {
+        
 
         $this -> findUser($id);
         $this -> stageCrop -> fill( $request -> all() );
@@ -190,7 +193,7 @@ class CropStageController extends Controller
            $fileName = $this -> stageRepo -> renameFile($request, $this -> stageCrop -> image , $typeName -> crops);
            $this -> stageCrop -> image = $fileName;
         }
-
+        $this -> stageCrop -> slug = str_slug ($request -> stage);
         $this -> stageCrop -> save();
 
         $message_floating = $this -> stageCrop -> stage . " " . trans('admin.message.alert_field_update');
