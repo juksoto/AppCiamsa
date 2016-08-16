@@ -108,6 +108,8 @@ Route::group(['prefix' => 'cotizar' , 'as' => 'quote'], function() {
     Route::post('create', ['uses' => 'CoreControllers\CoreController@createQuote', 'as' => '.create']);
 
     Route::get('showProducts/{stage}/{type}', ['uses' => 'CoreControllers\CoreController@showProducts', 'as' => '.showProducts']);
+    
+    Route::get('showProductsRelation/{id}', ['uses' => 'CoreControllers\CoreController@showProductRelationQuote', 'as' => '.showProductsRelation']);
 
 });
 

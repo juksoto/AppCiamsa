@@ -91,6 +91,23 @@ class CoreController extends Controller
          return view( 'core.quote' , compact('data') );
     }
 
+    public function showProductRelationQuote($id)
+    {
+        $collections = CiamCropsStage::where( 'type_id' , $id )
+            -> where ('active' , 1)
+            -> orderBy( 'order_number', 'ASC' )
+            -> get();
+        $stageArray = Array();
+
+        foreach ($collections as $key => $collection) {
+            $stageArray[$key]['id'] = $collection -> id;
+            $stageArray[$key]['stage'] = $collection -> stage;
+        }
+        return response() -> json($stageArray);
+    }
+
+
+
     /**
      * @param $stageID
      * @param $typeID
@@ -117,6 +134,7 @@ class CoreController extends Controller
         return redirect() -> route('index');
     }
 
+
     /**
      * @param Requests\CreateRegisterRequest $request
      * @return mixed
@@ -140,7 +158,7 @@ class CoreController extends Controller
 
         $collection -> options = $register -> resolveRank($blockRegister, ($collection -> countRegister -1));
 
-        $collection -> setPath($request->url());
+        $collection -> setPath($request -> url());
 
         return view( 'admin.register.index' , compact('collection') );
     }

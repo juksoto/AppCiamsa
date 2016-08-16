@@ -383,6 +383,7 @@ class RegisterRepo extends Model
             for ( $i = 0; $i < $rankBlock; $i++)
             {
                 $rankStart = ($cantBlock * $i) + 1;
+                if ($rankStart == 1) {$rankStart = 0; }
                 $options[$i]['rankStart'] = $rankStart;
 
                 //  Si es el ultimo rango
@@ -400,10 +401,11 @@ class RegisterRepo extends Model
         }
         else
         {
-            $options[0]['rankStart'] = 1;
+            $options[0]['rankStart'] = 0;
             $options[0]['rankEnd'] = $totalRegister;
         }
-
+        
+        
         return $options;
     }
     /**
