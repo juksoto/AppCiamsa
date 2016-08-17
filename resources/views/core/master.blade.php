@@ -15,7 +15,7 @@
                     <img src="{{ asset( 'images/logo-ciamsa.png' )}}" alt="" width="180px" class ="logo">
                 </a>
             </article>
-            <section class="small-12 medium-9 column text-medium-right btn-header hide-for-small-only">
+            <section class="small-12 medium-9 column text-medium-right btn-header">
                 @yield('nav')
             </section>
         </section>
