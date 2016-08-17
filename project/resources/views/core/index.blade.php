@@ -9,7 +9,7 @@
 @endsection
 
 @section('nav')
-            <a href="{!! route('quote') !!}" class="button btn-ciamsa"> <span class="icon-user" aria-hidden="true"></span> {!! trans('app.submit.quote') !!}</a>
+            <a href="{!! route('quote') !!}" class="button btn-ciamsa hide-for-small-only"> <span class="icon-user" aria-hidden="true"></span> {!! trans('app.submit.quote') !!}</a>
 @endsection
 
 @section('content')
@@ -69,7 +69,7 @@
             </section>
             <section class="row">
                 <article class="small-7 medium-3  column text-center small-centered">
-                    <a href="cotizar.php" class="button btn-ciamsa expanded show-for-small-only">
+                    <a href="{{ route('quote') }}" class="button btn-ciamsa expanded show-for-small-only">
                         <span class="icon-user" aria-hidden="true"></span> Solicitar cotización
                     </a>
                 </article>

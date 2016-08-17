@@ -15,7 +15,7 @@
     <section class="row header-title">
         <section class="small-10 small-centered column text-center">
             <article>
-                <h2>
+                <h2 class="text-center">
                     <span class="step">
                        {{ trans('app.app.step_1_3') }}
                     </span>
@@ -31,12 +31,12 @@
     <!-- content -->
     <section class="row content">
         <section class="small-10 medium-9 small-centered column text-center">
-            <ul class="row small-up-4 medium-up-5 list-icon-cultivo" id="list-cultivo">
+            <ul class="row small-up-2 medium-up-5 list-icon-cultivo" id="list-cultivo">
             @forelse($data as $key => $value)
                     <li class ="column icon-cultivo text-center" >
                         <a href="{{ route('stepTwo', $value -> slug) }}">
                             <img src="{!! asset( 'media/type-crops/'. $value -> icon )!!}" alt="{!! $value -> crops !!}">
-                            <h3>
+                            <h3 class="text-center">
                                 {!! $value -> crops !!}
                             </h3>
                         </a>

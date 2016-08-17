@@ -50,7 +50,7 @@
                             {{ trans('app.app.no_stage_found') }}
                         </div>
                         <p>
-                            <a href="{{ route('stepTwo' , $data -> type_id ) }}" class="button btn-danger color-white"> <span class="icon-back" aria-hidden="true" style="padding-top:5px"></span>
+                            <a href="{{ route('stepTwo' , $data -> slugType) }}"  class="button btn-danger color-white"> <span class="icon-back" aria-hidden="true" style="padding-top:5px"></span>
                                 {{ trans('app.submit.back') }}
                             </a>
                         </p>
