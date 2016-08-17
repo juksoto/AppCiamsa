@@ -37,8 +37,13 @@ class Admin
         }
         else
         {
+            if($request -> ajax() and ($request->url() == route('admin.tsProducts.show'))){
+                return $next($request);
+            }
+            else
+            {
                 return redirect() -> route('dashboard');
-
+            }
         }
 
     }
