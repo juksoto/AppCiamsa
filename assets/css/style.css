@@ -148,7 +148,7 @@ textarea {
   padding: 0.5em;
 }
 .danger a {
-  color: #fff;
+  color: #da4453;
 }
 .danger a:hover {
   color: #fff;
@@ -157,14 +157,14 @@ textarea {
 .alert-danger {
   background-color: rgba(237,85,101,0.8);
   border: 1px solid #da4453;
-  color: #fff;
+  color: #a94442;
   padding: 0.5em;
 }
 .alert-danger a {
   color: #fff;
 }
 .alert-danger a:hover {
-  color: #fff;
+  color: #a94442;
   text-decoration: underline;
 }
 .info {

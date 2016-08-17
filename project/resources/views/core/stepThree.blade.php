@@ -46,8 +46,7 @@
                 @empty
                     <section class="small-6 small-centered">
                         <div class="alert alert-danger alert-dismissible fade in" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                            {{ trans('app.app.no_stage_found') }}
+                            {{ trans('app.message.fertilizer_error_no_found') }}
                         </div>
                         <p>
                             <a href="{{ route('stepTwo' , $data -> slugType) }}"  class="button btn-danger color-white"> <span class="icon-back" aria-hidden="true" style="padding-top:5px"></span>
