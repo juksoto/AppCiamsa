@@ -15,6 +15,7 @@ class CiamCropsType extends Model
     protected $fillable = [
         'crops',
         'icon',
+        'slug',
         'active',
     ];
 

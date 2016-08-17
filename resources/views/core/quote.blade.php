@@ -49,7 +49,7 @@
         </section>
         <!-- END BG PAPER -->
     <section class="">
-        {!! Form::open(['route' => ['admin.tsProducts.show', ':VALUE_ID'], 'method' => 'GET', 'class' => '' , 'id' => 'form-crops-type'])!!}
+        {!! Form::open(['route' => ['quote.showProductsRelation', ':VALUE_ID'], 'method' => 'GET', 'class' => '' , 'id' => 'form-crops-type'])!!}
         {!! Form::close()!!}
         {!! Form::open(['route' => ['quote.showProducts', ':STAGE_ID' , ":TYPE_ID"], 'method' => 'GET', 'class' => '' , 'id' => 'form-stage-type'])!!}
         {!! Form::close()!!}

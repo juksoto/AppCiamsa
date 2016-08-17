@@ -418,8 +418,19 @@ ul.list-icon-cultivo h3 {
   margin-top: 2em;
   padding-bottom: 2em;
 }
+.error404 h1 {
+  font-size: 8em;
+  margin-top: 2rem;
+}
+.error404 h2 {
+  font-size: 2em;
+}
+.error404 .logo {
+  display: block !important;
+}
 .wrapper-step .bottom {
   margin-top: 4em;
+  padding-bottom: 0;
 }
 .wrapper-step .content {
   margin-top: 4em;

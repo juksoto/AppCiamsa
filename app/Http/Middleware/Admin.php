@@ -30,13 +30,20 @@ class Admin
                 }
                 else
                     {
-                        return redirect()->route('admin.register.index');
+                        return redirect() -> route('admin.register.index');
                     }
             }
+
         }
         else
         {
-            return redirect()->route('dashboard');
+            if($request -> ajax() and ($request->url() == route('admin.tsProducts.show'))){
+                return $next($request);
+            }
+            else
+            {
+                return redirect() -> route('dashboard');
+            }
         }
 
     }

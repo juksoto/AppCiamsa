@@ -45,19 +45,21 @@ class CoreController extends Controller
      * @return mixed
      * * [description] Paso 02
      */
-    public function stepTwo($id)
+    public function stepTwo($tipo)
     {
+        $tipo = CiamCropsType::where('crops',$tipo) -> first();
 
         $data = CiamCropsStage::with('type')
-            -> where ('type_id' , $id)
+            -> where ('type_id' , $tipo -> id)
             -> active(1)
             -> orderBy( 'order_number', 'ASC' )
             -> paginate();
         
         $cantType = $data -> count();
-        $type = CiamCropsType::find($id);
+        $type = CiamCropsType::find( $tipo  -> id);
         $data -> cantType = $cantType;
         $data -> type = $type -> crops;
+        $data -> slugType = $type -> slug;
 
         return view( 'core.stepTwo' , compact('data') );
     }
@@ -69,11 +71,11 @@ class CoreController extends Controller
      * * [description] Paso 03
      */
 
-    public function stepThree($typeID,$stageID)
+    public function stepThree($slugType, $slugStage,$stageID)
     {
-        $stepThree = new RegisterRepo();
-        $data = $stepThree -> stepThree($stageID, $typeID);
 
+        $stepThree = new RegisterRepo();
+        $data = $stepThree -> stepThree($stageID);
         return view( 'core.stepThree' , compact('data') );
     }
 
@@ -90,6 +92,23 @@ class CoreController extends Controller
 
          return view( 'core.quote' , compact('data') );
     }
+
+    public function showProductRelationQuote($id)
+    {
+        $collections = CiamCropsStage::where( 'type_id' , $id )
+            -> where ('active' , 1)
+            -> orderBy( 'order_number', 'ASC' )
+            -> get();
+        $stageArray = Array();
+
+        foreach ($collections as $key => $collection) {
+            $stageArray[$key]['id'] = $collection -> id;
+            $stageArray[$key]['stage'] = $collection -> stage;
+        }
+        return response() -> json($stageArray);
+    }
+
+
 
     /**
      * @param $stageID
@@ -117,6 +136,7 @@ class CoreController extends Controller
         return redirect() -> route('index');
     }
 
+
     /**
      * @param Requests\CreateRegisterRequest $request
      * @return mixed
@@ -140,7 +160,7 @@ class CoreController extends Controller
 
         $collection -> options = $register -> resolveRank($blockRegister, ($collection -> countRegister -1));
 
-        $collection -> setPath($request->url());
+        $collection -> setPath($request -> url());
 
         return view( 'admin.register.index' , compact('collection') );
     }

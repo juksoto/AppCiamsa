@@ -7,7 +7,7 @@
 @endsection
 @section('nav')
     <a href="{{ route('index')}}" class="button btn-sunflower"> <span class="icon-home" aria-hidden="true"></span> {{ trans('app.submit.home') }}</a>
-    <a href="{{ route('stepTwo' , $data -> type_id) }}"  class="button btn-aqua"> <span class="icon-back" aria-hidden="true" style="padding-top:5px"></span> {{ trans('app.submit.back') }}</a>
+    <a href="{{ route('stepTwo' , $data -> slugType) }}"  class="button btn-aqua"> <span class="icon-back" aria-hidden="true" style="padding-top:5px"></span> {{ trans('app.submit.back') }}</a>
     <a href="#" class="button btn-ciamsa" onclick="submitForm()"> <span class="icon-user" aria-hidden="true"></span> {!! trans('app.submit.quote') !!}</a>
     @endsection
 

@@ -93,7 +93,7 @@ Route::get('etapa-cultivo/{id}',
 );
 
 //Step three
-Route::get('fertilizantes/{type}/{stage}',
+Route::get('fertilizantes/{slugType}/{slugStage}/{stage}',
     [
         'uses' => 'CoreControllers\CoreController@stepThree',
         'as'   => 'stepThree',
@@ -108,6 +108,8 @@ Route::group(['prefix' => 'cotizar' , 'as' => 'quote'], function() {
     Route::post('create', ['uses' => 'CoreControllers\CoreController@createQuote', 'as' => '.create']);
 
     Route::get('showProducts/{stage}/{type}', ['uses' => 'CoreControllers\CoreController@showProducts', 'as' => '.showProducts']);
+    
+    Route::get('showProductsRelation/{id}', ['uses' => 'CoreControllers\CoreController@showProductRelationQuote', 'as' => '.showProductsRelation']);
 
 });
 
@@ -120,5 +122,6 @@ Route::get('dashboard',
         'as'   => 'dashboard',
     ]
 );
+Route::any('register','HomeController@index');
 
 
