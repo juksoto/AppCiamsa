@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 17-08-2016 a las 11:22:00
+-- Tiempo de generación: 22-08-2016 a las 16:06:20
 -- Versión del servidor: 5.5.48-37.8
 -- Versión de PHP: 5.4.31
 
@@ -76,9 +76,9 @@ INSERT INTO `ciam_crops_stage` (`id`, `stage`, `slug`, `subline`, `image`, `orde
 (3, 'Producción', 'produccion', '', 'stage-crops-produccion-platano.png', '3', 10, 1, '2016-08-09 19:21:46', '2016-08-09 19:21:46'),
 (4, 'Siembra', 'siembra', '', 'stage-crops-siembra-.png', '1', 3, 1, '2016-08-09 20:31:59', '2016-08-16 22:03:52'),
 (5, 'Primera Y Segunda Aplicación', 'primera-y-segunda-aplicacion', '', 'stage-crops-primera-y-segunda-aplicacion-.png', '2', 3, 1, '2016-08-09 20:32:27', '2016-08-16 22:03:57'),
-(6, 'Siembra', 'siembra', '', 'stage-crops-siembra-.png', '1', 2, 1, '2016-08-09 20:47:12', '2016-08-16 22:03:36'),
+(6, 'Siembra', 'siembra', '', 'stage-crops-siembra-cafe.png', '1', 2, 1, '2016-08-09 20:47:12', '2016-08-22 18:09:54'),
 (7, 'Crecimiento Y Desarrollo', 'crecimiento-y-desarrollo', '', 'stage-crops-crecimiento-y-desarrollo-.png', '2', 2, 1, '2016-08-09 20:47:28', '2016-08-16 22:03:40'),
-(8, 'Producción', 'produccion', '', 'stage-crops-produccion-.png', '3', 2, 1, '2016-08-09 20:48:03', '2016-08-16 22:03:44'),
+(8, 'Producción', 'produccion', '', 'stage-crops-produccion-cafe.png', '3', 2, 1, '2016-08-09 20:48:03', '2016-08-22 18:12:17'),
 (9, 'Siembra', 'siembra', '', 'stage-crops-siembra-maiz.png', '1', 6, 1, '2016-08-09 20:58:04', '2016-08-10 17:12:02'),
 (10, 'Produccion', 'produccion', '', 'stage-crops-produccion-maiz.png', '2', 6, 1, '2016-08-09 20:58:31', '2016-08-10 17:15:49'),
 (11, 'Siembra', 'siembra', '', 'stage-crops-siembra-pasto.png', '1', 9, 1, '2016-08-09 21:16:31', '2016-08-09 21:16:31'),
@@ -96,7 +96,7 @@ INSERT INTO `ciam_crops_stage` (`id`, `stage`, `slug`, `subline`, `image`, `orde
 (23, 'Producción', 'produccion', '', 'stage-crops-produccion-palma.png', '3', 7, 1, '2016-08-16 19:53:21', '2016-08-16 19:53:21'),
 (24, 'Siembra', 'siembra', '', 'stage-crops-siembra-hortalizas.png', '1', 5, 1, '2016-08-16 20:07:24', '2016-08-16 20:07:24'),
 (25, 'Crecimiento', 'crecimiento', '', 'stage-crops-crecimiento-hortalizas.png', '2', 5, 1, '2016-08-16 20:07:35', '2016-08-16 20:07:35'),
-(26, 'Producción', 'produccion', '', 'stage-crops-produccion-.png', '3', 5, 1, '2016-08-16 20:07:49', '2016-08-16 20:07:59');
+(26, 'Producción', 'produccion', '', 'stage-crops-produccion-hortalizas.png', '3', 5, 1, '2016-08-16 20:07:49', '2016-08-22 18:34:25');
 
 -- --------------------------------------------------------
 
@@ -128,7 +128,7 @@ INSERT INTO `ciam_crops_type` (`id`, `crops`, `slug`, `icon`, `active`, `created
 (7, 'Palma', 'palma', 'icon-palma.png', 1, '2016-08-09 05:02:23', '2016-08-09 05:02:23'),
 (8, 'Papa', 'papa', 'icon-papa.png', 1, '2016-08-09 05:02:30', '2016-08-09 05:02:30'),
 (9, 'Pasto', 'pasto', 'icon-pasto.png', 1, '2016-08-09 05:02:36', '2016-08-09 05:02:36'),
-(10, 'Platano', 'platano', 'icon-platano.png', 1, '2016-08-09 05:02:44', '2016-08-09 05:02:44');
+(10, 'Plátano', 'platano', 'icon-platano.png', 1, '2016-08-09 05:02:44', '2016-08-22 21:00:42');
 
 -- --------------------------------------------------------
 
@@ -210,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `ciam_products` (
   `active` tinyint(1) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `ciam_products`
@@ -247,7 +247,7 @@ INSERT INTO `ciam_products` (`id`, `product`, `components`, `image`, `category_i
 (28, 'Sam Estándar', 'components-sam-estandar.png', 'sam-estandar.png', 3, 1, '2016-08-09 22:13:35', '2016-08-09 22:13:35'),
 (29, 'Urea Granulada', 'components-urea-granulada.png', 'urea-granulada.png', 3, 1, '2016-08-09 22:14:01', '2016-08-09 22:14:01'),
 (30, 'Urea Prilled', 'components-urea-prilled.png', 'urea-prilled.png', 3, 1, '2016-08-09 22:14:22', '2016-08-09 22:14:22'),
-(31, 'Nitroeffi 100', 'components-nitroeffi-100.png', 'nitroeffi-100.png', 5, 1, '2016-08-09 22:15:07', '2016-08-10 15:49:58'),
+(31, 'Nitroeffi 100', 'components-nitroeffi-100.png', 'nitroeffi-100.png', 5, 1, '2016-08-09 22:15:07', '2016-08-22 18:18:58'),
 (32, 'Solución Uan', 'components-solucion-uan.png', 'solucion-uan.png', 5, 1, '2016-08-09 22:15:33', '2016-08-09 22:15:33'),
 (33, 'Mezclas A La Medida', 'components-mezclas-a-la-medida.png', 'mezclas-a-la-medida.png', 6, 1, '2016-08-10 15:31:09', '2016-08-10 15:31:09'),
 (34, 'Mezclas A La Medida', 'components-mezclas-a-la-medida.png', 'mezclas-a-la-medida.png', 4, 1, '2016-08-10 15:32:46', '2016-08-10 15:32:46'),
@@ -257,11 +257,17 @@ INSERT INTO `ciam_products` (`id`, `product`, `components`, `image`, `category_i
 (38, 'Urea Granulada', 'components-urea-granulada.png', 'urea-granulada.png', 4, 1, '2016-08-10 15:49:23', '2016-08-10 16:34:03'),
 (39, 'Nitroeffi 100', 'components-nitroeffi-100.png', 'nitroeffi-100.png', 4, 1, '2016-08-10 15:49:44', '2016-08-10 15:49:44'),
 (40, 'Solución Uan', 'components-solucion-uan.png', 'solucion-uan.png', 4, 1, '2016-08-10 15:50:38', '2016-08-10 15:50:38'),
-(41, 'Forkamix 27-6-6', 'components-forkamix-27-6-6.png', 'forkamix-27-6-6.png', 4, 1, '2016-08-10 15:52:49', '2016-08-10 18:05:33'),
+(41, 'Nutrikimia 27-6-6', 'components-nutrikimia-27-6-6.png', 'nutrikimia-27-6-6.png', 4, 1, '2016-08-10 15:52:49', '2016-08-22 18:26:06'),
 (42, 'Kieserita', 'components-kieserita.png', 'kieserita.png', 4, 1, '2016-08-10 15:54:23', '2016-08-10 16:39:53'),
 (43, 'Urea Prilled', 'components-urea-prilled.png', 'urea-prilled.png', 4, 1, '2016-08-10 16:30:28', '2016-08-10 16:30:28'),
 (44, 'Sam', 'components-sam.png', 'sam.png', 4, 1, '2016-08-10 17:59:06', '2016-08-10 17:59:06'),
-(45, 'Sam Estándar', 'components-sam-estandar.png', 'sam-estandar.png', 4, 1, '2016-08-10 17:59:40', '2016-08-10 17:59:40');
+(45, 'Sam Estándar', 'components-sam-estandar.png', 'sam-estandar.png', 4, 1, '2016-08-10 17:59:40', '2016-08-10 17:59:40'),
+(46, 'Ciamsa 3 24-0-17', 'components-ciamsa-3-24-0-17.png', 'ciamsa-3-24-0-17.png', 1, 1, '2016-08-22 17:18:53', '2016-08-22 17:18:53'),
+(47, '12-24-12', 'components-12-24-12.png', '12-24-12.png', 1, 1, '2016-08-22 18:16:56', '2016-08-22 18:16:56'),
+(48, '27-6-6', 'components-27-6-6.png', '27-6-6.png', 1, 1, '2016-08-22 18:38:14', '2016-08-22 18:38:14'),
+(49, 'Map', 'components-map.png', 'map.png', 4, 1, '2016-08-22 18:43:47', '2016-08-22 18:43:47'),
+(50, 'Dap', 'components-dap.png', 'dap.png', 4, 1, '2016-08-22 18:45:10', '2016-08-22 18:45:10'),
+(51, 'Forkamix 14-4-23', 'components-forkamix-14-4-23.png', 'forkamix-14-4-23.png', 4, 1, '2016-08-22 20:51:31', '2016-08-22 20:51:31');
 
 -- --------------------------------------------------------
 
@@ -277,7 +283,7 @@ CREATE TABLE IF NOT EXISTS `ciam_product_type_stage` (
   `active` tinyint(1) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=136 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=142 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `ciam_product_type_stage`
@@ -350,19 +356,19 @@ INSERT INTO `ciam_product_type_stage` (`id`, `crops_type_id`, `crops_stage_id`, 
 (64, 8, 16, 4, 1, '2016-08-10 17:18:56', '2016-08-10 17:18:56'),
 (65, 8, 16, 5, 1, '2016-08-10 17:19:11', '2016-08-10 17:19:11'),
 (66, 8, 16, 16, 1, '2016-08-10 17:19:25', '2016-08-10 17:19:25'),
-(67, 8, 16, 21, 1, '2016-08-10 17:19:40', '2016-08-10 17:19:40'),
-(68, 8, 16, 24, 1, '2016-08-10 17:19:52', '2016-08-10 17:19:52'),
-(69, 8, 16, 20, 1, '2016-08-10 17:20:09', '2016-08-10 17:20:09'),
-(70, 8, 16, 25, 1, '2016-08-10 17:22:04', '2016-08-10 17:22:04'),
+(67, 8, 16, 37, 1, '2016-08-10 17:19:40', '2016-08-22 18:46:44'),
+(68, 8, 16, 42, 1, '2016-08-10 17:19:52', '2016-08-22 18:46:29'),
+(69, 8, 16, 50, 1, '2016-08-10 17:20:09', '2016-08-22 18:45:21'),
+(70, 8, 16, 49, 1, '2016-08-10 17:22:04', '2016-08-22 18:44:24'),
 (71, 8, 17, 7, 1, '2016-08-10 17:32:09', '2016-08-10 17:32:09'),
 (72, 8, 17, 9, 1, '2016-08-10 17:32:18', '2016-08-10 17:32:18'),
 (73, 8, 17, 18, 1, '2016-08-10 17:32:27', '2016-08-10 17:32:27'),
 (74, 8, 17, 1, 1, '2016-08-10 17:33:34', '2016-08-10 17:33:34'),
 (75, 8, 17, 2, 1, '2016-08-10 17:33:41', '2016-08-10 17:33:41'),
 (76, 8, 17, 15, 1, '2016-08-10 17:33:50', '2016-08-10 17:33:50'),
-(77, 8, 17, 31, 1, '2016-08-10 17:34:01', '2016-08-10 17:34:01'),
-(78, 8, 17, 32, 1, '2016-08-10 17:34:18', '2016-08-10 17:34:18'),
-(79, 8, 17, 6, 1, '2016-08-10 17:34:29', '2016-08-10 17:34:29'),
+(77, 8, 17, 39, 1, '2016-08-10 17:34:01', '2016-08-22 20:52:51'),
+(78, 8, 17, 40, 1, '2016-08-10 17:34:18', '2016-08-22 20:52:44'),
+(79, 8, 17, 51, 1, '2016-08-10 17:34:29', '2016-08-22 20:51:37'),
 (80, 10, 1, 3, 1, '2016-08-10 17:40:13', '2016-08-10 17:40:13'),
 (81, 10, 2, 35, 1, '2016-08-10 17:40:23', '2016-08-10 17:51:42'),
 (82, 10, 2, 42, 1, '2016-08-10 17:40:34', '2016-08-10 17:51:48'),
@@ -418,7 +424,13 @@ INSERT INTO `ciam_product_type_stage` (`id`, `crops_type_id`, `crops_stage_id`, 
 (132, 7, 23, 36, 1, '2016-08-16 20:14:06', '2016-08-16 20:14:06'),
 (133, 7, 23, 35, 1, '2016-08-16 20:14:22', '2016-08-16 20:14:22'),
 (134, 7, 23, 39, 1, '2016-08-16 20:14:32', '2016-08-16 20:14:32'),
-(135, 7, 23, 40, 1, '2016-08-16 20:14:40', '2016-08-16 20:14:40');
+(135, 7, 23, 40, 1, '2016-08-16 20:14:40', '2016-08-16 20:14:40'),
+(136, 1, 15, 46, 1, '2016-08-22 18:04:44', '2016-08-22 18:04:44'),
+(137, 3, 4, 47, 1, '2016-08-22 18:17:34', '2016-08-22 18:17:34'),
+(138, 6, 10, 48, 1, '2016-08-22 18:38:28', '2016-08-22 18:38:28'),
+(139, 7, 21, 47, 1, '2016-08-22 18:40:25', '2016-08-22 18:40:25'),
+(140, 7, 22, 48, 1, '2016-08-22 18:40:57', '2016-08-22 18:40:57'),
+(141, 9, 11, 16, 1, '2016-08-22 20:53:47', '2016-08-22 20:53:47');
 
 -- --------------------------------------------------------
 
@@ -628,12 +640,12 @@ ALTER TABLE `ciam_departments`
 -- AUTO_INCREMENT de la tabla `ciam_products`
 --
 ALTER TABLE `ciam_products`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=46;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=52;
 --
 -- AUTO_INCREMENT de la tabla `ciam_product_type_stage`
 --
 ALTER TABLE `ciam_product_type_stage`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=136;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=142;
 --
 -- AUTO_INCREMENT de la tabla `ciam_registers`
 --

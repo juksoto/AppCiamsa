@@ -374,6 +374,7 @@ ul.list-icon-cultivo h3 {
   margin-top: 0em;
   margin-bottom: 0.5em;
   background: #e9573f;
+  text-transform: uppercase;
 }
 .modal-content h3.titleComponents {
   background: #007736 !important;

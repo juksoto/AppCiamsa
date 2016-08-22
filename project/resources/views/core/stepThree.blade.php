@@ -33,13 +33,19 @@
     <section class="row content">
         @include('core.stepThree.modal')
         <section class="small-12 medium-11 small-centered column text-center list-fertilizantes" >
+
             <ul class="row small-up-3 medium-up-5 list-fertilizantes" id="list-fertilizantes">
                 @forelse($data -> collections as $key => $value )
                     <li class="column text-center"  data-id="{!! $value['id'] !!}" data-components="{!! $value['components']!!}" data-category = "{!! $value['category']!!}" data-category_slug="{!! $value['category_slug']!!}" data-image="{!! $value['image']!!}" data-product="{!! $value['product']!!}">
                         <a data-open="modalProductos" class="btnReferencia" onclick="idProduct(this)">
                             <img src="{{asset('media/products/'. $value['category_slug'].'/'. $value['image'])}}" alt="{!! $value['category'] !!} {!! $value['product'] !!}">
                             <h4>
-                                {!! $value['category'] !!} <span>{!! $value['product'] !!} </span>
+                                @if (($value['category_id'] != 6) and ($value['category_id'] != 5) and ($value['category_id'] != 3))
+                                        {!! $value['category'] !!} <span>{!! $value['product'] !!} </span>
+                                    @else
+                                        <span>{!! $value['product'] !!} </span>
+                                @endif
+
                             </h4>
                         </a>
                     </li>
@@ -48,6 +54,10 @@
                         <div class="alert alert-danger alert-dismissible fade in" role="alert">
                             {{ trans('app.message.fertilizer_error_no_found') }}
                         </div>
+                        <p>
+                            <br>
+                            <a href="#" class="button btn-ciamsa" onclick="submitForm()"> <span class="icon-user" aria-hidden="true"></span> {!! trans('app.submit.quote') !!}</a>
+                        </p>
                         <p>
                             <a href="{{ route('stepTwo' , $data -> slugType) }}"  class="button btn-danger color-white"> <span class="icon-back" aria-hidden="true" style="padding-top:5px"></span>
                                 {{ trans('app.submit.back') }}
