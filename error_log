@@ -1,0 +1,8 @@
+[22-Aug-2016 12:59:16 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function bind() on null in /home/cube2media/public_html/proyectos/index.php:25
+Stack trace:
+#0 {main}
+  thrown in /home/cube2media/public_html/proyectos/index.php on line 25
+[22-Aug-2016 12:59:26 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function bind() on null in /home/cube2media/public_html/proyectos/index.php:25
+Stack trace:
+#0 {main}
+  thrown in /home/cube2media/public_html/proyectos/index.php on line 25

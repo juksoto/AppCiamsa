@@ -374,10 +374,10 @@ ul.list-icon-cultivo h3 {
   margin-top: 0em;
   margin-bottom: 0.5em;
   background: #e9573f;
-  text-transform: uppercase;
 }
 .modal-content h3.titleComponents {
   background: #007736 !important;
+  text-transform: uppercase;
 }
 .reveal {
   -webkit-border-radius: 1em;
@@ -512,16 +512,40 @@ ul.list-icon-cultivo h3 {
 .wrapper-step-two .content .cultivo-2 a:hover p {
   color: #b0c600;
 }
-.wrapper-step-two .content .cultivo-3 h3 {
+.wrapper-step-two .content .cultivo-3 h3,
+.wrapper-step-two .content .cultivo-4 h3,
+.wrapper-step-two .content .cultivo-5 h3,
+.wrapper-step-two .content .cultivo-6 h3,
+.wrapper-step-two .content .cultivo-7 h3,
+.wrapper-step-two .content .cultivo-8 h3,
+.wrapper-step-two .content .cultivo-9 h3 {
   background: #3bafda;
 }
-.wrapper-step-two .content .cultivo-3 p.subline {
+.wrapper-step-two .content .cultivo-3 p.subline,
+.wrapper-step-two .content .cultivo-4 p.subline,
+.wrapper-step-two .content .cultivo-5 p.subline,
+.wrapper-step-two .content .cultivo-6 p.subline,
+.wrapper-step-two .content .cultivo-7 p.subline,
+.wrapper-step-two .content .cultivo-8 p.subline,
+.wrapper-step-two .content .cultivo-9 p.subline {
   color: #3bafda;
 }
-.wrapper-step-two .content .cultivo-3 a:hover h3 {
+.wrapper-step-two .content .cultivo-3 a:hover h3,
+.wrapper-step-two .content .cultivo-4 a:hover h3,
+.wrapper-step-two .content .cultivo-5 a:hover h3,
+.wrapper-step-two .content .cultivo-6 a:hover h3,
+.wrapper-step-two .content .cultivo-7 a:hover h3,
+.wrapper-step-two .content .cultivo-8 a:hover h3,
+.wrapper-step-two .content .cultivo-9 a:hover h3 {
   background: #4fc1e9;
 }
-.wrapper-step-two .content .cultivo-3 a:hover p {
+.wrapper-step-two .content .cultivo-3 a:hover p,
+.wrapper-step-two .content .cultivo-4 a:hover p,
+.wrapper-step-two .content .cultivo-5 a:hover p,
+.wrapper-step-two .content .cultivo-6 a:hover p,
+.wrapper-step-two .content .cultivo-7 a:hover p,
+.wrapper-step-two .content .cultivo-8 a:hover p,
+.wrapper-step-two .content .cultivo-9 a:hover p {
   color: #4fc1e9;
 }
 .wrapper-step-three .content {

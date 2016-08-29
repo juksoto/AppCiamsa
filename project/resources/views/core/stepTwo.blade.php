@@ -33,7 +33,7 @@
     <section class="row content">
 
         <section class="small-10 @if($data -> cantType == 2) medium-8 @else medium-11 @endif small-centered column text-center">
-            <ul class="row small-up-1 medium-up-{!! $data -> cantType !!}  list-image-cultivo" id="list-image-cultivo">
+            <ul class="row small-up-1 @if($data -> cantType > 4) medium-up-4 @else medium-up-{!! $data -> cantType !!} @endif list-image-cultivo" id="list-image-cultivo">
             @forelse($data as $key => $value)
                     <li class ="column text-center cultivo-{!! $key !!}"  >
                         <a href="{{ route('stepThree', [$data -> slugType, $value -> slug, $value -> id, ]) }}">
